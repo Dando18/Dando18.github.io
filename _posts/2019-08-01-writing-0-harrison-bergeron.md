@@ -1,7 +1,7 @@
 ---
-title: 'Reading Thoughts #0: Harrison Bergeron'
+title: 'Writing #0: Harrison Bergeron'
 date: 2019-08-1
-permalink: /posts/2019/01/reading_thoughts_0_harrison_bergeron/
+permalink: /posts/2019/01/writing_0_harrison_bergeron/
 tags:
   - reading thoughts
   - response
