@@ -2,8 +2,11 @@
 title: 'Writing #0: Harrison Bergeron'
 date: 2019-08-1
 permalink: /posts/2019/01/writing_0_harrison_bergeron/
+categories:
+  - writing
 tags:
-  - reading thoughts
+  - writing
+  - short story
   - response
 ---
 
@@ -12,6 +15,7 @@ This is part 0 in a collection of posts where I'll give some of my thoughts and 
 Harrison Bergeron
 ----------------
 by Kurt Vonnegut
+
 
 Harrison Bergeron conveys the story of a dystopian world where equality has become the center focus of society. Harrison Bergeron, the young idealist possessing enough talent to warrent extreme handicapping, is the vessel used to portray the consequences of over-zealous equality.
 
