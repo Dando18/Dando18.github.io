@@ -20,3 +20,5 @@ Given human-kind's bleak past with equality we have a clear image of what rampan
 Unfortunately Harrison's end is treacherous and nothing favorable can be thought of his parents heartless reaction to his death. Yes, _over-equality_, if such a thing is possible, is not great. Vonnegut uses hyperbole to convey the resulting loss of individuality, however, real examples can be found in past Communist and Fascist governments. Perhaps Vonnegut was inspired by these falling and rising political factions during the short story's writing (could look into this).
 
 All being told, it is hopeful that this light hearted short story does not join the predictive ranks of 1984 and Fahrenheit 451.
+
+-- Daniel Nichols
