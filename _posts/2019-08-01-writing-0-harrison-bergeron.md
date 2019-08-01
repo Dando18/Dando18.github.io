@@ -10,7 +10,7 @@ tags:
   - response
 ---
 
-This is part 0 in a collection of posts where I'll give some of my thoughts and analysis on essays, short stories, novels, movies, etc. It's not really anything academic, but purely for me to practice my writing.
+Part 0 in a collection of posts where I'll give some of my thoughts and analysis on essays, short stories, novels, movies, etc. It is not really anything academic, but purely for me to practice my writing.
 
 Harrison Bergeron
 ----------------
