@@ -10,7 +10,7 @@ locale                   : "en-US"
 title                    : "Daniel Nichols"
 title_separator          : "-"
 name                     : &name "Daniel Nichols"
-description              : &description "danielnichols (common email symbol) vols (dot) utk (dot) edu"
+description              : &description "Undergraduate at University of Tennessee, Knoxville"
 url                      : https://Dando18.github.io # the base hostname & protocol for your site e.g. "https://mmistakes.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : "Dando18.github.io"
@@ -82,7 +82,7 @@ analytics:
 author:
   name             : "Daniel Nichols"
   avatar           : "profile.png"
-  bio              : "Undergraduate at University of Tennessee, Knoxville"
+  bio              : "danielnichols (fancy 'a' symbol) utk (DOT) edu"
   location         : "Knoxville"
   employer         :
   pubmed           : "https://www.ncbi.nlm.nih.gov/pubmed/?term=john+snow"
