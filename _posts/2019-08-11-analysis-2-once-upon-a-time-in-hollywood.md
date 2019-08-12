@@ -16,7 +16,7 @@ Part 2 in a collection of posts where I'll give some of my thoughts and analysis
 
 Once Upon a Time in Hollywood
 ----------------
-A Motion Picture by Quentin Tarantino
+A motion picture by Quentin Tarantino
 
 _Once Upon a Time in Hollywood_, the ninth and alledgedly penultimate Tarantino film, does little to surpass his prior work, however, it greatly towers over modern franchise led cinema. I have said many a time that even a mediocre Tarantino film is multitudes superior to its present-day peer. Despite this, I believed the picture is several steps above mediocre, a marvelous work from a dated director.
 
