@@ -1,11 +1,12 @@
 ---
-title: 'Writing #0: Harrison Bergeron'
+title: 'Analysis #0: Harrison Bergeron'
 date: 2019-08-1
-permalink: /posts/2019/01/writing_0_harrison_bergeron/
+permalink: /posts/2019/01/analysis_0_harrison_bergeron/
 categories:
-  - writing
+  - analysis
 tags:
   - writing
+  - analysis
   - short story
   - response
 ---
