@@ -27,6 +27,6 @@ Given perspective these two characters "fit" together. Harry, the actor, who wor
 
 With prescience one could have pinned these two together immediately, but, alas, the story unfolds. Amidst the performance and romantic tension they do, however, find each other. They glue together wonderfully: the man who is only alive when acting and the woman who falls in love with characters. Their marriage, as the narrator reveals, is lived out in plays. Their marital happiness determined by whichever play they are reading that week.
 
-I do not see much reason in over analyzing this story. It is heartwarming and fun to read. My only complaint is that it ended too soon.
+I do not see any merit in over analyzing this story. It is heartwarming and fun to read. My only complaint is that it ended too soon.
 
 -- Daniel Nichols
