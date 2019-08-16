@@ -23,7 +23,7 @@ Fracture, a glib mystery thriller, pits the criminal mastermind Ted Crawford, pl
 
 Provoked by his wife's clandestine affair, Ted, the airplane designer and enigmatic genius, seeks out the ultimate revenge. His revenge, however, is not typical as he pursues retribution without consequence. Yes, he commits the "perfect" crime, if such a thing is possible, hoping to avoid the jail time often paired with the murdering of one's spouse. Amidst confrontation, he kills his wife, yields his firearm to the responding police officer, and signs a written confession. Seemingly far from perfect. Yet, this is the brilliance of the plan.
 
-His seemingly imminent conviction is only legal bait to draw out the hot-shot, over-eager state prosecutor Willy. Which leads into the thrilling trial and meaty portion of the film.
+His seemingly imminent conviction is only legal bait to draw out the hot-shot, over-eager state prosecutor Willy, which leads into the thrilling trial and meaty portion of the film.
 
 WIP...
 
