@@ -1,7 +1,7 @@
 ---
 title: 'Analysis #4: Fracture'
-date: 2019-08-15
-permalink: /posts/2019/15/analysis_4_fracture
+date: 2019-08-16
+permalink: /posts/2019/16/analysis_4_fracture
 categories:
   - analysis
 tags:
