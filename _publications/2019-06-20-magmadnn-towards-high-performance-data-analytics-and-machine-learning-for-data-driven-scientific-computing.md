@@ -9,4 +9,4 @@ paperurl: 'https://www.icl.utk.edu/files/publications/2019/icl-utk-1187-2019.pdf
 ---
 In this paper, we present work towards the development of a new data analytics and machine learning (ML) framework, called MagmaDNN. Our main goal is to provide scalable, high-performance data analytics and ML solutions for scientific applications running on current and upcoming heterogeneous many-core GPU-accelerated architectures.
 
-[Find paper here.](https://www.icl.utk.edu/files/publications/2019/icl-utk-1187-2019.pdf)
+[Find paper here.](https://www.icl.utk.edu/files/publications/2019/icl-utk-1187-2019.pdf) Workshop [link.](https://2019.isc-program.com/presentation/?id=wksp116&sess=sess154)
