@@ -1,7 +1,7 @@
 ---
 title: "Undergraduate TA"
 collection: teaching
-type: "Class"
+type: "Course"
 permalink: /teaching/2019-fall-ta-undergrad
 venue: "University of Tennessee, Department of Computer Science"
 date: 2019-08-21
