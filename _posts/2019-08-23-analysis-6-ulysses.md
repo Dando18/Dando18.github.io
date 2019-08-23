@@ -1,5 +1,5 @@
 ---
-title: 'Analysis #4: Ulysses'
+title: 'Analysis #7: Ulysses'
 date: 2019-08-23
 permalink: /posts/2019/23/analysis_7_ulysses
 categories:
