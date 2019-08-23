@@ -23,9 +23,13 @@ Fracture, a glib murder-mystery thriller, pits the criminal mastermind Ted Crawf
 
 Provoked by his wife's clandestine affair, Ted, the airplane designer and enigmatic genius, seeks out the ultimate revenge. His revenge, however, is not typical as he pursues retribution without consequence. Yes, he commits the "perfect" crime, if such a thing is possible, hoping to avoid the jail time often paired with the murdering of one's spouse. Amidst confrontation, he kills his wife, yields his firearm to the responding police officer, and signs a written confession. Seemingly far from perfect. Yet, this is the brilliance of the plan.
 
-His seemingly imminent conviction is only legal bait to draw out the hot-shot, over-eager state prosecutor Willy, which leads into the thrilling trial and meaty portion of the film.
+His seemingly imminent conviction is only legal bait to draw out the hot-shot, over-eager state prosecutor Willy, which leads into the thrilling trial and meaty portion of the film. The trial is riddled with twists and legal drama. As Willy investigates his "home-run case" we discover the cunning plan Ted had set forth all along. As a viewer it felt something more than an "Aha!" moment and certainly less than a bone trembling revelation. Watching each detail unfold and Willy's messy responses throughout the trial was euphoric; it evoked a feeling similar to that of a solving a puzzle. It did for me at least, but I am partial as I love puzzles.
 
-WIP...
+I am impressed with the director's choice to let Ted's wife die. As Willy, desperately produces a court order to spare her, it is reminiscent of the "hero saves the day at the last minute" cliche. But Willy is not so successful. Hoblit takes the liberty to introduce some moral quandary and let the lead process failure at the expense of a _safe_ script.
+
+Fracture is a quality film, which I believe could be improved with better camera work and a different cast (of course, leaving Hopkins and Gosling). 
+
+Daniel's Film Rating: 6.5 / 10
 
 
 -- Daniel Nichols
