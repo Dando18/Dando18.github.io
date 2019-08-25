@@ -36,4 +36,6 @@ Clearly, I enjoyed the film. However, I still do not regard it in the same echel
 
 All this being said, I believe the film is quite enjoyable and thought provoking. I would recommend it to someone who has enjoyed other Tarantino films.
 
+Daniel's Film Rating: 8 / 10
+
 -- Daniel Nichols
