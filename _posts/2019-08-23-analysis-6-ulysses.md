@@ -24,6 +24,12 @@ Oh boy, has this one taken me a long time to read and digest (and understand rea
 
 #### Episode 1 -- Telemachus
 
+Episode 1 of _Ulysses_ sees the return of _A Portrait of the Artist as a Young Man_'s lead role, Stephen Dedalus, the unrecognized and dejected artist. Still mourning the passing of his mother Stephen has found residence with Buck Mulligan, his seeming juxtaposition, who mocks him in an effort to establish intellectual authority.
+
+Joyce explicitly hints at a parallel between his first episode and the tales of Shakespeare's Hamlet. Contrasting the Martello tower, Stephen and Buck's place of residence, to Elsinore establishes Stephen as a parallel to Hamlet. For further comparison Stephen, much like Hamlet to his father, is haunted by the death of his mother. By stringing together Hamlet and Stephen, it is further concluded that Buck, who is in constant feud with Stephen, takes the persona of Claudius. 
+
+Without delay Joyce establishes his comical wit and literary genius by employing allusions to Shakespearean writing and littering humour about his narration. While difficult to digest, it is clear to see the author is embarking the reader upon a masterpiece. Many story threads are begun with numerous parallels to other famous works all while establishing a believable early century Irish setting.
+
 #### Episode 2 -- Nestor
 
 #### Episode 3 -- Proteus
@@ -62,5 +68,7 @@ Oh boy, has this one taken me a long time to read and digest (and understand rea
 
 #### Episode 18 -- Penelope
 
+
+WIP...
 
 -- Daniel Nichols

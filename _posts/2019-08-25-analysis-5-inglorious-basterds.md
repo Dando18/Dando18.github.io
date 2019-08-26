@@ -25,6 +25,8 @@ Bearing the mark of its director Inglorious Basterds lives up to the description
 Opening the film brilliantly Tarantino captures the audience with, perhaps, the most enthralling scene of the entire picture. In the commencing sequence Perrier LaPadite (played by Denis Menochet), a french farmer, is interrogated by a German general aptly nicknamed the "Jew-Hunter". With torment wretching across his face Perrier is implicated in the hiding of Jews as he dithers between the safety of his three daughters and the Dreyfus family huddled below the soles of his workboots and a few thin, squeaky boards.
 
 
+WIP...
+
 Daniel's Film Rating: 8.1 / 10
 
 
