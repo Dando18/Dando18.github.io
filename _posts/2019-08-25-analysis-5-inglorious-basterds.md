@@ -1,6 +1,6 @@
 ---
 title: 'Analysis #5: Inglorious Bastards'
-date: 2019-08-15
+date: 2019-08-25
 permalink: /posts/2019/15/analysis_5_inglorious_basterds
 categories:
   - analysis
