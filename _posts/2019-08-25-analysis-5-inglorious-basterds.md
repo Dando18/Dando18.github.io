@@ -20,9 +20,9 @@ A motion picture by Quentin Tarantino
 
 
 
-Bearing the mark of its director Inglorious Basterds lives up to the description of _Tarantino-esque_. Thorough character development and over-the-top violence are littered thoughout the split storyline, which rewrites history. The ultimate retribution is perplexing, yet leaves the viewer with some sense of justification.
+Bearing the mark of its director Inglorious Basterds lives up to the description of _Tarantino-esque_. Thorough character development and over-the-top violence are littered thoughout the split storyline, as history is rewritten. The ultimate retribution is perplexing, yet leaves the viewer with some sense of justification.
 
-Opening the film brilliantly Tarantino captures the audience with, perhaps, the most enthralling scene. In the commencing sequence Perrier LaPadite (played by Denis Menochet), a french farmer, is interrogated by a German general aptly nicknamed the "Jew-Hunter". With torment wretching across his face Perrier is implicated in the hiding of Jews as he dithers between the safety of his three daughters and the Dreyfus family huddled below the soles of his workboots and thin, squeaky boards.
+Opening the film brilliantly Tarantino captures the audience with, perhaps, the most enthralling scene of the entire picture. In the commencing sequence Perrier LaPadite (played by Denis Menochet), a french farmer, is interrogated by a German general aptly nicknamed the "Jew-Hunter". With torment wretching across his face Perrier is implicated in the hiding of Jews as he dithers between the safety of his three daughters and the Dreyfus family huddled below the soles of his workboots and a few thin, squeaky boards.
 
 
 Daniel's Film Rating: 8.1 / 10
