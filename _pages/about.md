@@ -14,3 +14,5 @@ My main interest is research in high performance and distributed deep learning, 
 
 A large research project I've worked on is [MagmaDNN](https://github.com/MagmaDNN/magmadnn) as a research assistant with the [Innovative Computing Laboratory](https://www.icl.utk.edu/) and the [Joint Institute for Computer Science](https://www.jics.utk.edu/). I authored the deep learning library, which aims to implement state-of-the-art high performance techniques in deep learning. It has shown promising speed and continues to grow in functionality and performance.
 
+I also enjoy film, reading, and twizzlers of which I [sometimes write about](/posts/).
+
