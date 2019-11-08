@@ -36,10 +36,12 @@ $$ = a_i a_{i-1} x_{i-2} + a_i b_{i-1} + b_i  $$
 Just using Observation #1 we can already see room for parallelization. The odd and even indices of $x$ can be computed in parallel. Using OpenMP here is the code using Observation #1 alone.
 
 ``` c++
+x[0] = b[0];
+x[1] = a[1] * x[0] + b[1];
 #pragma omp parallel {
   int thread_idx = omp_get_thread_num();
   if (thread_idx == 0) {
-    for (size_t i = 1; i < n; i += 2) {
+    for (size_t i = 3; i < n; i += 2) {
       x[i] = a[i] * a[i-1] * x[i-2] + a[i] * b[i-1] + b[i];
     }
   } else if (thread_idx == 1) {
