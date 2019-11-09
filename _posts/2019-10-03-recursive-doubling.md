@@ -72,6 +72,10 @@ We can see an immediate effect from these two methodologies in the plot below:
 
 Now we've seen that we can compute the odd and even indices of $x$ in parallel. Can we re-index these two subsets and recursively split our lists?
 
-Observation #2: 
+Observation #2: To compute any $x_i$ from a given $x_{i-N}$ we can use
+
+$$ x_i = \left( \prod_{j=0}^{N-1} a_{i-j} \right) \left( x_{i-N}\right) + \sum_{j=0}^{N-1} \left( \prod_{k=0}^{j} a_{i-k}\right) \left( b_{i-j} \right). $$
+
+This is a powerful observation as we can now calculate any $x_i$ with any $x_j$ where $j<i$.
 
 W.I.P...
