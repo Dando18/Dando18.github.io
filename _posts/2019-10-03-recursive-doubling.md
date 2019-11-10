@@ -74,7 +74,7 @@ Now we've seen that we can compute the odd and even indices of $x$ in parallel. 
 
 Observation #2: To compute any $x_i$ from a given $x_{i-N}$ we can use
 
-$$ x_i = \left( \prod_{j=0}^{N-1} a_{i-j} \right) \left( x_{i-N}\right) + \sum_{j=0}^{N-1} \left( \prod_{k=0}^{j} a_{i-k}\right) \left( b_{i-j} \right). $$
+$$ x_i = \left( \prod_{j=0}^{N-1} a_{i-j} \right) \left( x_{i-N}\right) + \sum_{j=0}^{N-1} \left[ \left( \prod_{k=0}^{j} a_{i-k}\right) \left( b_{i-j} \right) \right]. $$
 
 This is a powerful observation as we can now calculate any $x_i$ with any $x_j$ where $j<i$.
 
