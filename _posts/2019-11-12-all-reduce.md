@@ -49,7 +49,7 @@ int MPI_Allreduce(  const void *    sendbuf,
 | Logical And  | MPI_LAND   | $a \land (b \land c) \equiv (a \land b) \land c$         | Logical and of two predicates.   |
 | Logical Or   | MPI_LOR    | $a \lor (b \lor c) \equiv (a \lor b) \lor c$             | Logical or of two predicates.    |
 | Binary And   | MPI_BAND   | $a \& (b \& c) = (a \& b) \& c$                          | Binary and of two numbers.       |
-| Binary Or    | MPI_BOR    | $a ^ (b ^ c) = (a ^ b) ^ c$                              | Binary or of two numbers.        |
+| Binary Or    | MPI_BOR    | $a                                                       | (b                               | c) = (a | b) | c$ | Binary or of two numbers. |
 | Max Location | MPI_MAXLOC | -- same as max --                                        | Max and processor rank.          |
 | Min Location | MPI_MINLOC | -- same as min --                                        | Min and processor rank.          |
 
