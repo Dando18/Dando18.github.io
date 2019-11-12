@@ -43,7 +43,7 @@ int MPI_Allreduce(  const void *    sendbuf,
 | Name         | MPI Flag                         | Associativity                                                                              | Description                      |
 | ------------ | -------------------------------- | ------------------------------------------------------------------------------------------ | -------------------------------- |
 | Max          | MPI_MAX                          | $\max\lbrace a, \max\lbrace b,c\rbrace\rbrace=\max\lbrace\max\lbrace a,b\rbrace ,c\rbrace$ | Computes the max of two numbers. |
-| \rbrace$     | Computes the min of two numbers. |
+| Min          | Computes the min of two numbers. |
 | Sum          | MPI_SUM                          | $a+(b+c)=(a+b)+c$                                                                          | Adds two numbers.                |
 | Product      | MPI_PROD                         | $a(bc)=(ab)c$                                                                              | Multiplies two numbers.          |
 | Logical And  | MPI_LAND                         | $a \land (b \land c) \equiv (a \land b) \land c$                                           | Logical and of two predicates.   |
