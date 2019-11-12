@@ -40,17 +40,17 @@ int MPI_Allreduce(  const void *    sendbuf,
                 )
 ```
 
-| Name         | MPI Flag                         | Associativity                                                                                                                                         | Description                      |
-| ------------ | -------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------- | -------------------------------- |
-| Max          | MPI_MAX                          | $\max\lbrace a, \max\lbrace b,c\rbrace\rbrace=\max\lbrace\max\lbrace a,b\rbrace ,c\rbrace$                                                            | Computes the max of two numbers. |
+| Name         | MPI Flag                         | Associativity                                                                              | Description                      |
+| ------------ | -------------------------------- | ------------------------------------------------------------------------------------------ | -------------------------------- |
+| Max          | MPI_MAX                          | $\max\lbrace a, \max\lbrace b,c\rbrace\rbrace=\max\lbrace\max\lbrace a,b\rbrace ,c\rbrace$ | Computes the max of two numbers. |
 | \rbrace$     | Computes the min of two numbers. |
-| Sum          | MPI_SUM                          | $a+(b+c)=(a+b)+c$                                                                                                                                     | Adds two numbers.                |
-| Product      | MPI_PROD                         | $a(bc)=(ab)c$                                                                                                                                         | Multiplies two numbers.          |
-| Logical And  | MPI_LAND                         | $a \land (b \land c) \equiv (a \land b) \land c$                                                                                                      | Logical and of two predicates.   |
-| Logical Or   | MPI_LOR                          | $a \lor (b \lor c) \equiv (a \lor b) \lor c$                                                                                                          | Logical or of two predicates.    |
-| Binary And   | MPI_BAND                         | $a \& (b \& c) = (a \& b) \& c$                                                                                                                       | Binary and of two numbers.       |
-| Binary Or    | MPI_BOR                          | $a                                                                                         or (b                               or c) = (a or b) or c$ | Binary or of two numbers.        |
-| Max Location | MPI_MAXLOC                       | -- same as max --                                                                                                                                     | Max and processor rank.          |
-| Min Location | MPI_MINLOC                       | -- same as min --                                                                                                                                     | Min and processor rank.          |
+| Sum          | MPI_SUM                          | $a+(b+c)=(a+b)+c$                                                                          | Adds two numbers.                |
+| Product      | MPI_PROD                         | $a(bc)=(ab)c$                                                                              | Multiplies two numbers.          |
+| Logical And  | MPI_LAND                         | $a \land (b \land c) \equiv (a \land b) \land c$                                           | Logical and of two predicates.   |
+| Logical Or   | MPI_LOR                          | $a \lor (b \lor c) \equiv (a \lor b) \lor c$                                               | Logical or of two predicates.    |
+| Binary And   | MPI_BAND                         | $a \& (b \& c) = (a \& b) \& c$                                                            | Binary and of two numbers.       |
+| Binary Or    | MPI_BOR                          | $a \text{\textbar} (b \text{\textbar} c) = (a \text{\textbar} b) \text{\textbar} c$        | Binary or of two numbers.        |
+| Max Location | MPI_MAXLOC                       | -- same as max --                                                                          | Max and processor rank.          |
+| Min Location | MPI_MINLOC                       | -- same as min --                                                                          | Min and processor rank.          |
 
 
