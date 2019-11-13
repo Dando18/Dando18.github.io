@@ -55,12 +55,11 @@ The default MPI operations are included in the table below. Custom operations ca
 | Min Location | MPI_MINLOC | -- same as min --                                                                          | Min and processor rank.          |
 
 
-For example, we can compute 
-
+For example, we can compute the sum across all ranks. At the end of the below code `sum` will contain the sum of all `num`s on each rank.
 
 ```c++
 int num = some_random_number();
-int sum;
+int sum = 0;
 MPI_Allreduce(&num, &sum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
 ```
 
