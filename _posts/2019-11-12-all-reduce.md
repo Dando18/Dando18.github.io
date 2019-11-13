@@ -21,10 +21,9 @@ Additionally, we can outperform the communication overhead of gather $\rightarro
 I'll discuss some topics related to the use, implementation, and optimization of all-reduce calls.
 
 #### What is All-Reduce?
-I've already mentioned the exampling of summing integers over many processors. In fact, we can all-reduce with any binary-associative operator. Let $\bigoplus$ be some binary operator, meaning it takes two parameters (i.e. $a \bigoplus b$). If and only if $\bigoplus$ is associative, then $a \bigoplus \left(b \bigoplus c\right) = \left(a \bigoplus b\right) \bigoplus c$. As long as $\bigoplus$ has these properties, then we can use it to reduce along all processes.
+I've already mentioned the example of summing integers over many processors. In fact, we can all-reduce with any binary-associative operator. Let $\bigoplus$ be some binary operator, meaning it takes two parameters (i.e. $a \bigoplus b$). If and only if $\bigoplus$ is associative, then $a \bigoplus \left(b \bigoplus c\right) = \left(a \bigoplus b\right) \bigoplus c$. As long as $\bigoplus$ has these two properties, then we can use it to reduce along all processes.
 
-Addition is a simple example of this operation. It is clear to see that $a+(b+c)=(a+b)+c$. The default MPI operations are included in the table in the next section. Custom operations can also be created with `MPI_Op`s and `MPI_Opcreate()`.
-
+Addition is a simple example of this operation. It is clear to see that $a+(b+c)=(a+b)+c$. Others include product, min, max, etc... 
 
 
 #### MPI_Allreduce
@@ -40,17 +39,28 @@ int MPI_Allreduce(  const void *    sendbuf,
                 )
 ```
 
+The default MPI operations are included in the table below. Custom operations can also be created with `MPI_Op`s and `MPI_Opcreate()`.
+
 | Name         | MPI Flag   | Associativity                                                                              | Description                      |
 | ------------ | ---------- | ------------------------------------------------------------------------------------------ | -------------------------------- |
 | Max          | MPI_MAX    | $\max\lbrace a, \max\lbrace b,c\rbrace\rbrace=\max\lbrace\max\lbrace a,b\rbrace ,c\rbrace$ | Computes the max of two numbers. |
 | Min          | MPI_Min    | $\min\lbrace a, \min\lbrace b,c\rbrace\rbrace=\min\lbrace\min\lbrace a,b\rbrace ,c\rbrace$ | Computes the min of two numbers. |
 | Sum          | MPI_SUM    | $a+(b+c)=(a+b)+c$                                                                          | Adds two numbers.                |
 | Product      | MPI_PROD   | $a(bc)=(ab)c$                                                                              | Multiplies two numbers.          |
-| Logical And  | MPI_LAND   | $a \land (b \land c) \equiv (a \land b) \land c$                                           | Logical and of two predicates.   |
-| Logical Or   | MPI_LOR    | $a \lor (b \lor c) \equiv (a \lor b) \lor c$                                               | Logical or of two predicates.    |
+| Logical And  | MPI_LAND   | $a \land (b \land c) = (a \land b) \land c$                                                | Logical and of two predicates.   |
+| Logical Or   | MPI_LOR    | $a \lor (b \lor c) = (a \lor b) \lor c$                                                    | Logical or of two predicates.    |
 | Binary And   | MPI_BAND   | $a \& (b \& c) = (a \& b) \& c$                                                            | Binary and of two numbers.       |
 | Binary Or    | MPI_BOR    | $a \mid (b \mid c) = (a \mid b) \mid c$                                                    | Binary or of two numbers.        |
 | Max Location | MPI_MAXLOC | -- same as max --                                                                          | Max and processor rank.          |
 | Min Location | MPI_MINLOC | -- same as min --                                                                          | Min and processor rank.          |
 
+
+For example, we can compute 
+
+
+```c++
+int num = some_random_number();
+int sum;
+MPI_Allreduce(&num, &sum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
+```
 
