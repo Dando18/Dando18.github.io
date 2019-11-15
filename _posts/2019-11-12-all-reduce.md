@@ -82,7 +82,7 @@ $$ \boldsymbol w_i := \boldsymbol w_i - \frac{\eta}{p} \sum_{j=0}^{p-1} \left[\n
 
 where $\boldsymbol x_i$ is the dataset on the $i$-th processor.
 
-Now what does the above look like? An All-Reduce operation! We're summing the gradients across each node. The gradient computation, which is very time consuming, can be done concurrently as there is no interdependence. The below pseudo-code summarizes the changes to the algorithm, which is only the addition of the all-reduce call. 
+Now what does the above look like? An All-Reduce operation! We're summing the gradients across each node. The gradient computation, which is very time consuming, can be done concurrently as there is no interdependence. Once computed we take the average gradient, or the average update to $\boldsymbol w_i$, and change each $\boldsymbol w_i$ on every processor according to the same average. The below pseudo-code summarizes the changes to the algorithm, which is only the addition of the all-reduce call. 
 
 ``` 
 for all i
@@ -93,4 +93,4 @@ allreduce(grads) # in-place
 for all i
   update(w_i, grads[i])
 ```
-s
+
