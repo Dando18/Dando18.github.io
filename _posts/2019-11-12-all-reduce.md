@@ -67,7 +67,7 @@ MPI_Allreduce(&num, &sum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
 
 The most prominent application I've used All-Reduce in is distributed deep learning. The All-Reduce is a crucial component to distributing network training across several nodes. First a primer in deep learning.
 
-I'll brush over this in very broad terms, but the concept should be clear enough to understand why we use All-Reduce. A neural network is some function $f(\mathbf x; \mathbf w)$ (a black-box if you will), which takes an input $\mathbf x$ and classifies it using parameters $\mathbf w$. When training $\mathbf x$ and $f$ will be given (choosing $f$, the neural network architecture, and $\mathbf x$, the proper data set, is actually a difficult problem, but is more in the scope of Data Science), so we're left to find the weights $\mathbf w$.
+I'll brush over this in very broad terms, but the concept should be clear enough to understand why we use All-Reduce. A neural network is some function $f(\mathbf x; \mathbf w)$ (a black-box if you will), which takes an input $\mathbf x$ and classifies it using parameters $\mathbf w$. When training, $\mathbf x$ and $f$ will be given (choosing $f$, the neural network architecture, and $\mathbf x$, the proper data set, is actually a difficult problem, but is more in the scope of Data Science), so we're left to find the weights $\mathbf w$.
 
 Finding $\mathbf w^*$, the optimal weights, is also a difficult problem. Typically back-propagation and gradient descent are employed, but they can take a long time depending on the size of $\mathbf w$. The update rule for vanilla gradient descent looks like
 
