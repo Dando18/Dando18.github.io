@@ -64,3 +64,21 @@ MPI_Allreduce(&num, &sum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
 ```
 
 ### Applications
+
+The most prominent application I've used All-Reduce in is distributed deep learning. The All-Reduce is a crucial component to distributing network training across several nodes. First a primer in deep learning.
+
+I'll brush over this in very broad terms, but the concept should be clear enough to understand why we use All-Reduce. A neural network is some function $f(\bm x; \bm w)$ (a black-box if you will), which takes an input $\bm x$ and classifies it using parameters $\bm w$. When training $\bm x$ and $f$ will be given (choosing $f$, the neural network architecture, and $\bm x$, the proper data set, is actually a difficult problem, but is more in the scope of Data Science), so we're left to find the weights $\bm w$.
+
+Finding $\bm w^*$, the optimal weights, is also a difficult problem. Typically back-propagation and gradient descent are employed, but they can take a long time depending on the size of $\bm w$. The update rule for vanilla gradient descent looks like
+
+$$ \bm w_i := \bm w_i - \eta \nabla_{\bm w_i} \mathcal{L}\left( f(\bm x; \bm w_i), \bm y\right)\quad \forall i\ .  $$
+
+A couple points here. Firstly, $\bm w_i$ is sub-indexed, because $\bm w$ is typically composed of several weight vectors and we need to update each one. Next, the messy looking $\mathcal{L}\left( f(\bm x; \bm w_i), \bm y\right)$ expression is simply the loss of the network. In other words, $\mathcal{L}$ is the "error" when we try to predict $\bm x$ with $\bm w_i$ and the ground truth is $\bm y$. The negative gradient ($-\nabla$) of this w.r.t. $\bm w_i$ gives us an update to push $\bm w_i$ in the right direction.
+
+
+As it turns out, we can parallelize this across our data set with _data parallelism_. Assume we have $p$ nodes. Then we'll partition $\bm x$ into $p$ datasets and assign one to each processor. Now our update will look like
+
+$$ \bm w_i := \bm w_i - \frac{\eta}{p} \sum_{j=0}^{p-1} \left[\nabla_{\bm w_i} \mathcal{L}\left( f(\bm x_j; \bm w_i), \bm y_j\right) \right] \quad \forall i\ , $$
+
+where $\bm x_i$ is the dataset on the $i$-th processor.
+
