@@ -16,7 +16,7 @@ For instance, say each of $p$ processors has a number $n_i$. An example of an Al
 
 We can gather all the numbers on a master processor, compute the sum, and then broadcast the result. This naive approach is, however, rather sub-optimal. What if each processor has more than 1 integer? The gather result might not be able to fit in a single processor's memory.
 
-Additionally, we can outperform the communication overhead of gather $\rightarrow$ compute $\rightarrow$ broadcast. A gather will be $\sim\mathcal{O}(\log p + n)$, the compute is $\mathcal{O}(n+p)$, and finally a broadcast is $\mathcal{O}(n\log p)$. Thus, the total time complexity is roughly $\mathcal{O}(n \log p + p)$. The extra $p$ is if $n\sim\mathcal{O}(1)$, then the time complexity is dominated by $p$.
+Additionally, we can outperform the communication overhead of gather $\rightarrow$ compute $\rightarrow$ broadcast. A gather will be $\sim\mathcal{O}(\log p + n)$, the compute is $\mathcal{O}(np)$, and finally a broadcast is $\mathcal{O}(n\log p)$. Thus, the total time complexity is roughly $\mathcal{O}(np)$.
 
 I'll discuss some topics related to the use, implementation, and optimization of all-reduce calls.
 
@@ -71,14 +71,14 @@ I'll brush over this in very broad terms, but the concept should be clear enough
 
 Finding $\boldsymbol w^*$, the optimal weights, is also a difficult problem. Typically back-propagation and gradient descent are employed, but they can take a long time depending on the size of $\boldsymbol w$. The update rule for vanilla gradient descent looks like
 
-$$ \boldsymbol w_i := \boldsymbol w_i - \eta \nabla_{\boldsymbol w_i} \mathcal{L}\left( f(\boldsymbol x; \boldsymbol w_i), \boldsymbol y\right)\quad \forall i\ .  $$
+$$ \boldsymbol w_i := \boldsymbol w_i - \eta\ \mathbb{E}_{x,y\sim\mathcal{D'}} \left[\nabla_{\boldsymbol w_i} \mathcal{L}\left( f(\boldsymbol x; \boldsymbol w_i), \boldsymbol y\right)\right] \quad \forall i\ .  $$
 
 A couple points here. Firstly, $\boldsymbol w_i$ is sub-indexed, because $\boldsymbol w$ is typically composed of several weight vectors and we need to update each one. Next, the messy looking $\mathcal{L}\left( f(\boldsymbol x; \boldsymbol w_i), \boldsymbol y\right)$ expression is simply the loss of the network. In other words, $\mathcal{L}$ is the "error" when we try to predict $\boldsymbol x$ with $\boldsymbol w_i$ and the ground truth is $\boldsymbol y$. The negative gradient ($-\nabla$) of this w.r.t. $\boldsymbol w_i$ gives us an update to push $\boldsymbol w_i$ in the right direction.
 
 
 As it turns out, we can parallelize this across our data set with _data parallelism_. Assume we have $p$ nodes. Then we'll partition $\boldsymbol x$ into $p$ datasets and assign one to each processor. Now our update will look like
 
-$$ \boldsymbol w_i := \boldsymbol w_i - \frac{\eta}{p} \sum_{j=0}^{p-1} \left[\nabla_{\boldsymbol w_i} \mathcal{L}\left( f(\boldsymbol x_j; \boldsymbol w_i), \boldsymbol y_j\right) \right] \quad \forall i\ , $$
+$$ \boldsymbol w_i := \boldsymbol w_i - \frac{\eta}{p} \sum_{j=0}^{p-1} \left( \mathbb{E}_{x,y\sim\mathcal{D'}} \left[\nabla_{\boldsymbol w_i} \mathcal{L}\left( f(\boldsymbol x_j; \boldsymbol w_i), \boldsymbol y_j\right) \right] \right) \quad \forall i\ , $$
 
 where $\boldsymbol x_i$ is the dataset on the $i$-th processor.
 
