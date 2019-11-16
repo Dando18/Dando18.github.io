@@ -88,9 +88,16 @@ Now what does the above look like? An All-Reduce operation! We're summing the gr
 for all i
   grads[i] = calculate_gradients(network, x_j, w_i, ground_truth_j) 
 
-allreduce(grads) # in-place
+allreduce(grads, SUM)     # in-place
+grads /= num_processors   # element-wise make grads averages 
 
 for all i
   update(w_i, grads[i])
 ```
+
+This is, to some extant, embarrassingly parallel. The network training is running entirely in parallel with intermittent pauses to sync gradients across processors. Yet, there are still several areas for improvement here.
+
+One problem is that some processes might finish training before others. All-Reduce is a blocking function, meaning that it won't return until the operation is done. Thus, some processors will sit idle as they wait for incoming gradient updates.
+
+Another issues is that All-Reduce implementations, at least in MPI, are still not optimized for these types of problems. Typical MPI implementations are designed to perform well on many-node, small-data tasks. However, in distributed learning we typically have the opposite: few nodes and large data. Not to mention that many current MPI implementations do not make use of GPU direct memory or the nice speedups in dense GPU clusters.
 
