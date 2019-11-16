@@ -78,7 +78,7 @@ A couple points here. Firstly, $\boldsymbol w_i$ is sub-indexed, because $\bolds
 
 As it turns out, we can parallelize this across our data set with _data parallelism_. Assume we have $p$ nodes. Then we'll partition $\boldsymbol x$ into $p$ datasets and assign one to each processor. Now our update will look like
 
-$$ \boldsymbol w_i := \boldsymbol w_i - \frac{\eta}{p} \sum_{j=0}^{p-1} \left( \mathbb{E}_{x,y\sim\mathcal{D'}} \left[\nabla_{\boldsymbol w_i} \mathcal{L}\left( f(\boldsymbol x_j; \boldsymbol w_i), \boldsymbol y_j\right) \right] \right) \quad \forall i\ , $$
+$$ \boldsymbol w_i := \boldsymbol w_i - \frac{\eta}{p} \sum_{j=0}^{p-1} \left( \mathbb{E}_{x_j,y_j\sim\mathcal{D_j'}} \left[\nabla_{\boldsymbol w_i} \mathcal{L}\left( f(\boldsymbol x_j; \boldsymbol w_i), \boldsymbol y_j\right) \right] \right) \quad \forall i\ , $$
 
 where $\boldsymbol x_i$ is the dataset on the $i$-th processor.
 
