@@ -37,7 +37,7 @@ Before we get to the Roofline Model it is also important to understand the indep
 
 $$ AI = \frac{\text{Flops/s}}{\text{Memory Traffic}} = \frac{flops/second}{bytes/second} = \frac{flops}{bytes} $$
 
-
+Why is this metric important? Despite the speed of modern hardware, __memory operations are slow__.
 
 
 
