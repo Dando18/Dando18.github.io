@@ -37,7 +37,15 @@ Before we get to the Roofline Model it is also important to understand the indep
 
 $$ AI = \frac{\text{Flops/s}}{\text{Memory Traffic}} = \frac{flops/second}{bytes/second} = \frac{flops}{bytes} $$
 
-Why is this metric important? Despite the speed of modern hardware, __memory operations are slow__.
+Why is this metric important? Despite the speed of modern hardware, __memory operations are slow__. While floating point operations like add and multiply only take 1 CPU cycle (or even less given fused instructions like `FMA` and `FMAC` in x86), the loads and stores can take orders of magnitude more. 
+
+| Memory Location | CPU Cycles |
+| :-------------: | :--------: |
+|    Register     |     ~1     |
+|    L1 Cache     |     ~4     |
+|    L2 Cache     |    ~14     |
+|    L3 Cache     |    ~75     |
+|   Main Memory   |    ~200    |
 
 
 
