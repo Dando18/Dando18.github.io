@@ -53,7 +53,7 @@ A high AI value means we're doing a lot of computation per load, while a low AI 
 
 
 ### AI Examples
-**axpy:** The AXPY routine is formally defined as $\boldsymbol{y} = a\boldsymbol{x} + \boldsymbol{y}$ where $a\in\mathbb{R}$ and $x,y\in\mathbb{R}^n$. In C code:
+**axpy:** The AXPY routine is formally defined as $y = ax + y$ where $a\in\mathbb{R}$ and $x,y\in\mathbb{R}^n$. In C code:
 
 ```c++
 void daxpy(size_t n, double a, const double *x, double *y) {
