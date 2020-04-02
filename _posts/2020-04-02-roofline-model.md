@@ -98,13 +98,21 @@ Thus, we have
 
 $$ AI = \frac{2n^3}{32n^2} = \frac{n}{16} $$
 
-This is the first time we see an algorithm's arithmetic intensity is dependent on its input size. Matrix multiplication does more arithmetic per byte loaded for larger matrix sizes. Thus, we should expect better flop rates for larger matrices. This is because of _data reuse_: the algorithm reuses loaded data before moving onto the next bit of data.
+This is the first time we see an algorithm's arithmetic intensity is dependent on its input size. Matrix multiplication does more arithmetic per byte loaded for larger matrix sizes. Thus, we should expect better flop rates for larger matrices. This is because of _data reuse_: the algorithm reuses loaded data before moving onto the next piece of data.
 
+_Warning:_ While a high AI is usually better, it does not mean better execution time. A 1000x1000 matrix multiplication might have an $AI = \frac{1000}{16} = 62.5$, but it still needs to do $O(n^3)$ work. The Roofline Model will give more reasons why high AI is not a perfect predictor of performance.
 
 ## The Roofline Model
 
-Finally we have enough tools to understand our model. We are seeking the _AttainablePerformance_ for our specific hardware in terms of Gflops/s.
+Finally we have enough tools to understand our model. We are seeking the _AttainablePerformance_ for our specific hardware in terms of Gflops/s. The Roofline Model finds the upper bound on performance by using the _peak bandwidth_ and _peak performance_.
 
+_Peak Bandwidth_ - The fastest the processor can load data. Measured in bytes/second.
+
+_Peak Performance_ - The floating point max performance of the processor. Measured in flops/second.
+
+Obviously no algorithm can have a higher flops/s rate than the peak of the processing unit. However, it can be even lower if its limited by bandwidth. We can calculate bandwidth limited performance using $\text{PeakBandwidth} \cdot \text{AI}$. Combining these two ideas we get a formula for calculating Attainable Performance:
+
+$$ \text{AttainablePerformance} = \min\{\text{PeakPerformance}, \text{AI} \cdot \text{PeakBandwidth}\} $$
 
 
 
