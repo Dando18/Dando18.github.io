@@ -70,9 +70,9 @@ Memory traffic is calculated as: $traffic = [(2 \text{ loads})(8 \frac{\text{byt
 
 Therefore, the AI for DAXPY is
 
-$$ AI = \frac{flops}{bytes} = \frac{2n}{24n} = \frac{1}{12}. $$
+$$ AI = \frac{flops}{bytes} = \frac{2n}{24n} = \frac{1}{12} $$
 
-**GeMM:** GeMM, or general matrix multiplication, is another good example for calculating arithmetic intensity. Let's just look at simple matrix multiplication: $C=AB$ where $A,B,C \in \mathbb{R}^{n\times n}$. In C code:
+**GeMM:** GeMM, or general matrix multiplication, is another good example for calculating arithmetic intensity. Let's just look at simple matrix multiplication: $C=AB$ where $A,B,C \in \mathbb{R}^{n \times n}$. In C code:
 
 ```c++
 void dgemm(size_t n, const double *A, const double *B, const double *C) {
@@ -114,4 +114,3 @@ Finally we have enough tools to understand our model. We are seeking the _Attain
 
 2 - [https://crd.lbl.gov/assets/pubs_presos/parlab08-roofline-talk.pdf](https://crd.lbl.gov/assets/pubs_presos/parlab08-roofline-talk.pdf)
 
-3 - [https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/papers/RooflineVyNoYellow.pdf](https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/papers/RooflineVyNoYellow.pdf)
