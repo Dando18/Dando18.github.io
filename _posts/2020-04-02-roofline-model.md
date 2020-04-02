@@ -103,6 +103,9 @@ This is the first time we see an algorithm's arithmetic intensity is dependent o
 
 ## The Roofline Model
 
+Finally we have enough tools to understand our model. We are seeking the _AttainablePerformance_ for our specific hardware in terms of Gflops/s.
+
+
 
 
 
