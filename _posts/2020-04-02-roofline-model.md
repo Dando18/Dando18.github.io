@@ -72,6 +72,35 @@ Therefore, the AI for DAXPY is
 
 $$ AI = \frac{flops}{bytes} = \frac{2n}{24n} = \frac{1}{12}. $$
 
+**GeMM:** GeMM, or general matrix multiplication, is another good example for calculating arithmetic intensity. Let's just look at simple matrix multiplication: $C=AB$ where $A,B,C \in \mathbb{R}^{n\times n}$. In C code:
+
+```c++
+void dgemm(size_t n, const double *A, const double *B, const double *C) {
+    size_t i, j, k;
+    double sum;
+    for (i = 0; i < n; i++) {
+        for (j = 0; j < n; j++) {
+            sum = 0.0;
+            for (k = 0; k < n; k++) {
+                sum = sum + A[i*n+k] * B[k*n+j];
+            }
+            C[i*n+j] = sum;
+        }
+    }
+}
+```
+
+Again, flops is simple here. The innermost line of the loops has 2 floating point operations: `*` and `+`. This line will execute $n^3$ times so our total flop count is $flops = 2n^3$.
+
+For memory we must load $A_{ik}, B_{kj}, \text{ and } C_{ij}$ and we must store $C_{ij}$. This gives us $traffic = (4)(8)(n) = 32n^2$.
+
+Thus, we have 
+
+$$ AI = \frac{2n^3}{32n^2} = \frac{n}{16} $$
+
+This is the first time we see an algorithm's arithmetic intensity is dependent on its input size. Matrix multiplication does more arithmetic per byte loaded for larger matrix sizes. Thus, we should expect better flop rates for larger matrices. This is because of _data reuse_: the algorithm reuses loaded data before moving onto the next bit of data.
+
+
 ## The Roofline Model
 
 
@@ -81,3 +110,5 @@ $$ AI = \frac{flops}{bytes} = \frac{2n}{24n} = \frac{1}{12}. $$
 1 - [https://en.wikipedia.org/wiki/Roofline_model](https://en.wikipedia.org/wiki/Roofline_model)
 
 2 - [https://crd.lbl.gov/assets/pubs_presos/parlab08-roofline-talk.pdf](https://crd.lbl.gov/assets/pubs_presos/parlab08-roofline-talk.pdf)
+
+3 - [https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/papers/RooflineVyNoYellow.pdf](https://people.eecs.berkeley.edu/~kubitron/cs252/handouts/papers/RooflineVyNoYellow.pdf)
