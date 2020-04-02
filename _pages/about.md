@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I am an undergraduate in Computer Science at the University of Tennessee, Knoxville. Beginning Fall 2020 I will be a Computer Science PhD student at the University of Maryland, College Park.
+I am an undergraduate in Computer Science at the University of Tennessee, Knoxville. Beginning Fall 2020 I will be a Computer Science PhD student at the [University of Maryland, College Park](https://www.cs.umd.edu/).
 
 My main interest is research in high performance and distributed deep learning, specifically regarding parallel algorithms, high performance linear algebra, large-batch convergence, and communication patterns. I am also interested in most HPC related areas from systems to numerical algorithms.
 
