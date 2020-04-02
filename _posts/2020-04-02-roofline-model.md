@@ -92,7 +92,7 @@ void dgemm(size_t n, const double *A, const double *B, const double *C) {
 
 Again, flops is simple here. The innermost line of the loops has 2 floating point operations: `*` and `+`. This line will execute $n^3$ times so our total flop count is $flops = 2n^3$.
 
-For memory we must load $A_{ik}, B_{kj}, \text{ and } C_{ij}$ and we must store $C_{ij}$. This gives us $traffic = (4)(8)(n) = 32n^2$.
+For memory we must load $A_{ik}, B_{kj}, \text{ and } C_{ij}$ and we must store $C_{ij}$. Since $A_{i:}$ and $B_{:j}$ can remain in memory, these load/stores only happen $n^2$ times. This gives us $traffic = (4)(8)(n) = 32n^2$.
 
 Thus, we have 
 
