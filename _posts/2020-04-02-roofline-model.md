@@ -116,7 +116,7 @@ $$ \text{AttainablePerformance}(AI) = \min\{\text{PeakPerformance}, \text{AI} \c
 
 <script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 <script type="text/javascript" src="https://dando18.github.io/assets/js/posts/roofline.js"></script>
-<div id="roofline-plot"></div>
+<div id="roofline-plot" onload="drawRooflinePlot()"></div>
 
 
 
