@@ -114,7 +114,9 @@ Obviously no algorithm can have a higher flops/s rate than the peak of the proce
 
 $$ \text{AttainablePerformance}(AI) = \min\{\text{PeakPerformance}, \text{AI} \cdot \text{PeakBandwidth}\} $$
 
+<script src='https://cdn.plot.ly/plotly-latest.min.js'></script>
 <script type="text/javascript" src="roofline.js"></script>
+<div id="roofline-plot"></div>
 
 
 
