@@ -112,7 +112,10 @@ _Peak Performance_ - The floating point max performance of the processor. Measur
 
 Obviously no algorithm can have a higher flops/s rate than the peak of the processing unit. However, it can be even lower if its limited by bandwidth. We can calculate bandwidth limited performance using $\text{PeakBandwidth} \cdot \text{AI}$. Combining these two ideas we get a formula for calculating Attainable Performance:
 
-$$ \text{AttainablePerformance} = \min\{\text{PeakPerformance}, \text{AI} \cdot \text{PeakBandwidth}\} $$
+$$ \text{AttainablePerformance}(AI) = \min\{\text{PeakPerformance}, \text{AI} \cdot \text{PeakBandwidth}\} $$
+
+<iframe src="google.com">
+</iframe>
 
 
 
