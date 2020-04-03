@@ -12,8 +12,12 @@ function drawRooflinePlot() {
   };
 
   let data = [trace1, trace2];
+  
+  console.log('drawing the plot...');
 
   Plotly.newPlot('roofline-plot', data);
+  
+  console.log('plot drawn');
 }
 
 window.addEventListener('DOMContentLoaded', drawRooflinePlot, false);
