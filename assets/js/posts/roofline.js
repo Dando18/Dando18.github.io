@@ -15,3 +15,5 @@ function drawRooflinePlot() {
 
   Plotly.newPlot('roofline-plot', data);
 }
+
+window.addEventListener('DOMContentLoaded', drawRooflinePlot, false);
