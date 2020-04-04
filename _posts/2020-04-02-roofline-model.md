@@ -13,6 +13,13 @@ tags:
 
 The Roofline Model is a performance model seeking to give the limitations of a specific hardware component in terms of algorithm performance. The model is often employed visually as a log-log plot of _Arithmetic Intensity_ vs _Flops/s_. 
 
+- [Performance Objective (Flops/s)](#performance-objective-flopss)
+- [Arithmetic Intensity](#arithmetic-intensity)
+  - [AI Examples](#ai-examples)
+- [The Roofline Model](#the-roofline-model)
+- [Big Ideas](#big-ideas)
+  - [Further Reading](#further-reading)
+
 ## Performance Objective (Flops/s)
 It is first important to understand the objective we're seeking to measure. _Flops/s_ is a simple measurement standing for _floating point operations per second_. This is essentially the number of mathematical operations (i.e. `+`, `*`, ...) that the computer does per second on a given algorithm. For instance, consider the function
 
