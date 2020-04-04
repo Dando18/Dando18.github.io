@@ -35,7 +35,7 @@ function drawRooflinePlot() {
     updateRooflinePlotData(bandSlider.value, perfSlider.value);
     Plotly.redraw('roofline-plot');
   };
-  perfSlider.onchange = updateFunc;
+  perfSlider.oninput = updateFunc;
   bandSlider.oninput = updateFunc;
 
   let data = [roofline];

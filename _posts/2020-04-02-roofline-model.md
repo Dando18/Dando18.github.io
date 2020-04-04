@@ -127,14 +127,14 @@ See the dynamic plot below for an example.
 <script type="text/javascript" src="{{ base_path }}/assets/js/posts/roofline.js"></script>
 <div id="slider-container">
     <label>PeakPerformance = <span id="MaxPerformanceValue">100</span> Gflops/s</label>
-    <input type="range" min="1" max="1000" value="100" class="slider" id="MaxPerformance" style="border: none;">
+    <input type="range" min="10" max="1000" value="100" step="10" class="slider" id="MaxPerformance" style="border: none;">
     <label>PeakBandwidth = <span id="MaxBandwidthValue">30</span> GB/s</label>
-    <input type="range" min="1" max="100" value="32" class="slider" id="MaxBandwidth">
+    <input type="range" min="1" max="100" step="1" value="32" class="slider" id="MaxBandwidth">
 </div>
 <div id="roofline-plot"></div>
 
 
-From the plot it is now clear to say how this model got its name. The plot, with some imagination, forms the shape of a roofline.
+From the plot it is now clear to see how this model got its name. The plot, with some imagination, forms the shape of a roofline.
 
 So what does this model tell us? As discussed before it gives an upper bound on an algorithms performance. For example: consider our processor has a peak bandwidth of 16 GB/s and a peak performance of 64 GFlops/s. Now lets look at the matrix multiplication algorithm.
 
