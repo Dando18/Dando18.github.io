@@ -126,9 +126,9 @@ See the dynamic plot below for an example.
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script type="text/javascript" src="{{ base_path }}/assets/js/posts/roofline.js"></script>
 <div id="slider-container">
-    <label>PeakPerformance = <span id="MaxPerformanceValue">100</span></label>
+    <label>PeakPerformance = <span id="MaxPerformanceValue">100</span> Gflops/s</label>
     <input type="range" min="1" max="1000" value="100" class="slider" id="MaxPerformance" style="border: none;">
-    <label>PeakBandwidth = <span id="MaxBandwidthValue">30</span></label>
+    <label>PeakBandwidth = <span id="MaxBandwidthValue">30</span> GB/s</label>
     <input type="range" min="1" max="100" value="32" class="slider" id="MaxBandwidth">
 </div>
 <div id="roofline-plot"></div>
