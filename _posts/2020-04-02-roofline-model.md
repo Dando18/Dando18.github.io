@@ -151,7 +151,7 @@ There are 2 big takeaways from this model.
 
 
 
-#### Further Reading
+### Further Reading
 1 - [https://en.wikipedia.org/wiki/Roofline_model](https://en.wikipedia.org/wiki/Roofline_model)
 
 2 - [https://crd.lbl.gov/assets/pubs_presos/parlab08-roofline-talk.pdf](https://crd.lbl.gov/assets/pubs_presos/parlab08-roofline-talk.pdf)
