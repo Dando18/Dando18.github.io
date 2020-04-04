@@ -140,11 +140,11 @@ So what does this model tell us? As discussed before it gives an upper bound on 
 
 Remember _GeMM_ has $AI = \frac{N}{16}$, so let's look at a small $4\times 4$ _GeMM_ operation. We can initially calculate $AI = \frac{1}{4}$, which gives us our attainable performance
 
-$$ \text{AttainablePerformance}(\frac{1}{4}) = \min\{64, \frac{1}{4} \cdot 16\} = 4 Gflops/s $$
+$$ \text{AttainablePerformance}(\frac{1}{4}) = \min\{64, \frac{1}{4} \cdot 16\} = 4 \text{ Gflops/s} $$
 
 So despite having a processor, which can perform $64\cdot 10^{9}$ floating point operations per second ours only achieved $4 \cdot 10^{9}$. That's only 6.25% efficient. _But_ a $4\times 4$ _GeMM_ is quite trivial. Lets look at something more reasonable like $64\times 64$.
 
-$$ \text{AttainablePerformance}(\frac{64}{16}) = \min\{64, \frac{64}{16} \cdot 16\} = 64 Gflops/s $$
+$$ \text{AttainablePerformance}(\frac{64}{16}) = \min\{64, \frac{64}{16} \cdot 16\} = 64 \text{ Gflops/s} $$
 
 So we have achieved our peak performance. The _GeMM_ is no longer limited by memory operations and is not limited by the processor's compute. Notice that any larger matrix size is still going to get 64 Gflops/s, since the algorithm is now compute bound.
 
