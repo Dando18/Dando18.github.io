@@ -5,5 +5,5 @@ collection: notes
 permalink: /notes/probability-and-random-variables
 ---
 
-<iframe src="{{ base_path }}/files/Random_Variables_Notes.pdf" width="100%" height="500px">
+<iframe src="{{ base_path }}/files/Random_Variables_Notes.pdf" width="100%" height="600px">
 </iframe>
