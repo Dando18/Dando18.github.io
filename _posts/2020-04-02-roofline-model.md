@@ -129,6 +129,25 @@ See the dynamic plot below for an example.
 
 From the plot it is now clear to say how this model got its name. The plot, with some imagination, forms the shape of a roofline.
 
+So what does this model tell us? As discussed before it gives an upper bound on an algorithms performance. For example: consider our processor has a peak bandwidth of 16 GB/s and a peak performance of 64 GFlops/s. Now lets look at the matrix multiplication algorithm.
+
+Remember _GeMM_ has $AI = \frac{N}{16}$, so let's look at a small $4\times 4$ $GeMM$ operation. We can initially calculate $AI = \frac{1}{4}$, which gives us our attainable performance
+
+$$ \text{AttainablePerformance}(\frac{1}{4}) = \min\{64, \frac{1}{4} \cdot 16\} = 4 Gflops/s $$
+
+So despite having a processor, which can perform $64\cdot 10^{9}$ floating point operations per second ours only achieved $4 \cdot 10^{9}$. That's only 6.25% efficient. _But_ a $4\times 4$ _GeMM_ is quite trivial. Lets look at something more reasonable like $64\times 64$.
+
+$$ \text{AttainablePerformance}(\frac{64}{16}) = \min\{64, \frac{64}{16} \cdot 16\} = 64 Gflops/s $$
+
+So we have achieved our peak performance. The _GeMM_ is no longer limited by memory operations and is not limited by the processor's compute. Notice that any larger matrix size is still going to get 64 Gflops/s, since the algorithm is now compute bound.
+
+
+## Big Ideas
+There are 2 big takeaways from this model.
+
+1. No matter how fast your processing unit is, whether CPU or GPU, if your algorithm is waiting on data to load all the time, then your performance will be limited by memory speed and not the processor speed.
+
+2. On the other end if your algorithm does not use that many load/stores, i.e. it is memory efficient, you still cannot achieve better performance than the processor is capable no matter how high the AI.
 
 
 
