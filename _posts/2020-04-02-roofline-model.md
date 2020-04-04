@@ -138,7 +138,7 @@ From the plot it is now clear to say how this model got its name. The plot, with
 
 So what does this model tell us? As discussed before it gives an upper bound on an algorithms performance. For example: consider our processor has a peak bandwidth of 16 GB/s and a peak performance of 64 GFlops/s. Now lets look at the matrix multiplication algorithm.
 
-Remember _GeMM_ has $AI = \frac{N}{16}$, so let's look at a small $4\times 4$ $GeMM$ operation. We can initially calculate $AI = \frac{1}{4}$, which gives us our attainable performance
+Remember _GeMM_ has $AI = \frac{N}{16}$, so let's look at a small $4\times 4$ _GeMM_ operation. We can initially calculate $AI = \frac{1}{4}$, which gives us our attainable performance
 
 $$ \text{AttainablePerformance}(\frac{1}{4}) = \min\{64, \frac{1}{4} \cdot 16\} = 4 Gflops/s $$
 
