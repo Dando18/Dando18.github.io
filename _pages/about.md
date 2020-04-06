@@ -16,3 +16,5 @@ A large research project I've worked on is [MagmaDNN](https://github.com/MagmaDN
 
 I also enjoy film, reading, and twizzlers of which I [sometimes write about](/year-archive/).
 
+<p> I'm fairly active on the Math StackExchange math forum. You can find my badge below. </p>
+<a href="https://math.stackexchange.com/users/274085/dando18"><img src="https://math.stackexchange.com/users/flair/274085.png" width="208" height="58" alt="profile for Dando18 at Mathematics Stack Exchange, Q&amp;A for people studying math at any level and professionals in related fields" title="profile for Dando18 at Mathematics Stack Exchange, Q&amp;A for people studying math at any level and professionals in related fields"></a>
