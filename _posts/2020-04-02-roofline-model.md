@@ -136,7 +136,7 @@ See the dynamic plot below for an example.
 
 From the plot it is now clear to see how this model got its name. The plot, with some imagination, forms the shape of a roofline.
 
-So what does this model tell us? As discussed before it gives an upper bound on an algorithms performance. For example: consider our processor has a peak bandwidth of 16 GB/s and a peak performance of 64 GFlops/s. Now lets look at the matrix multiplication algorithm.
+So what does this model tell us? As discussed before it gives an upper bound on an algorithm's performance. For example: consider our processor has a peak bandwidth of 16 GB/s and a peak performance of 64 GFlops/s. Now lets look at the matrix multiplication algorithm.
 
 Remember _GeMM_ has $AI = \frac{N}{16}$, so let's look at a small $4\times 4$ _GeMM_ operation. We can initially calculate $AI = \frac{1}{4}$, which gives us our attainable performance
 
