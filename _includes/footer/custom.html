@@ -3,7 +3,8 @@
 
 {% if site.use_katex %}
 <script>
-  window.addEventListener('DOMContentLoaded', (e) => {
+  
+  document.addEventListener('DOMContentLoaded', (e) => {
     $("script[type='math/tex']").replaceWith(function() {
         var tex = $(this).text();
         return katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: false});
@@ -14,6 +15,7 @@
         return katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: true});
     });
   });
+  
 </script>
 {% endif %}
 
