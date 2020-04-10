@@ -15,7 +15,6 @@
         console.log(tex);
         console.log(tex.replace(/%((\s<!\[CDATA\[)|(\]\]\>)|(\s))/g, ''));
         return katex.renderToString(tex.replace(/%((\s<!\[CDATA\[)|(\]\]\>)|(\s))/g, ''), {displayMode: true});
-        //return katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: true});
     });
   });
   
