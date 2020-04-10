@@ -12,7 +12,7 @@ tags:
 
 All-Reduce is the operation of _reducing_ some data across nodes and finishing with the resulting reduction available on all processes. 
 
-For instance, say each of $p$ processors has a number $$n_i$$. An example of an All-Reduce operation is computing the sum, $$s=\sum_{j=0}^{p-1} n_j$$, and storing the resulting sum $$s$$ on each processor. Seems trivial, right?
+For instance, say each of $$p$$ processors has a number $$n_i$$. An example of an All-Reduce operation is computing the sum, $$s=\sum_{j=0}^{p-1} n_j$$, and storing the resulting sum $$s$$ on each processor. Seems trivial, right?
 
 We can gather all the numbers on a master processor, compute the sum, and then broadcast the result. This naive approach is, however, rather sub-optimal. What if each processor has more than 1 integer? The gather result might not be able to fit in a single processor's memory.
 
@@ -69,20 +69,20 @@ The most prominent application I've used All-Reduce in is distributed deep learn
 
 I'll brush over this in very broad terms, but the concept should be clear enough to understand why we use All-Reduce. A neural network is some function $$f(\boldsymbol x; \boldsymbol w)$$ (a black-box if you will), which takes an input $$\boldsymbol x$$ and classifies it using parameters $$\boldsymbol w$$. When training, $$\boldsymbol x$$ and $$f$$ will be given (choosing $$f$$, the neural network architecture, and $$\boldsymbol x$$, the proper data set, is actually a difficult problem, but is more in the scope of Data Science), so we're left to find the weights $$\boldsymbol w$$.
 
-Finding $\boldsymbol w^*$, the optimal weights, is also a difficult problem. Typically back-propagation and gradient descent are employed, but they can take a long time depending on the size of $\boldsymbol w$. The update rule for vanilla gradient descent looks like
+Finding $$\boldsymbol w^*$$, the optimal weights, is also a difficult problem. Typically back-propagation and gradient descent are employed, but they can take a long time depending on the size of $$\boldsymbol w$$. The update rule for vanilla gradient descent looks like
 
 $$ \boldsymbol w_i := \boldsymbol w_i - \eta\ \mathbb{E}_{x,y\sim\mathcal{D'}} \left[\nabla_{\boldsymbol w_i} \mathcal{L}\left( f(\boldsymbol x; \boldsymbol w_i), \boldsymbol y\right)\right] \quad \forall i\ .  $$
 
-A couple points here. Firstly, $\boldsymbol w_i$ is sub-indexed, because $\boldsymbol w$ is typically composed of several weight vectors and we need to update each one. Next, the messy looking $\mathcal{L}\left( f(\boldsymbol x; \boldsymbol w_i), \boldsymbol y\right)$ expression is simply the loss of the network. In other words, $\mathcal{L}$ is the "error" when we try to predict $\boldsymbol x$ with $\boldsymbol w_i$ and the ground truth is $\boldsymbol y$. The negative gradient ($-\nabla$) of this w.r.t. $\boldsymbol w_i$ gives us an update to push $\boldsymbol w_i$ in the right direction.
+A couple points here. Firstly, $$\boldsymbol w_i$$ is sub-indexed, because $$\boldsymbol w$$ is typically composed of several weight vectors and we need to update each one. Next, the messy looking $$\mathcal{L}\left( f(\boldsymbol x; \boldsymbol w_i), \boldsymbol y\right)$$ expression is simply the loss of the network. In other words, $$\mathcal{L}$$ is the "error" when we try to predict $$\boldsymbol x$$ with $$\boldsymbol w_i$$ and the ground truth is $$\boldsymbol y$$. The negative gradient ($$-\nabla$$) of this w.r.t. $$\boldsymbol w_i$$ gives us an update to push $$\boldsymbol w_i$$ in the right direction.
 
 
-As it turns out, we can parallelize this across our data set with _data parallelism_. Assume we have $p$ nodes. Then we'll partition $\boldsymbol x$ into $p$ datasets and assign one to each processor. Now our update will look like
+As it turns out, we can parallelize this across our data set with _data parallelism_. Assume we have $p$ nodes. Then we'll partition $$\boldsymbol x$$ into $$p$$ datasets and assign one to each processor. Now our update will look like
 
 $$ \boldsymbol w_i := \boldsymbol w_i - \frac{\eta}{p} \sum_{j=0}^{p-1} \left( \mathbb{E}_{x_j,y_j\sim\mathcal{D_j'}} \left[\nabla_{\boldsymbol w_i} \mathcal{L}\left( f(\boldsymbol x_j; \boldsymbol w_i), \boldsymbol y_j\right) \right] \right) \quad \forall i\ , $$
 
-where $\boldsymbol x_i$ is the dataset on the $i$-th processor.
+where $$\boldsymbol x_i$$ is the dataset on the $$i$$-th processor.
 
-Now what does the above look like? An All-Reduce operation! We're summing the gradients across each node. The gradient computation, which is very time consuming, can be done concurrently as there is no interdependence. Once computed we take the average gradient, or the average update to $\boldsymbol w_i$, and change each $\boldsymbol w_i$ on every processor according to the same average. The below pseudo-code summarizes the changes to the algorithm, which is only the addition of the all-reduce call. 
+Now what does the above look like? An All-Reduce operation! We're summing the gradients across each node. The gradient computation, which is very time consuming, can be done concurrently as there is no interdependence. Once computed we take the average gradient, or the average update to $$\boldsymbol w_i$$, and change each $$\boldsymbol w_i$$ on every processor according to the same average. The below pseudo-code summarizes the changes to the algorithm, which is only the addition of the all-reduce call. 
 
 ``` 
 for all i
