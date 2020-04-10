@@ -18,7 +18,7 @@ The Roofline Model is a performance model seeking to give the limitations of a s
   - [AI Examples](#ai-examples)
 - [The Roofline Model](#the-roofline-model)
 - [Big Ideas](#big-ideas)
-  - [Further Reading](#further-reading)
+- [Further Reading](#further-reading)
 
 ## Performance Objective (Flops/s)
 It is first important to understand the objective we're seeking to measure. _Flops/s_ is a simple measurement standing for _floating point operations per second_. This is essentially the number of mathematical operations (i.e. `+`, `*`, ...) that the computer does per second on a given algorithm. For instance, consider the function
@@ -158,7 +158,7 @@ There are 2 big takeaways from this model.
 
 
 
-### Further Reading
+## Further Reading
 1 - [https://en.wikipedia.org/wiki/Roofline_model](https://en.wikipedia.org/wiki/Roofline_model)
 
 2 - [https://crd.lbl.gov/assets/pubs_presos/parlab08-roofline-talk.pdf](https://crd.lbl.gov/assets/pubs_presos/parlab08-roofline-talk.pdf)
