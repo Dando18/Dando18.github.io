@@ -64,7 +64,7 @@ for (size_t i = 1; i < n; i += 2) {
 }
 ```
 
-In the for loop we see that (1) sets $$x_i$$ using $$x_{i-2}$$ and (2) sets $$x_{i+1}$$ using $$x_{i-1}$$. Therefore, there are no overlap in dependencies and the code is valid. But we're still serial, so why is this loop faster than the other one? ___Cache efficiency___. $x$ is stored contiguously in memory. When we load two consecutive values of $$x$$ at once ($$x_{i-2}$$ and $$x_{i-1}$$) we can do it with roughly the cost of one load, because these two values will lie within the same [cache line](https://en.wikipedia.org/wiki/CPU_cache#Cache_entries). We are also effectively _loop unrolling_ as we have reduced the number of loop iterations by a factor of _2_.
+In the for loop we see that (1) sets $$x_i$$ using $$x_{i-2}$$ and (2) sets $$x_{i+1}$$ using $$x_{i-1}$$. Therefore, there are no overlap in dependencies and the code is valid. But we're still serial, so why is this loop faster than the other one? ___Cache efficiency___. $$x$$ is stored contiguously in memory. When we load two consecutive values of $$x$$ at once ($$x_{i-2}$$ and $$x_{i-1}$$) we can do it with roughly the cost of one load, because these two values will lie within the same [cache line](https://en.wikipedia.org/wiki/CPU_cache#Cache_entries). We are also effectively _loop unrolling_ as we have reduced the number of loop iterations by a factor of _2_.
 
 We can see an immediate effect from these two methodologies in the plot below:
 
