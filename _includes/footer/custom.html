@@ -7,7 +7,7 @@
   document.addEventListener('DOMContentLoaded', (e) => {
     $("script[type='math/tex']").replaceWith(function() {
         var tex = $(this).text();
-        return katex.renderToString(tex.replace(/%.*/g, ''), {displayMode: false});
+        return katex.renderToString(tex.replace(/%((\s<!\[CDATA\[)|(\]\]\>)|(\s))/g, ''), {displayMode: false});
     });
 
     $("script[type='math/tex; mode=display']").replaceWith(function() {

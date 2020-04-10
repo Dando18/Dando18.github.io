@@ -12,18 +12,18 @@ tags:
 
 All-Reduce is the operation of _reducing_ some data across nodes and finishing with the resulting reduction available on all processes. 
 
-For instance, say each of $p$ processors has a number $n_i$. An example of an All-Reduce operation is computing the sum, $s=\sum_{j=0}^{p-1} n_j$, and storing the resulting sum $s$ on each processor. Seems trivial, right?
+For instance, say each of $p$ processors has a number $$n_i$$. An example of an All-Reduce operation is computing the sum, $$s=\sum_{j=0}^{p-1} n_j$$, and storing the resulting sum $$s$$ on each processor. Seems trivial, right?
 
 We can gather all the numbers on a master processor, compute the sum, and then broadcast the result. This naive approach is, however, rather sub-optimal. What if each processor has more than 1 integer? The gather result might not be able to fit in a single processor's memory.
 
-Additionally, we can outperform the communication overhead of gather $\rightarrow$ compute $\rightarrow$ broadcast. A gather will be $\sim\mathcal{O}(\log p + n)$, the compute is $\mathcal{O}(np)$, and finally a broadcast is $\mathcal{O}(n\log p)$. Thus, the total time complexity is roughly $\mathcal{O}(np)$.
+Additionally, we can outperform the communication overhead of gather $$\rightarrow$$ compute $$\rightarrow$$ broadcast. A gather will be $$\sim\mathcal{O}(\log p + n)$$, the compute is $$\mathcal{O}(np)$$, and finally a broadcast is $$\mathcal{O}(n\log p)$$. Thus, the total time complexity is roughly $$\mathcal{O}(np)$$.
 
 I'll discuss some topics related to the use, implementation, and optimization of all-reduce calls.
 
 #### What is All-Reduce?
-I've already mentioned the example of summing integers over many processors. In fact, we can all-reduce with any binary-associative operator. Let $\bigoplus$ be some binary operator, meaning it takes two parameters (i.e. $a \bigoplus b$). If and only if $\bigoplus$ is associative, then $a \bigoplus \left(b \bigoplus c\right) = \left(a \bigoplus b\right) \bigoplus c$. As long as $\bigoplus$ has these two properties, then we can use it to reduce along all processes.
+I've already mentioned the example of summing integers over many processors. In fact, we can all-reduce with any binary-associative operator. Let $$\bigoplus$$ be some binary operator, meaning it takes two parameters (i.e. $a \bigoplus b$). If and only if $$\bigoplus$$ is associative, then $$a \bigoplus \left(b \bigoplus c\right) = \left(a \bigoplus b\right) \bigoplus c$$. As long as $$\bigoplus$$ has these two properties, then we can use it to reduce along all processes.
 
-Addition is a simple example of this operation. It is clear to see that $a+(b+c)=(a+b)+c$. Others include product, min, max, etc... 
+Addition is a simple example of this operation. It is clear to see that $$a+(b+c)=(a+b)+c$$. Others include product, min, max, etc... 
 
 
 #### MPI_Allreduce
@@ -41,18 +41,18 @@ int MPI_Allreduce(  const void *    sendbuf,
 
 The default MPI operations are included in the table below. Custom operations can also be created with `MPI_Op`s and `MPI_Opcreate()`.
 
-| Name         | MPI Flag   | Associativity                                                                              | Description                      |
-| ------------ | ---------- | ------------------------------------------------------------------------------------------ | -------------------------------- |
-| Max          | MPI_MAX    | $\max\lbrace a, \max\lbrace b,c\rbrace\rbrace=\max\lbrace\max\lbrace a,b\rbrace ,c\rbrace$ | Computes the max of two numbers. |
-| Min          | MPI_Min    | $\min\lbrace a, \min\lbrace b,c\rbrace\rbrace=\min\lbrace\min\lbrace a,b\rbrace ,c\rbrace$ | Computes the min of two numbers. |
-| Sum          | MPI_SUM    | $a+(b+c)=(a+b)+c$                                                                          | Adds two numbers.                |
-| Product      | MPI_PROD   | $a(bc)=(ab)c$                                                                              | Multiplies two numbers.          |
-| Logical And  | MPI_LAND   | $a \land (b \land c) = (a \land b) \land c$                                                | Logical and of two predicates.   |
-| Logical Or   | MPI_LOR    | $a \lor (b \lor c) = (a \lor b) \lor c$                                                    | Logical or of two predicates.    |
-| Binary And   | MPI_BAND   | $a \& (b \& c) = (a \& b) \& c$                                                            | Binary and of two numbers.       |
-| Binary Or    | MPI_BOR    | $a \mid (b \mid c) = (a \mid b) \mid c$                                                    | Binary or of two numbers.        |
-| Max Location | MPI_MAXLOC | -- same as max --                                                                          | Max and processor rank.          |
-| Min Location | MPI_MINLOC | -- same as min --                                                                          | Min and processor rank.          |
+| Name         | MPI Flag   | Associativity                                                                                | Description                      |
+| ------------ | ---------- | -------------------------------------------------------------------------------------------- | -------------------------------- |
+| Max          | MPI_MAX    | $$\max\lbrace a, \max\lbrace b,c\rbrace\rbrace=\max\lbrace\max\lbrace a,b\rbrace ,c\rbrace$$ | Computes the max of two numbers. |
+| Min          | MPI_Min    | $$\min\lbrace a, \min\lbrace b,c\rbrace\rbrace=\min\lbrace\min\lbrace a,b\rbrace ,c\rbrace$$ | Computes the min of two numbers. |
+| Sum          | MPI_SUM    | $$a+(b+c)=(a+b)+c$$                                                                          | Adds two numbers.                |
+| Product      | MPI_PROD   | $$a(bc)=(ab)c$$                                                                              | Multiplies two numbers.          |
+| Logical And  | MPI_LAND   | $$a \land (b \land c) = (a \land b) \land c$$                                                | Logical and of two predicates.   |
+| Logical Or   | MPI_LOR    | $$a \lor (b \lor c) = (a \lor b) \lor c$$                                                    | Logical or of two predicates.    |
+| Binary And   | MPI_BAND   | $$a \& (b \& c) = (a \& b) \& c$$                                                            | Binary and of two numbers.       |
+| Binary Or    | MPI_BOR    | $$a \mid (b \mid c) = (a \mid b) \mid c$$                                                    | Binary or of two numbers.        |
+| Max Location | MPI_MAXLOC | -- same as max --                                                                            | Max and processor rank.          |
+| Min Location | MPI_MINLOC | -- same as min --                                                                            | Min and processor rank.          |
 
 
 For example, we can compute the sum across all ranks. At the end of the below code `sum` will contain the sum of all `num`s on each rank. 
@@ -67,7 +67,7 @@ MPI_Allreduce(&num, &sum, 1, MPI_INT, MPI_SUM, MPI_COMM_WORLD);
 
 The most prominent application I've used All-Reduce in is distributed deep learning. The All-Reduce is a crucial component to distributing network training across several nodes. First a primer in deep learning.
 
-I'll brush over this in very broad terms, but the concept should be clear enough to understand why we use All-Reduce. A neural network is some function $f(\boldsymbol x; \boldsymbol w)$ (a black-box if you will), which takes an input $\boldsymbol x$ and classifies it using parameters $\boldsymbol w$. When training, $\boldsymbol x$ and $f$ will be given (choosing $f$, the neural network architecture, and $\boldsymbol x$, the proper data set, is actually a difficult problem, but is more in the scope of Data Science), so we're left to find the weights $\boldsymbol w$.
+I'll brush over this in very broad terms, but the concept should be clear enough to understand why we use All-Reduce. A neural network is some function $$f(\boldsymbol x; \boldsymbol w)$$ (a black-box if you will), which takes an input $$\boldsymbol x$$ and classifies it using parameters $$\boldsymbol w$$. When training, $$\boldsymbol x$$ and $$f$$ will be given (choosing $$f$$, the neural network architecture, and $$\boldsymbol x$$, the proper data set, is actually a difficult problem, but is more in the scope of Data Science), so we're left to find the weights $$\boldsymbol w$$.
 
 Finding $\boldsymbol w^*$, the optimal weights, is also a difficult problem. Typically back-propagation and gradient descent are employed, but they can take a long time depending on the size of $\boldsymbol w$. The update rule for vanilla gradient descent looks like
 
