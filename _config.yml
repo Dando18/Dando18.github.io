@@ -166,6 +166,7 @@ use_katex: true
 # Markdown Processing
 kramdown:
   input: GFM
+  math_engine: nil
   hard_wrap: false
   auto_ids: true
   footnote_nr: 1
