@@ -78,14 +78,14 @@ void main() {
 ### Transformations
 Objects, say a cube, store their vertices in local coordinates. That is a coordinate system with its origin on the object (usually at the center or a corner). This is done through 4 transformations done using matrix transformations. The last transformation, clip to screen space, is done automatically by OpenGL and the hardware.
 
-Transformations are done via matrices and are undone after drawing the model using inverses. Say $M_i \in \mathbb{R}^{4\times 4}$ represents some arbitrary translation. Then $M_i x$, where $x \in \mathbb{R}^{4}$ is the local position of some vertex, will translate it into global coordinates.
+Transformations are done via matrices and are undone after drawing the model using inverses. Say $$M_i \in \mathbb{R}^{4\times 4}$$ represents some arbitrary translation. Then $$M_i x$$, where $$x \in \mathbb{R}^{4}$$ is the local position of some vertex, will translate it into global coordinates.
 
-Usually we want to draw more than 1 object, so we need to undo our transformations. This is easy using inverse matrices. The above transformation done and undone can be represented by $M_i x M_i^{-1}$. We can do this for arbitrarily many transformations: $M_i M_j M_k x M_k^{-1} M_j^{-1} M_i^{-1}$.
+Usually we want to draw more than 1 object, so we need to undo our transformations. This is easy using inverse matrices. The above transformation done and undone can be represented by $$M_i x M_i^{-1}$$. We can do this for arbitrarily many transformations: $$M_i M_j M_k x M_k^{-1} M_j^{-1} M_i^{-1}$$.
 
 #### Model to World
 The first transformation needs to transform model coordinates to global so that all objects are draw around a global origin. This typically requires translation, rotation, and scaling. The generated transformation matrix is often called the _Model Matrix_.
 
-Say $T_i$ represents the translation of the object into world coordinates, $R_i$ the rotation, and $S_i$ the scaling. Then the transformation into world coordinates can be given by,
+Say $$T_i$$ represents the translation of the object into world coordinates, $$R_i$$ the rotation, and $$S_i$$ the scaling. Then the transformation into world coordinates can be given by,
 
 $$ ModelMatrix = S_iR_iT_i .$$
 
