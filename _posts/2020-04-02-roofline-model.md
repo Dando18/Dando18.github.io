@@ -35,7 +35,7 @@ double foo(double a, double b) {
 
 One call of `foo` will execute line `(a)` 50 times. Line `(a)` has two floating pointing operations on it: `*` and `+`. Thus, `foo` will have 100 floating point operations. If `foo` takes 1.0 second to run, then our algorithm ran with 100 floating point operations per second or 100 flops/s. 
 
-These numbers are unrealistic though. Typical algorithms run between $10^9$ and $10^{18}$, where $10^9$ or GigaFlops/s is typically what you'll see listed for a commercial CPU and $10^{18}$ or ExaFlops/s is at the cutting edge of supercomputing capability.
+These numbers are unrealistic though. Typical algorithms run between $$10^9$$ and $$10^{18}$$, where $$10^9$$ or GigaFlops/s is typically what you'll see listed for a commercial CPU and $$10^{18}$$ or ExaFlops/s is at the cutting edge of supercomputing capability.
 
 Flops/s is a desirable objective since the higher it is, the quicker an algorithm can run through more data. Flops/s is usually dependent on the hardware, algorithm and implementation.
 
@@ -71,15 +71,15 @@ void daxpy(size_t n, double a, const double *x, double *y) {
 }
 ```
 
-Here flops is easy to count: $flops = 2n$.
+Here flops is easy to count: $$flops = 2n$$.
 
-Memory traffic is calculated as: $traffic = [(2 \text{ loads})(8 \frac{\text{bytes}}{\text{load}}) + (1 \text{ store})(8 \frac{\text{bytes}}{\text{store}})] \cdot n = 24n$.
+Memory traffic is calculated as: $$traffic = [(2 \text{ loads})(8 \frac{\text{bytes}}{\text{load}}) + (1 \text{ store})(8 \frac{\text{bytes}}{\text{store}})] \cdot n = 24n$$.
 
 Therefore, the AI for DAXPY is
 
 $$ AI = \frac{flops}{bytes} = \frac{2n}{24n} = \frac{1}{12} $$
 
-**GeMM:** GeMM, or general matrix multiplication, is another good example for calculating arithmetic intensity. Let's just look at simple matrix multiplication: $C=AB$ where $A,B,C \in \mathbb{R}^{n \times n}$. In C code:
+**GeMM:** GeMM, or general matrix multiplication, is another good example for calculating arithmetic intensity. Let's just look at simple matrix multiplication: $$C=AB$$ where $$A,B,C \in \mathbb{R}^{n \times n}$$. In C code:
 
 ```c++
 void dgemm(size_t n, const double *A, const double *B, const double *C) {
@@ -97,9 +97,9 @@ void dgemm(size_t n, const double *A, const double *B, const double *C) {
 }
 ```
 
-Again, flops is simple here. The innermost line of the loops has 2 floating point operations: `*` and `+`. This line will execute $n^3$ times so our total flop count is $flops = 2n^3$.
+Again, flops is simple here. The innermost line of the loops has 2 floating point operations: `*` and `+`. This line will execute $$n^3$$ times so our total flop count is $$flops = 2n^3$$.
 
-For memory we must load $A_{ik}, B_{kj}, \text{ and } C_{ij}$ and we must store $C_{ij}$. Since $A_{i:}$ and $B_{:j}$ can remain in memory, these load/stores only happen $n^2$ times. This gives us $traffic = (4)(8)(n) = 32n^2$.
+For memory we must load $$A_{ik}, B_{kj}, \text{ and } C_{ij}$$ and we must store $$C_{ij}$$. Since $$A_{i:}$$ and $$B_{:j}$$ can remain in memory, these load/stores only happen $$n^2$$ times. This gives us $$traffic = (4)(8)(n) = 32n^2$$.
 
 Thus, we have 
 
@@ -107,7 +107,7 @@ $$ AI = \frac{2n^3}{32n^2} = \frac{n}{16} $$
 
 This is the first time we see an algorithm's arithmetic intensity is dependent on its input size. Matrix multiplication does more arithmetic per byte loaded for larger matrix sizes. Thus, we should expect better flop rates for larger matrices. This is because of _data reuse_: the algorithm reuses loaded data before moving onto the next piece of data.
 
-_Warning:_ While a high AI is usually better, it does not mean better execution time. A 1000x1000 matrix multiplication might have an $AI = \frac{1000}{16} = 62.5$, but it still needs to do $O(n^3)$ work. The Roofline Model will give more reasons why high AI is not a perfect predictor of performance.
+_Warning:_ While a high AI is usually better, it does not mean better execution time. A 1000x1000 matrix multiplication might have an $$AI = \frac{1000}{16} = 62.5$$, but it still needs to do $$O(n^3)$$ work. The Roofline Model will give more reasons why high AI is not a perfect predictor of performance.
 
 ## The Roofline Model
 
@@ -117,7 +117,7 @@ _Peak Bandwidth_ - The fastest the processor can load data. Measured in bytes/se
 
 _Peak Performance_ - The floating point max performance of the processor. Measured in flops/second.
 
-Obviously no algorithm can have a higher flops/s rate than the peak of the processing unit. However, it can be even lower if its limited by bandwidth. We can calculate bandwidth limited performance using $\text{AI} \cdot \text{PeakBandwidth}$. Combining these two ideas we get a formula for calculating Attainable Performance:
+Obviously no algorithm can have a higher flops/s rate than the peak of the processing unit. However, it can be even lower if its limited by bandwidth. We can calculate bandwidth limited performance using $$\text{AI} \cdot \text{PeakBandwidth}$$. Combining these two ideas we get a formula for calculating Attainable Performance:
 
 $$ \text{AttainablePerformance}(AI) = \min\{\text{PeakPerformance}, \text{AI} \cdot \text{PeakBandwidth}\} $$
 
@@ -138,11 +138,11 @@ From the plot it is now clear to see how this model got its name. The plot, with
 
 So what does this model tell us? As discussed before it gives an upper bound on an algorithm's performance. For example: consider our processor has a peak bandwidth of 16 GB/s and a peak performance of 64 GFlops/s. Now lets look at the matrix multiplication algorithm.
 
-Remember _GeMM_ has $AI = \frac{N}{16}$, so let's look at a small $4\times 4$ _GeMM_ operation. We can initially calculate $AI = \frac{1}{4}$, which gives us our attainable performance
+Remember _GeMM_ has $$AI = \frac{N}{16}$$, so let's look at a small $$4\times 4$$ _GeMM_ operation. We can initially calculate $$AI = \frac{1}{4}$$, which gives us our attainable performance
 
 $$ \text{AttainablePerformance}(\frac{1}{4}) = \min\{64, \frac{1}{4} \cdot 16\} = 4 \text{ Gflops/s} $$
 
-So despite having a processor which can perform $64\cdot 10^{9}$ floating point operations per second ours only achieved $4 \cdot 10^{9}$. That's only 6.25% efficient. _But_ a $4\times 4$ _GeMM_ is quite trivial. Lets look at something more reasonable like $64\times 64$.
+So despite having a processor which can perform $$64\cdot 10^{9}$$ floating point operations per second ours only achieved $$4 \cdot 10^{9}$$. That's only 6.25% efficient. _But_ a $$4\times 4$$ _GeMM_ is quite trivial. Lets look at something more reasonable like $$64\times 64$$.
 
 $$ \text{AttainablePerformance}(\frac{64}{16}) = \min\{64, \frac{64}{16} \cdot 16\} = 64 \text{ Gflops/s} $$
 
