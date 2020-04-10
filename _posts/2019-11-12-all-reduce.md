@@ -21,7 +21,7 @@ Additionally, we can outperform the communication overhead of gather $$\rightarr
 I'll discuss some topics related to the use, implementation, and optimization of all-reduce calls.
 
 #### What is All-Reduce?
-I've already mentioned the example of summing integers over many processors. In fact, we can all-reduce with any binary-associative operator. Let $$\bigoplus$$ be some binary operator, meaning it takes two parameters (i.e. $a \bigoplus b$). If and only if $$\bigoplus$$ is associative, then $$a \bigoplus \left(b \bigoplus c\right) = \left(a \bigoplus b\right) \bigoplus c$$. As long as $$\bigoplus$$ has these two properties, then we can use it to reduce along all processes.
+I've already mentioned the example of summing integers over many processors. In fact, we can all-reduce with any binary-associative operator. Let $$\bigoplus$$ be some binary operator, meaning it takes two parameters (i.e. $$a \bigoplus b$$). If and only if $$\bigoplus$$ is associative, then $$a \bigoplus \left(b \bigoplus c\right) = \left(a \bigoplus b\right) \bigoplus c$$. As long as $$\bigoplus$$ has these two properties, then we can use it to reduce along all processes.
 
 Addition is a simple example of this operation. It is clear to see that $$a+(b+c)=(a+b)+c$$. Others include product, min, max, etc... 
 
@@ -76,7 +76,7 @@ $$ \boldsymbol w_i := \boldsymbol w_i - \eta\ \mathbb{E}_{x,y\sim\mathcal{D'}} \
 A couple points here. Firstly, $$\boldsymbol w_i$$ is sub-indexed, because $$\boldsymbol w$$ is typically composed of several weight vectors and we need to update each one. Next, the messy looking $$\mathcal{L}\left( f(\boldsymbol x; \boldsymbol w_i), \boldsymbol y\right)$$ expression is simply the loss of the network. In other words, $$\mathcal{L}$$ is the "error" when we try to predict $$\boldsymbol x$$ with $$\boldsymbol w_i$$ and the ground truth is $$\boldsymbol y$$. The negative gradient ($$-\nabla$$) of this w.r.t. $$\boldsymbol w_i$$ gives us an update to push $$\boldsymbol w_i$$ in the right direction.
 
 
-As it turns out, we can parallelize this across our data set with _data parallelism_. Assume we have $p$ nodes. Then we'll partition $$\boldsymbol x$$ into $$p$$ datasets and assign one to each processor. Now our update will look like
+As it turns out, we can parallelize this across our data set with _data parallelism_. Assume we have $$p$$ nodes. Then we'll partition $$\boldsymbol x$$ into $$p$$ datasets and assign one to each processor. Now our update will look like
 
 $$ \boldsymbol w_i := \boldsymbol w_i - \frac{\eta}{p} \sum_{j=0}^{p-1} \left( \mathbb{E}_{x_j,y_j\sim\mathcal{D_j'}} \left[\nabla_{\boldsymbol w_i} \mathcal{L}\left( f(\boldsymbol x_j; \boldsymbol w_i), \boldsymbol y_j\right) \right] \right) \quad \forall i\ , $$
 
