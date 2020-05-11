@@ -60,7 +60,7 @@ For convenience purposes, we'll define the matrix $$ D_n $$ as an $$ n\times n $
 
 ## The Connection
 
-Apart from Pascal's triangle and Delannoy Numbers both have a relation to combinatorics, all three of these are very different from each other. Yet there is a pretty cool, in my opinion, tie-in from Delannoy Numbers to Pascal's triangle using Cholesky decomposition.
+Apart from Pascal's triangle and Delannoy Numbers both having a relation to combinatorics, all three of these are very different from each other. Yet there is a pretty cool, in my opinion, tie-in from Delannoy Numbers to Pascal's triangle using Cholesky decomposition.
 
 First, we will take the Delannoy matrix $$ D_n $$ for some $$ n $$ and decompose it using Cholesky decomposition. This will give us 
 
@@ -135,6 +135,6 @@ While the numeric verification is not a proof, it is a cool feeling to see that 
 
 Now that was already interesting enough, but we can make it more interesting by turning the result into a fractal. Let's define a new matrix $$ F $$ such that
 
-$$ [F]_{ij} = [L^T B_n]_ij \mod 2 $$
+$$ [F]_{ij} = [L^T B_n]_{ij} \mod 2 $$
 
 Now the lower triangle of $$ F $$ is equivalent to the Sierpinski sieve, which forms a beautiful triangular fractal.
