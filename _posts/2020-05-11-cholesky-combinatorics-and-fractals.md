@@ -10,7 +10,7 @@ tags:
   - math
 ---
 
-Cholesky factorization is core concept in linear algebra and frequently used to solve scientific computing problems. While seemingly the furthest thing from Pascal's triangle and binomial coefficients there is an interesting link using results from a path finding problem. Furthermore, this can be extended to create fractals and other lovely patterns.
+Cholesky factorization is a core concept in linear algebra and frequently used to solve scientific computing problems. While seemingly the furthest thing from Pascal's triangle and binomial coefficients there is an interesting link using results from a path finding problem. Furthermore, this can be extended to create fractals and other lovely patterns.
 
 So first, a background in each of these areas...
 
