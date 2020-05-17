@@ -3,9 +3,8 @@ title: 'Cholesky Decomposition, Combinatorics, and Fractals'
 date: 2020-05-11
 permalink: /posts/2020/05/11/cholesky-combinatorics-and-fractals
 categories:
-  - computer science
+  - math
 tags:
-  - computer science
   - linear algebra
   - math
 ---
