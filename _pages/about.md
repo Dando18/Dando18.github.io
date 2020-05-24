@@ -19,14 +19,9 @@ I also enjoy film, reading, and twizzlers of which I [sometimes write about](/ye
 <p> I'm fairly active on the Math StackExchange math forum. You can find my badge below. </p>
 <a href="https://math.stackexchange.com/users/274085/dando18"><img src="https://math.stackexchange.com/users/flair/274085.png" width="208" height="58" alt="profile for Dando18 at Mathematics Stack Exchange, Q&amp;A for people studying math at any level and professionals in related fields" title="profile for Dando18 at Mathematics Stack Exchange, Q&amp;A for people studying math at any level and professionals in related fields"></a>
 
-_S'io credesse che mia risposta fosse_
-
-_A persona che mai tornasse al mondo,_
-
-_Questa fiamma staria senza piu scosse._
-
-_Ma penciocche gammai di questo fondo_
-
-_Non torno viva alcun, s'i'odo il vero,_
-
-_Senza tema d'infamia ti rispondo_
+_S'io credesse che mia risposta fosse_<br>
+_A persona che mai tornasse al mondo,_<br>
+_Questa fiamma staria senza piu scosse._<br>
+_Ma penciocche gammai di questo fondo_<br>
+_Non torno viva alcun, s'i'odo il vero,_<br>
+_Senza tema d'infamia ti rispondo_<br>
