@@ -27,6 +27,6 @@ A persona che mai tornasse al mondo,<br>
 Questa fiamma staria senza piu scosse.<br>
 Ma penciocche gammai di questo fondo<br>
 Non torno viva alcun, s'i'odo il vero,<br>
-Senza tema d'infamia ti rispondo_<br>
+Senza tema d'infamia ti rispondo<br>
 </i>
 </p>
