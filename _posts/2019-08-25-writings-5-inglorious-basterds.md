@@ -1,9 +1,9 @@
 ---
-title: 'Analysis #5: Inglorious Bastards'
+title: 'Writings #5: Inglorious Bastards'
 date: 2019-08-25
-permalink: /posts/2019/15/analysis_5_inglorious_basterds
+permalink: /posts/2019/15/writings_5_inglorious_basterds
 categories:
-  - analysis
+  - writings
 tags:
   - writing
   - movie

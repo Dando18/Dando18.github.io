@@ -1,9 +1,9 @@
 ---
-title: 'Analysis #4: Fracture'
+title: 'Writings #4: Fracture'
 date: 2019-08-16
-permalink: /posts/2019/16/analysis_4_fracture
+permalink: /posts/2019/16/writings_4_fracture
 categories:
-  - analysis
+  - writings
 tags:
   - writing
   - movie

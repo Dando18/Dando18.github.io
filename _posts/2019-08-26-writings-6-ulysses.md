@@ -1,9 +1,9 @@
 ---
-title: 'Analysis #7: Ulysses'
-date: 2019-08-23
-permalink: /posts/2019/23/analysis_7_ulysses
+title: 'Writings #6: Ulysses'
+date: 2019-08-26
+permalink: /posts/2019/26/writings_6_ulysses
 categories:
-  - analysis
+  - writings
 tags:
   - writing
   - novel
@@ -12,13 +12,15 @@ tags:
   - analysis
 ---
 
-Part 7 in a collection of posts where I'll give some of my thoughts and analysis on essays, short stories, novels, movies, etc. It is not really anything academic, but purely for me to practice my writing.
+Part 6 in a collection of posts where I'll give some of my thoughts and analysis on essays, short stories, novels, movies, etc. It is not really anything academic, but purely for me to practice my writing.
 
 Ulysses
 ------------------------------
 A novel by James Joyce
 
 Oh boy, has this one taken me a long time to read and digest (and understand really). I will chunk it up into Joyce's episodes and give some of my final thoughts at the end along with any other interesting things I picked up while reading. Perhaps at the end of this I can truly consider myself a Joycean.
+
+__Update:__ I'll come back to this at some point. I think I need to pick up the book again (yikes...).
 
 ## Part I: Telemachia
 
