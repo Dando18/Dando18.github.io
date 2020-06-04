@@ -29,7 +29,7 @@ I am impressed with the director's choice to let Ted's wife die. As Willy, despe
 
 Fracture is a quality film, which I believe could be improved with better camera work and a different cast (of course, leaving Hopkins and Gosling). 
 
-Daniel's Film Rating: 6.5 / 10
+My Film Rating: 6.5 / 10
 
 
 -- Daniel Nichols

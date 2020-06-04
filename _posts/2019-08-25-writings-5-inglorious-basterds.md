@@ -28,7 +28,7 @@ Meanwhile, parallel to the story of Shosanna, Lt. Aldo Raine (played by Brad Pit
 
 WIP...
 
-Daniel's Film Rating: 8.1 / 10
+My Film Rating: 8.1 / 10
 
 
 -- Daniel Nichols
