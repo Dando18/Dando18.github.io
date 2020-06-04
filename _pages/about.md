@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I am a Computer Science PhD student at the [University of Maryland, College Park](https://www.cs.umd.edu/). Before UMD, I completed my B.S. in Computer Science at the University of Tennessee, Knoxville in Spring 2020.
+I am a Computer Science PhD student at the [University of Maryland, College Park](https://www.cs.umd.edu/). Before UMD, I completed my B.S. in Computer Science at the [University of Tennessee, Knoxville](http://www.eecs.utk.edu/) in Spring 2020.
 
 My research background is in high performance deep learning. This includes utilizing hardware accelerators for single-node performance in addition to large scale supercomputers for distributed training. However, I have a broad interest in HPC ranging from systems to numerical algorithms.
 
