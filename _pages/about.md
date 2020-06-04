@@ -8,15 +8,15 @@ redirect_from:
   - /about.html
 ---
 
-Beginning Summer 2020 I will be a Computer Science PhD student at the [University of Maryland, College Park](https://www.cs.umd.edu/). I completed my B.S. in Computer Science at the University of Tennessee, Knoxville in Spring 2020.
+I am a Computer Science PhD student at the [University of Maryland, College Park](https://www.cs.umd.edu/). Before UMD, I completed my B.S. in Computer Science at the University of Tennessee, Knoxville in Spring 2020.
 
-My main interest is research in high performance and distributed deep learning, specifically regarding parallel algorithms, high performance linear algebra, large-batch convergence, and communication patterns. I am also interested in most HPC related areas from systems to numerical algorithms.
+My research background is in high performance deep learning. This includes utilizing hardware accelerators for single-node performance in addition to large scale supercomputers for distributed training. However, I have a broad interest in HPC ranging from systems to numerical algorithms.
 
-A large research project I've worked on is [MagmaDNN](https://github.com/MagmaDNN/magmadnn) as a research assistant with the [Innovative Computing Laboratory](https://www.icl.utk.edu/) and the [Joint Institute for Computer Science](https://www.jics.utk.edu/). I authored the deep learning library, which aims to implement state-of-the-art high performance techniques in deep learning. It has shown promising speed and continues to grow in functionality and performance.
+As part of my prior research I worked on [MagmaDNN](https://github.com/MagmaDNN/magmadnn) as a research assistant with the [Innovative Computing Laboratory](https://www.icl.utk.edu/) and the [Joint Institute for Computer Science](https://www.jics.utk.edu/). I authored the deep learning library, which aims to implement state-of-the-art high performance techniques in deep learning. It has shown promising speed and continues to grow in functionality and performance.
 
-I also enjoy film, reading, and twizzlers of which I [sometimes write about](/year-archive/).
+Outside of work I also enjoy film, reading, and twizzlers (my _raison d'être_) of which I [sometimes write about](/year-archive/).
 
-<p> I'm fairly active on the Math StackExchange math forum. You can find my badge below. </p>
+<p> I am also fairly active on the Math StackExchange math forum. You can find my badge below. </p>
 <a href="https://math.stackexchange.com/users/274085/dando18"><img src="https://math.stackexchange.com/users/flair/274085.png" width="208" height="58" alt="profile for Dando18 at Mathematics Stack Exchange, Q&amp;A for people studying math at any level and professionals in related fields" title="profile for Dando18 at Mathematics Stack Exchange, Q&amp;A for people studying math at any level and professionals in related fields"></a>
 
 <p align="center">
