@@ -1,9 +1,9 @@
 ---
-title: 'Analysis #0: Harrison Bergeron'
+title: 'Writings #0: Harrison Bergeron'
 date: 2019-08-1
-permalink: /posts/2019/01/analysis_0_harrison_bergeron/
+permalink: /posts/2019/01/writings_0_harrison_bergeron/
 categories:
-  - analysis
+  - writings
 tags:
   - writing
   - analysis
@@ -18,7 +18,7 @@ Harrison Bergeron
 by Kurt Vonnegut
 
 
-Harrison Bergeron conveys the story of a dystopian world where equality has become the center focus of society. Harrison Bergeron, the young idealist possessing enough talent to warrent extreme handicapping, is the vessel used to portray the consequences of over-zealous equality.
+Harrison Bergeron conveys the story of a dystopian world where equality has become the center focus of society. Harrison Bergeron, the young idealist possessing enough talent to warrant extreme handicapping, is the vessel used to portray the consequences of over-zealous equality.
 
 Given human-kind's bleak past with equality we have a clear image of what rampant inequality looks like. Vonnegut's tale tells the other side of the story: what happens when we idolize equality too much. What does a society look like where likeness is held in greater regards than individualism and hope?
 

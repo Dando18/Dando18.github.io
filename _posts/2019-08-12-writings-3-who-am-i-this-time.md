@@ -1,9 +1,9 @@
 ---
-title: 'Analysis #3: Who Am I This Time?'
+title: 'Writings #3: Who Am I This Time?'
 date: 2019-08-12
-permalink: /posts/2019/12/analysis_3_who_am_i_this_time
+permalink: /posts/2019/12/writings_3_who_am_i_this_time
 categories:
-  - analysis
+  - writings
 tags:
   - writing
   - short story

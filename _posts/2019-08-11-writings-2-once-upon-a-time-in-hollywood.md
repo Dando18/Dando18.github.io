@@ -1,9 +1,9 @@
 ---
-title: 'Analysis #2: Once Upon a Time in Hollywood'
+title: 'Writings #2: Once Upon a Time in Hollywood'
 date: 2019-08-11
-permalink: /posts/2019/11/analysis_2_once_upon_a_time_in_hollywood
+permalink: /posts/2019/11/writings_2_once_upon_a_time_in_hollywood
 categories:
-  - analysis
+  - writings
 tags:
   - writing
   - movie
@@ -36,6 +36,6 @@ Clearly, I enjoyed the film. However, I still do not regard it in the same echel
 
 All this being said, I believe the film is quite enjoyable and thought provoking. I would recommend it to someone who has enjoyed other Tarantino films.
 
-Daniel's Film Rating: 8 / 10
+My Film Rating: 8 / 10
 
 -- Daniel Nichols
