@@ -49,7 +49,7 @@ The network used is
 
 $$ \text{Input} \rightarrow \text{Embedding} \rightarrow \text{GRU} \rightarrow \text{Fully Connected} \rightarrow \text{Output} $$
 
-Gated Recurrent Units are used even though [LSTM units would perform better]. LSTM units have more parameters, so the GRU network trains faster (about 1 min / epoch on my i7 laptop).
+Gated Recurrent Units are used even though [LSTM units would perform better](https://arxiv.org/abs/1805.04908). LSTM units have more parameters, so the GRU network trains faster (about 1 min / epoch on my i7 laptop).
 
 ## Results
 
