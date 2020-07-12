@@ -112,7 +112,30 @@ Eternity in clay her hand
 That beauty continually, playing ways . . . ben a flowe
 ```
 
-Beautiful! Not really, but we are getting there.
+Beautiful! Not really, but we are getting there. If we train to completion (until the loss stops decreasing), then we can get some slightly better results:
+
+```
+Spring who over the baw,
+If welcome night, to trace,
+And leave the street, like this pure come
+robbed man with freed made from me
+And in one purple brow,
+Nor draws of love, that then did love emborse as we now bereave?
+Yet cruel he this will in thine owne hope, which my verse ever layent did throw.
+```
+
+```
+Moon, that is the gave
+That pure lovers' souls descend
+         O meet, some might,
+         For thus they despise,
+What we behold is censur'd by our eyes.
+Where both deliberate, that on the hasts to bee
+Am burning in the firelight
+Pensively apart.
+
+I have looks stir, shallow stranshels in her
+```
 
 
 ### Word-Based
