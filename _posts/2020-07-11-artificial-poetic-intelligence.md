@@ -124,17 +124,31 @@ Nor draws of love, that then did love emborse as we now bereave?
 Yet cruel he this will in thine owne hope, which my verse ever layent did throw.
 ```
 
+Now the model has overfit the data. It is pulling direct phrases from some of the poems as you can see below. Stitching together lines of different poems is a cool effect, but not really "writing" your own poetry.
+
 ```
 Moon, that is the gave
 That pure lovers' souls descend
          O meet, some might,
          For thus they despise,
-What we behold is censur'd by our eyes.
+What we behold is censur'd by our eyes.         #  https://www.poetryfoundation.org/poems/50321/hero-and-leander-it-lies-not-in-our-power-to-love-or-hate
 Where both deliberate, that on the hasts to bee
 Am burning in the firelight
 Pensively apart.
 
 I have looks stir, shallow stranshels in her
+```
+
+```
+Love!
+Groying her breath forth cast;
+And there for honey bees have sought in vain,
+And beat from thence, have lighted there again.
+About her neck high and Majestie divine,
+Or towards shame were so well compounded;
+
+That it cries, For such mine wasted is,
+On which my thoughts echo from the body
 ```
 
 
