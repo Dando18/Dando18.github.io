@@ -185,7 +185,7 @@ and with my heart, I am I have seen,
 and you will be; and I have seen.
 ```
 
-Here are some of my favorites:
+As with the character-based approach after more training the model overfits and begins to copy exact phrases from the poems. Still it produces some funny results. Here are some of my favorites:
 
 ```
 Upon us perpetual night or glee: without dislike or suspicion. 
