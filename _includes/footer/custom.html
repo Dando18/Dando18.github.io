@@ -3,18 +3,35 @@
 
 {% if site.use_katex %}
 <script>
+
+
   
   document.addEventListener('DOMContentLoaded', (e) => {
+
+    renderMathInElement(document.getElementById('main'), {
+      delimiters: [
+        {left: '\\(', right: '\\)', display: false},
+        {left: '\\[', right: '\\]', display: true}
+      ]
+    });
+
+    
     $("script[type='math/tex']").replaceWith(function() {
+      console.log('hello');
         var tex = $(this).text();
+        console.log(tex);
         return katex.renderToString(tex.replace(/%((\s<!\[CDATA\[)|(\]\]\>)|(\s))/g, ''), {displayMode: false});
     });
 
     $("script[type='math/tex; mode=display']").replaceWith(function() {
+      console.log('hi');
         var tex = $(this).html();
         return katex.renderToString(tex.replace(/%((\s<!\[CDATA\[)|(\]\]\>)|(\s))/g, ''), {displayMode: true});
     });
+    
   });
+  
+  
   
 </script>
 {% endif %}
