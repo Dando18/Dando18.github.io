@@ -8,16 +8,11 @@ redirect_from:
   - /about.html
 ---
 
-I am a Computer Science PhD student at the [University of Maryland, College Park](https://www.cs.umd.edu/). Before UMD, I completed my B.S. in Computer Science at the [University of Tennessee, Knoxville](http://www.eecs.utk.edu/) in Spring 2020.
+I am a Computer Science PhD student at the [University of Maryland, College Park](https://www.cs.umd.edu/) working with the [Parallel Software and Systems Group](https://pssg.cs.umd.edu). Before UMD, I completed my B.S. in Computer Science at the [University of Tennessee, Knoxville](http://www.eecs.utk.edu/) in Spring 2020 working with the [Innovative Computing Laboratory](https://www.icl.utk.edu/) and the [Joint Institute for Computer Science](https://www.jics.utk.edu/).
 
-My research background is in high performance deep learning. This includes utilizing hardware accelerators for single-node performance in addition to large scale supercomputers for distributed training. However, I have a broad interest in HPC ranging from systems to numerical algorithms.
+My research interests are in high performance computing where I am currently working on large scale data analytics and machine learning to predict performance variations in supercomputers. Previously I worked on high performance and parallel deep learning and authored the DL framework [MagmaDNN](https://github.com/MagmaDNN/magmadnn).
 
-As part of my prior research I worked on [MagmaDNN](https://github.com/MagmaDNN/magmadnn) as a research assistant with the [Innovative Computing Laboratory](https://www.icl.utk.edu/) and the [Joint Institute for Computer Science](https://www.jics.utk.edu/). I authored the deep learning library, which aims to implement state-of-the-art high performance techniques in deep learning. It has shown promising speed and continues to grow in functionality and performance.
-
-Outside of work I also enjoy film, [reading](https://www.goodreads.com/user/show/101631777-daniel-nichols), and twizzlers (my _raison d'être_) of which I [sometimes write about](/year-archive/).
-
-<p> I am also fairly active on the Math StackExchange math forum. You can find my badge below. </p>
-<a href="https://math.stackexchange.com/users/274085/dando18"><img src="https://math.stackexchange.com/users/flair/274085.png" width="208" height="58" alt="profile for Dando18 at Mathematics Stack Exchange, Q&amp;A for people studying math at any level and professionals in related fields" title="profile for Dando18 at Mathematics Stack Exchange, Q&amp;A for people studying math at any level and professionals in related fields"></a>
+Outside of work I also enjoy film, [reading](https://www.goodreads.com/user/show/101631777-daniel-nichols), and twizzlers (my _raison d'être_) of which I [sometimes write about](/year-archive/). I am also fairly active on the [Math StackExchange math forum](https://math.stackexchange.com/users/274085/dando18).
 
 <p align="center">
 <i>
