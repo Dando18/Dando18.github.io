@@ -10,7 +10,7 @@ tags:
   - computer vision
 ---
 
-I love scouring old book stores for cool finds and oddities. But I often worry about missing a diamond in the rough. Unfortunately, there is not enough time to dive into every book in a shop and if we cannot judge a book by its cover, then how are we supposed to judge them by only the spine! As a true computer scientist I decided to build an over-the-top tool to help me out.
+I love scouring old book stores for cool finds and oddities, but I often worry about missing a diamond in the rough. Unfortunately, there is not enough time to dive into every book in a shop and if we cannot judge a book by its cover, then how are we supposed to judge them by only the spine! As a true computer scientist I decided to build an over-the-top tool to help me out.
 
 After some lengthy research into computer vision I built an app, which allows you to point your phone camera at a bookshelf and see information about each one of the books in front of you. Unfortunately, text-detection and OCR within a scene are non-trivial tasks and I was only able to get around 70% accuracy rate on identifying books. But this number is also skewed by the fact that a lot of old books in used book stores are crumbly and hard to read with even a human eye. Improving this accuracy rate is saved for a later date. The tool also turns out to be great for cataloging your own bookshelves at home!
 
