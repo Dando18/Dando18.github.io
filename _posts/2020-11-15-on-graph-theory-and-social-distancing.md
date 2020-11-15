@@ -1,7 +1,7 @@
 ---
 title: 'On Graph Theory and Social Distancing'
-date: 2020-10-22
-permalink: /posts/2020/22/on-graph-theory-and-social-distancing
+date: 2020-11-15
+permalink: /posts/2020/15/on-graph-theory-and-social-distancing
 categories:
   - graph theory
   - math
