@@ -129,7 +129,7 @@ $$ \begin{aligned}
 \quad & 0 \le N \le \lvert V \rvert 
 \end{aligned} $$
 
-This adds another degree of freedom to the above algorithm, but it should be fairly trivial to adapt. Since $$ \lambda $$ are fixed, then we can fix $$ N $$, which gives $$ \max_{d} g_{\lambda_N, \lambda_d} (N, d) $$. This is the same problem as above. Despite the intuition that $$ N \propto \frac{1}{\max d} $$ they are dependent on each-other so we cannot binary search $$ N $$ as well. We will need to exhaustively search all values of $$ N $$ from $$ 0 $$ to $$ \lvert V \rvert $$. Thus we run the independent set decision problem $$ \mathcal{O}\left( N\log d_{max} \right) $$ times.
+This adds another degree of freedom to the above algorithm, but it should be fairly trivial to adapt. Since $$ \lambda $$ are fixed, then we can fix $$ N $$, which gives $$ \max_{d} g_{\lambda_N, \lambda_d} (N, d) $$. This is the same problem as above. Despite the intuition that $$ N \propto \frac{1}{\max d} $$ they are dependent on each-other so we cannot binary search $$ N $$ as well. We will need to exhaustively search all values of $$ N $$ from $$ 1 $$ to $$ \lvert V \rvert $$. Thus we run the independent set decision problem $$ \mathcal{O}\left( \lvert V \rvert \log d_{max} \right) $$ times.
 
 ## Free Positions
 
@@ -141,7 +141,7 @@ Formally, we have a space $$ S \subset \mathbb{R}^2 $$ and we want to find a set
 
 Each $$ \bm{x}_i $$ has a neighborhood $$ S_\epsilon $$, which no other points lie within. In the 2D case this means we have a circle centered at each $$ \bm{x}_i $$ and none of them overlap. Now this boils down to the well studied problem of [circle packing](https://en.wikipedia.org/wiki/Circle_packing). There is an abundance of literature and software surrounding circle packing as well as available [tables of existing solutions](http://hydra.nat.uni-magdeburg.de/packing/csq/csq.html).
 
-As an example of how to translate circle packing problems into point packing I will look at square regions. Given a square region with side length $$ L $$ we want to find the maximum circle packing of a square region $$ L + d $$ (scaled to account for 2 extra radii). Most literature focuses on packing unit circles, so to use these results we need to scale the square to $$ \frac{L/d} + 1 $$ and then, once a solution is arrived upon, rescale the found circle centers by $$ d $$. 
+As an example of how to translate circle packing problems into point packing I will look at square regions. Given a square region with side length $$ L $$ we want to find the maximum circle packing of a square region $$ L + d $$ (scaled to account for 2 extra radii). Most literature focuses on packing unit circles, so to use these results we need to scale the square to $$ \frac{L}{d} + 1 $$ and then, once a solution is arrived upon, rescale the found circle centers by $$ d $$. 
 
 Say we have a square region that is $$ 100 \times 100 $$ ft and we want to find the most number of seats to place such that they are all 6 ft apart. This is equivalent to finding the most number of unit circles that can be placed in the square with side length $$ \frac{100 + 6}{6} = 17.\overline{6} $$. 
 
@@ -178,7 +178,7 @@ $$ \begin{aligned}
 \quad & \lVert \bm{x}_i - \bm{x}_j \rVert \le d \quad \forall i \ne j 
 \end{aligned} $$
 
-This is actually a pretty difficult problem, but it can be solved similar to how we solved the _compromised_ solution in the discrete case. For any fixed $$ N $$ we can solve this using the _continuous p-dispersion_ solution. Since $$ N $$ is discrete, then we can just try every value from $$ 1 $$ to $$ N $$ and see which one maximizes $$ g_{\lambda_N, \lambda_d} $$. 
+This is actually a pretty difficult problem, but it can be solved similar to how we solved the _compromised_ solution in the discrete case. For any fixed $$ N $$ we can solve this using the _continuous p-dispersion_ solution. Since $$ N $$ is discrete, then we can just try every value from $$ 1 $$ to $$ \lvert V \rvert $$ and see which one maximizes $$ g_{\lambda_N, \lambda_d} $$. 
 
 ## Accounting for Groups
 
