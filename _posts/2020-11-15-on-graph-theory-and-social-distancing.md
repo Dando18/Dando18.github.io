@@ -84,7 +84,7 @@ $$\begin{aligned}
 
 which, for 100 seats, implies $$ \alpha \le 57.25 $$. So now we know $$ 16 \le \alpha \le 57.25 $$, which are not great bounds, but bounds nonetheless. In fact, for the particular lattice problem I brought up (with $$ \Delta(\mathcal{G}) = 8 $$) we can say that $$ \alpha(\mathcal{G}) = \left\lceil \frac{\sqrt{n}}{2} \right\rceil^2 $$. Thus, with 100 seats we can seat at most 25 people safely. We will not have this nice closed form for every problem though, so the upper and lower bounds are important.
 
-In summation, making assumptions about the connectivity of our graph allows us to use efficient approximations. In addition, we can calculate certain guarantees based on simple graph invariants (properties). However, this solution is somewhat overkill as fixed positions are often seats, which are usually in some regular pattern. As with the lattice pattern above it is fairly trivial to find a closed form solution based on regularity, but it is still good to have a solution for the general case.
+In summation, making assumptions about the connectivity of our graph allows us to use efficient approximations. In addition, we can calculate certain guarantees based on simple graph invariants. However, this solution is somewhat overkill as fixed positions are often seats, which are usually in some regular pattern. As with the lattice pattern above it is fairly trivial to find a closed form solution based on regularity, but it is still good to have a solution for the general case.
 
 ### Maximum Distance
 
@@ -96,7 +96,7 @@ $$ \begin{aligned}
 \quad & \lvert A \rvert = N
 \end{aligned} $$
 
-This problem is known as the _discrete p-dispersion_ problem and, again, has a decent amount of literature surrounding it. Unfortunately it is another computationally difficult problem. This can be shown by an interesting relationship to the independent set problem from above. First, let $$ \mathcal{G}_d $$ be defined by the same graph as above with minimum distance $$ d $$ and let $$ \mathcal{X} : \mathbb{R} \mapsto A $$ be defined by 
+This problem is known as the _discrete p-dispersion_ problem and, again, has a decent amount of literature surrounding it. Unfortunately it is another computationally difficult problem. This can be shown by an interesting relationship to the independent set problem from above. First, let $$ \mathcal{G}_d $$ be defined by the same graph as above with minimum distance $$ d $$ and let $$ \mathcal{X} : \mathbb{R} \mapsto \weierp(V) $$ be defined by 
 
 $$ \mathcal{X} (d) = \left\{ A \mid A \subseteq V \land \lvert A \rvert = p \land \mathbb{I}\{x\in A\} + \mathbb{I}\{y\in A\} \le 1 \,\,\forall (x,y) \in E\left(\mathcal{G}_d\right) \right\} $$
 
