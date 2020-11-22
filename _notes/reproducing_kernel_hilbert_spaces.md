@@ -121,13 +121,13 @@ Principal Component Analysis (PCA) is another good application of kernels. PCA i
 
 Formally, PCA finds a matrix $$ W $$ that transforms $$ X $$ with $$ X_{\textrm{new}} = XW $$. $$w_{(k)}$$, the k-th row of $$W$$, is calculated as 
 
-$$ \bm{w}_{(k)} = \argmax_{\bm w} \frac{\bm{w}^\intercal \hat{\Sigma} \bm{w}}{\bm{w}^\intercal \bm{w}} $$
+$$ \bm{w}_{(k)} = \argmax_{\bm w} \frac{\bm{w}^\intercal \hat{\Sigma}_k \bm{w}}{\bm{w}^\intercal \bm{w}} $$
 
-where $$\hat{\Sigma} = \frac{1}{N-1} \sum_{n=1}^{N} \bm x \bm x^\intercal $$ is the sample covariance (assuming $$X$$ is centered). It can be shown that $$X^\intercal X \propto \hat{\Sigma}$$, so we often used $$X^\intercal X$$ in the numerator instead. Thus, if we want to reduce the data to $$k$$ dimensions, then $$W$$ will be the eigenvectors corresponding to the $$k$$ largest eigenvalues of $$X^\intercal X$$.
+where $$\hat{\Sigma} = \frac{1}{N} \sum_{n=1}^{N} \bm x_n \bm x_n^\intercal $$ is the sample covariance (assuming $$X$$ is centered). It can be shown that $$X^\intercal X \propto \hat{\Sigma}$$, so we often used $$X^\intercal X$$ in the numerator instead. Thus, if we want to reduce the data to $$k$$ dimensions, then $$W$$ will be the eigenvectors corresponding to the $$k$$ largest eigenvalues of $$X^\intercal X$$.
 
 This, however, is a linear mapping from $$X$$ to $$X_{\textrm{new}}$$. What if such a linear data mapping is not ideal? This seems like another great place to utilize RKHS's and the kernel trick. First define a new sample covariance as 
 
-$$ \hat{\Sigma} = \frac{1}{N} \sum_{n=1}^{N} \phi(\bm x_n) \phi(\bm x_n)^\intercal $$
+$$ \hat{\Sigma}_k = \frac{1}{N} \sum_{n=1}^{N} \phi(\bm x_n) \phi(\bm x_n)^\intercal $$
 
 Now it can be shown that $$\hat{\Sigma}\bm u = \lambda \bm u$$ has eigenvectors $$\bm u$$ in the form of $$\sum_{n=1}^{N} a_n \kappa(\cdot, \bm x_n)$$ and thus
 
