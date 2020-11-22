@@ -5,9 +5,11 @@ permalink: /posts/2020/15/on-graph-theory-and-social-distancing
 categories:
   - graph theory
   - math
+  - optimization
 tags:
   - graph theory
   - math
+  - optimization
 ---
 
 COVID-19 has posed unique challenges to the world and forced people to adapt to new ways of living. For example *social distancing* has become the norm in public spaces. In the U.S. keeping people 6 feet apart has become a rigid requirement in any social gathering. While sitting at some of these events, I have started to wonder: is this socially distanced arrangement *optimal*? So I began to investigate.
