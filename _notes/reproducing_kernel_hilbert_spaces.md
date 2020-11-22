@@ -12,7 +12,7 @@ permalink: /notes/reproducing-kernel-hilbert-spaces
 
 ## Definitions
 
-__Hilbert Space:__ A inner-product space $$\mathcal{H}$$ is a Hilbert space if it is also a complete metric space over the metric $$ \lVert \bm{x} \rVert = \sqrt{\langle\bm{x},\bm{x}\rangle} $$. An inner product space is a vector space for which an inner-product is defined.
+__Hilbert Space:__ An inner-product space $$\mathcal{H}$$ is a Hilbert space if it is also a complete metric space over the metric $$ \lVert \bm{x} \rVert = \sqrt{\langle\bm{x},\bm{x}\rangle} $$. An inner product space is a vector space for which an inner-product is defined.
 
 __Complete Metric Space:__ A space $$ V $$ for which every Cauchy sequence in $$ V $$ has a limit in $$ V $$. A sequence $$ \bm{x}_1, \bm{x}_2, \ldots $$ is Cauchy for some metric $$ d $$ if for all $$ r>0 $$ there exists a positive integer $$ N $$ such that for all $$ m,n > N $$ then $$ d(\bm{x}_m, \bm{x}_n) < r $$. Thus, if a space $$ V $$ over some metric $$ d $$ is complete, then all Cauchy sequences $$ \bm{x}_1, \bm{x}_2, \ldots $$ in $$ V $$ must have $$ M = \lim_{n \to \infty} \bm{x}_n $$ such that $$ M \in V $$.
 
