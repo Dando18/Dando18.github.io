@@ -133,7 +133,7 @@ Now it can be shown that $$\hat{\Sigma}\bm u = \lambda \bm u$$ has eigenvectors 
 
 $$ \mathcal{K}\bm a = N\lambda \bm a$$
 
-where $$\bm a = [a_1, \ldots, a_n]^\intercal$$ and $$\mathcal{K}_{ij} = \kappa(\bm x_i, \bm x_j)$$. Finally, we can project values of $$X$$ using the eigenvectors corresponding to the $$k$ largest eigenvalues of $$\mathcal{K}$$. In practice we also typically normalize $$\bm a$$ such that $$\langle \bm u, \bm u \rangle_{\mathcal{H}} = 1$$. 
+where $$\bm a = [a_1, \ldots, a_n]^\intercal$$ and $$\mathcal{K}_{ij} = \kappa(\bm x_i, \bm x_j)$$. Finally, we can project values of $$X$$ using the eigenvectors corresponding to the $$k$$ largest eigenvalues of $$\mathcal{K}$$. In practice we also typically normalize $$\bm a$$ such that $$\langle \bm u, \bm u \rangle_{\mathcal{H}} = 1$$. 
 
 This is a seemingly odd result. We have found better dimensionality reductions by first mapping the data to a higher dimension and then reducing it. However, Kernel PCA outperforms traditional PCA when a linear mapping is not possible. Again the [Wikipedia page on Kernel PCA](https://en.wikipedia.org/wiki/Kernel_principal_component_analysis) has some good pictures to show this effect.
 
