@@ -28,6 +28,8 @@ Given a function $$ f : \mathbb{R}^d \mapsto \mathbb{R}^n $$ vanilla gradient de
 
 $$ \bm{x}_{i+1} \leftarrow \bm{x}_i - \eta \nabla f(\bm{x}_i) $$
 
+This statement may seem foreign, but visualizing gradient descent helps uncover the mystery behind the gradient and its properties.
+
 ## Intuition and Visualization
 
 If you are not familiar with gradients, they have a nice intuitive property which lets this update rule work. The gradient of a function $$ f $$ at a point $$ \bm x $$ always points in the direction of steepest ascent. Intuitively, if you are on the side of a mountain, then the gradient at your location would be the direction of the steepest step you can take. If you want to reach the peak of the mountain, then continually taking steps in that direction is a good strategy. Now you may not reach the absolute highest peak on the mountain, but you will reach _a_ peak.
@@ -65,7 +67,7 @@ $$\begin{aligned}
   \bm{x}_{i+1} &\leftarrow \bm{x}_i - \bm{v}_i
 \end{aligned}$$
 
-This is called usually called _Classical Momentum_.
+This is usually called _Classical Momentum_.
 
 <div id="visualizing-gradient-descent__momentum__inputs-div">
   <select id="visualizing-gradient-descent__momentum__function-select">
@@ -86,7 +88,7 @@ This is called usually called _Classical Momentum_.
 
 A more recent adaptation by Kingma _et al_ [[1](https://arxiv.org/pdf/1412.6980.pdf)] called Adam has quickly become the most popular gradient descent derivative in use today. A large portion of neural network training uses Adam to find optimal parameters for the network. Adam is based off of adaptive moment estimations, which is where it gets its name.
 
-The main improvement in Adam is that each parameter is given an adaptive learning rate (or step size). In vanilla gradient descent there is a static step size $$\eta$$ for all values of $$\bm x$$ and every iteration. Adam gives a unique step size to each $$\bm x_i$$ and updates them every iteration using the first and second moments of the gradient. Here the first moment is the mean of the gradient and the second the uncentered variance. Since computing these directly would be computationally burdensome we using running averages to calculate approximate moments. Let $$\bm m$$ be the first approximate moment and $$\bm v$$ the second. If we initialized these to zero, then they can be calculated at iteration $$i$$ as 
+The main improvement in Adam is that each parameter is given an adaptive learning rate (or step size). In vanilla gradient descent there is a static step size $$\eta$$ for all values of $$\bm x$$ and every iteration. Adam gives a unique step size to each $$\bm x_i$$ and updates them every iteration using the first and second moments of the gradient. Here the first moment is the mean of the gradient and the second the uncentered variance. Since computing these directly would be computationally burdensome we use running averages to calculate approximate moments. Let $$\bm m$$ be the first approximate moment and $$\bm v$$ the second. If we initialized these to zero, then they can be calculated at iteration $$i$$ as 
 
 $$\begin{aligned}
   \bm m_i &\leftarrow \beta_1 \bm m_{i-1} + (1 - \beta_1) \nabla f(\bm x_i) \\
@@ -139,4 +141,4 @@ In general if we can model the classification error or loss of a machine learnin
 
 $$ \mathcal{L}(f(\bm x; \bm \theta), y) = \frac{1}{2N} \sum_{n=1}^{N} ((\bm \theta^\intercal \bm x_n  + \theta_0) - y_n)^2 $$
 
-This is example is slight overkill since linear least squares has a closed form solution, but it shows the general idea quite well.
+This is example is slight overkill since linear least squares has a closed form solution, but it shows the general idea quite well. 
