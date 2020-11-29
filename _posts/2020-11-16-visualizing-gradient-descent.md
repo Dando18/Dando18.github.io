@@ -95,7 +95,7 @@ $$\begin{aligned}
   \bm v_i &\leftarrow \beta_2 \bm v_{i-1} + (1 - \beta_2) \left(\nabla f(\bm x_i)\right)^2
 \end{aligned}$$
 
-If you expend the values $$\bm m_i$$ and $$\bm v_i$$ it is clear to see that the above formulas produce biased estimators of the moments. That is $$\mathbb{E}[\bm m_i] = \mathbb{E}\left[\nabla f(\bm x_i)\right] (1-\beta_1^i) $$ and $$\mathbb{E}[\bm v_i] = \mathbb{E}\left[\left(\nabla f(\bm x_i)\right)^2\right] (1-\beta_2^i)$$, which are biased by $$(1-\beta_1^i)$$ and $$(1-\beta_2^i)$$, respectively. To fix this we adjust the bias after computing the above updates.
+If you expand the values $$\bm m_i$$ and $$\bm v_i$$ it is clear to see that the above formulas produce biased estimators of the moments. That is $$\mathbb{E}[\bm m_i] = \mathbb{E}\left[\nabla f(\bm x_i)\right] (1-\beta_1^i) $$ and $$\mathbb{E}[\bm v_i] = \mathbb{E}\left[\left(\nabla f(\bm x_i)\right)^2\right] (1-\beta_2^i)$$, which are biased by $$(1-\beta_1^i)$$ and $$(1-\beta_2^i)$$, respectively. To fix this we adjust the bias after computing the above updates.
 
 $$\begin{aligned}
   \hat{\bm m}_i &\leftarrow \frac{\bm m_i}{1-\beta_1^i} \\
