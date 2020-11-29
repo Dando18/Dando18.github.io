@@ -72,7 +72,7 @@ function drawPlot(divId) {
         title: getName(divId) + ' gradient descent',
         grid: {rows: 1, columns: 2, pattern: 'independent'},
         showlegend: false,
-        margin: {l: 1, r: 1,},
+        margin: {l: 5, r: 5, t: 40, b: 40},
     };
 
     Plotly.newPlot(divId, data[divId], layout, {displayModeBar: false});
