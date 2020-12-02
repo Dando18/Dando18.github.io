@@ -1,5 +1,5 @@
 ---
-title: "Undergraduate TA"
+title: "Teaching Assistant"
 collection: teaching
 type: "Course"
 permalink: /teaching/2019-fall-ta-undergrad
@@ -8,4 +8,4 @@ date: 2019-08-21
 location: "Knoxville, Tennessee"
 ---
 
-Undergraduate teaching assistant for Computer Science 140: Data Structures and Algorithms I.
+Teaching assistant for Computer Science 140: Data Structures and Algorithms I.
