@@ -99,9 +99,8 @@ Every pedal hoarder should know that the aesthetics are *paramount* to good soun
 Not really, but I am much more likely to put a pedal on display if it looks good
 and I am then, in turn, more likely to use it if I see it frequently.
 
-__Note:__ After drilling and painting the enclosure I had a much better idea for
-the design, which I am currently working on. I will put the images here when 
-it is done.
+![Image of Booster Pedal Circuit Not Available](/images/booster-pedal-final-image.jpg)
+
 
 ## Sound Test
 
