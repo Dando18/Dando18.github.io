@@ -1,5 +1,5 @@
 ---
-title: 'The Digital Librarian: Part 0'
+title: 'The Digital Librarian'
 date: 2020-09-03
 permalink: /posts/2020/09/librarian
 categories:
@@ -14,16 +14,13 @@ I love scouring old book stores for cool finds and oddities, but I often worry a
 
 After some lengthy research into computer vision I built an app, which allows you to point your phone camera at a bookshelf and see information about each one of the books in front of you. Unfortunately, text-detection and OCR within a scene are non-trivial tasks and I was only able to get around 70% accuracy rate on identifying books. But this number is also skewed by the fact that a lot of old books in used book stores are crumbly and hard to read with even a human eye. Improving this accuracy rate is saved for a later date. The tool also turns out to be great for cataloging your own bookshelves at home!
 
-For the sake of brevity I split this into 2 parts: the computer vision theory and the actual implementation.
-
-- [Part 0](#part-0)
+- [Algorithm](#algorithm)
   - [A Line of Books](#a-line-of-books)
   - [Picking Books](#picking-books)
   - [Judging a Book By Its Spine: Text Detection](#judging-a-book-by-its-spine-text-detection)
   - [Improvements](#improvements)
-- [To be continued...](#to-be-continued)
 
-## Part 0
+## Algorithm
 
 ### A Line of Books
 
@@ -104,7 +101,3 @@ After some toying around with these computer vision algorithms I believe there a
 
 Second, up-scaling the text and using a super-resolution network could help the OCR, which struggled a lot with small font sizes on some books. There has been some recent work by Wang, et. al. on super-resolution scaling for text, which could greatly improve the accuracy of the OCR pipeline stage [[4](https://arxiv.org/abs/1909.07113), [5](https://arxiv.org/abs/2005.03341)]. Getting this up-and-running, however, seems to be non-trivial.
 
-
-## To be continued...
-
-In the next post, now that the hard part is done, I will describe porting this to mobile and building a nice interface for selecting and viewing information about books.
