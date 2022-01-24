@@ -153,6 +153,9 @@ function drawResultsPlot(key) {
         },
         barmode: (key == 'dist') ? 'stack' : 'bar', 
         showlegend: (key == 'dist'),
+        margin: {
+            r: 18
+        },
         yaxis: {
             range: ranges[key],
             title: yLabels[key]
