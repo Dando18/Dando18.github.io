@@ -21,7 +21,7 @@ against each other to see which could generate the better bracket.
 In this post I detail a methodology for collecting college basketball data, 
 training ML models to predict game outcomes, and filling out brackets for 
 tournaments to come.
-The entirety of the code used can be found [here](https://github.com/Dando18/march-madness-ml).
+The entirety of the code used can be found at https://github.com/Dando18/march-madness-ml.
 Since I am posting this before the tournament starts I will come back in April
 and revisit the models performed.
 
