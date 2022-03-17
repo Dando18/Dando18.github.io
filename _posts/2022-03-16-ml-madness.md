@@ -67,13 +67,13 @@ To rapidly try out many different models I used those already available in [skle
 A subset of the [classification models](https://scikit-learn.org/stable/supervised_learning.html#supervised-learning)
 were fit on the above training data.
 Grid search was used to find good hyperparameters for each model.
-Then 5-fold cross-validation is used to score each model based on average accuracy.
+Then 5-fold cross-validation was used to score each model based on average accuracy.
 
 
 ## Results
 After tuning and fitting each model the best accuracy was achieved with the 
 Support Vector Machine (SVM) classifier at 72%.
-The accuracies for each model are show below.
+The accuracies for each model are shown below.
 
 <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
 <script type="text/javascript" src="{{ base_path }}/assets/js/posts/ml-madness.js"></script>
@@ -88,7 +88,7 @@ Better predictions would probably require more sophisticated input data.
 ### Brackets
 
 I simulated the 2022 tournament using each of the trained models.
-I inputted each generated bracket into ESPN's bracket challenge and put the 
+I inputted each generated bracket into ESPN's bracket challenge and put screenshots of the 
 resulting brackets below.
 Also included is my personal bracket, which will serve as a comparison point to
 the ML generated brackets.
