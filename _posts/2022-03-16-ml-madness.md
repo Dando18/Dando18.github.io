@@ -16,14 +16,14 @@ Some pick theirs randomly, some pick by favorite mascot, while others try to use
 basketball knowledge to get the edge.
 At the end of the day, however, there is one winner and many losers.
 
-To add to the competitive atmosphere I decided to pit a bunch of machine learning (ML) algorithms
+To add to the competitive atmosphere I decided to pit a bunch of machine learning algorithms
 against each other to see who could generate the better bracket.
 In this post I detail a methodology for collecting college basketball data, 
 training ML models to predict game outcomes, and filling out brackets for 
 tournaments to come.
-The entirety of the code used can be found [here]().
+The entirety of the code used can be found [here](https://github.com/Dando18/march-madness-ml).
 Since I am posting this before the tournament starts I will come back in April
-and revisit how each one of them did.
+and revisit the models performed.
 
 - [Data Collection](#data-collection)
 - [Predicting Outcomes](#predicting-outcomes)
