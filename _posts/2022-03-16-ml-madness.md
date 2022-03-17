@@ -17,7 +17,7 @@ basketball knowledge to get the edge.
 At the end of the day, however, there is one winner and many losers.
 
 To add to the competitive atmosphere I decided to pit a bunch of machine learning algorithms
-against each other to see who could generate the better bracket.
+against each other to see which could generate the better bracket.
 In this post I detail a methodology for collecting college basketball data, 
 training ML models to predict game outcomes, and filling out brackets for 
 tournaments to come.
