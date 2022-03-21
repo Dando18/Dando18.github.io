@@ -179,4 +179,7 @@ decision-tree.png  gaussian-process.png      kNN.png                neural-netwo
 <br />
 
 ## Real Life Performance
-I will update this once the actual 2022 tournament is over...
+Here are the scores of each bracket at the end of the round of 32.
+I will update this with the final results once the 2022 tournament is over...
+
+<div id="ml-madness-results-plot"></div>
