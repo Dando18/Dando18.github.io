@@ -51,9 +51,21 @@ function drawPlot() {
     Plotly.newPlot('ml-madness-plot', data, layout, config);
 }
 
-function drawResultsPlot() {
+function drawResultsPlot(column) {
     let dataX = ['Personal', 'Random', 'Linear Regression', 'Gradient Boosting', 'SVM', 'SGD', 'Gaussian Naive Bayes', 'Perceptron', 'Neural Network', 'AdaBoost', 'kNN', 'Decision Tree', 'Random Forest', 'Gaussian Process'];
-    let dataY = [430, 120, 120, 410, 410, 320, 390, 260, 370, 430, 400, 440, 420, 390];
+    
+    // espn scores
+    let r32Score = [430, 120, 120, 410, 410, 320, 390, 260, 370, 430, 400, 440, 420, 390];
+    let r16Score = [550, 160, 160, 530, 570, 440, 510, 340, 450, 590, 520, 520, 540, 400];
+    
+    // espn percentiles
+    let r16Perc = [94.6, 0.5, 0.5, 87.4, 97.3, 44.9, 80.6, 9.4, 50.2, 98.7, 84.3, 84.3, 92.4, 25.8];
+
+    let columns = {score: r16Score, percentile: r16Perc};
+    let titles = {score: 'Bracket Score After 3 Rounds (ESPN Scoring)', percentile: 'Percentile in Nation Bracket Pool After 3 Rounds'};
+    let extants = {score: [0.0, 600.0], percentile: [0.0, 100.0]};
+    let yAxes = {score: 'Score (out of 1920)', percentile: 'Percentile'};
+    let dataY = columns[column];
 
     let data = [{
         x: dataX,
@@ -63,7 +75,7 @@ function drawResultsPlot() {
         insidetextanchor: 'start',
         insidetextfont: {
             family: 'Gill Sans, sans-serif',
-            size: 18
+            size: 16
         },
         outsidetextfont: {
             family: 'Gill Sans, sans-serif',
@@ -81,7 +93,7 @@ function drawResultsPlot() {
     }];
 
     let layout = {
-        title: 'Bracket Score After 2 Rounds (ESPN Scoring)',
+        title: titles[column],
         font: {
             family: 'Gill Sans, sans-serif'
         },
@@ -91,8 +103,8 @@ function drawResultsPlot() {
             r: 18
         },
         yaxis: {
-            range: [0.0, 500.0],
-            title: 'Score (0-1920)'
+            range: extants[column],
+            title: yAxes[column]
         }
     };
     let config = {
@@ -102,9 +114,19 @@ function drawResultsPlot() {
     Plotly.newPlot('ml-madness-results-plot', data, layout, config);
 }
 
+function getSelectedButton() {
+    return $('#ml-madness-col-selection').find('.ml-madness-col-selection-btn-selected');
+}
+
 $(document).ready(function() {
+    $('.ml-madness-col-selection-btn').on('click', function(e) {
+        let source = e.target || e.srcElement;
+        getSelectedButton().removeClass('ml-madness-col-selection-btn-selected');
+        $(source).addClass('ml-madness-col-selection-btn-selected');
+        drawResultsPlot($(source).val());
+    });
 
     drawPlot();
-    drawResultsPlot();
+    drawResultsPlot('score');
 
 });

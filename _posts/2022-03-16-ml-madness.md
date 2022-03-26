@@ -179,7 +179,29 @@ decision-tree.png  gaussian-process.png      kNN.png                neural-netwo
 <br />
 
 ## Real Life Performance
-Here are the scores of each bracket at the end of the round of 32.
+Here are the scores of each bracket at the end of the round of 16.
+The second plot shows the percentile of the bracket within the nation pool.
 I will update this with the final results once the 2022 tournament is over...
 
+<style>
+    #ml-madness-col-selection {
+        width: 100%; 
+        display: flex; 
+        flex-direction: row; 
+        border: 1px solid #ccc; 
+        border-radius: 4px;
+    }
+    .ml-madness-col-selection-btn {
+        flex-grow: 1; 
+        background-color: white;
+        border: none;
+    }
+    .ml-madness-col-selection-btn-selected, .ml-madness-col-selection-btn:hover {
+        background-color: #eee;
+    }
+</style>
+<div id="ml-madness-col-selection">
+    <button class="ml-madness-col-selection-btn ml-madness-col-selection-btn-selected" value="score" type="button">Score</button>
+    <button class="ml-madness-col-selection-btn" value="percentile" type="button">Percentile</button>
+</div>
 <div id="ml-madness-results-plot"></div>
