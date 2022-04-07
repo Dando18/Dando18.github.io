@@ -55,15 +55,17 @@ function drawResultsPlot(column) {
     let dataX = ['Personal', 'Random', 'Linear Regression', 'Gradient Boosting', 'SVM', 'SGD', 'Gaussian Naive Bayes', 'Perceptron', 'Neural Network', 'AdaBoost', 'kNN', 'Decision Tree', 'Random Forest', 'Gaussian Process'];
     
     // espn scores
-    let r32Score = [430, 120, 120, 410, 410, 320, 390, 260, 370, 430, 400, 440, 420, 390];
-    let r16Score = [550, 160, 160, 530, 570, 440, 510, 340, 450, 590, 520, 520, 540, 400];
+    let r32Score   = [430, 120, 120, 410, 410, 320, 390, 260, 370, 430, 400, 440, 420, 390];
+    let r16Score   = [550, 160, 160, 530, 570, 440, 510, 340, 450, 590, 520, 520, 540, 400];
+    let finalScore = [630, 160, 160, 610, 650, 520, 590, 340, 450, 590, 600, 600, 780, 400];
     
     // espn percentiles
-    let r16Perc = [94.6, 0.5, 0.5, 87.4, 97.3, 44.9, 80.6, 9.4, 50.2, 98.7, 84.3, 84.3, 92.4, 25.8];
+    let r16Perc   = [94.6, 0.5, 0.5, 87.4, 97.3, 44.9, 80.6, 9.4, 50.2, 98.7, 84.3, 84.3, 92.4, 25.8];
+    let finalPerc = [73.3, 0.5, 0.5, 68.2, 75.9, 48.6, 64.9, 7.6, 30.3, 64.9, 66.6, 66.6, 87.2, 18];
 
-    let columns = {score: r16Score, percentile: r16Perc};
+    let columns = {score: finalScore, percentile: finalPerc};
     let titles = {score: 'Bracket Score After 3 Rounds (ESPN Scoring)', percentile: 'Percentile in Nation Bracket Pool After 3 Rounds'};
-    let extants = {score: [0.0, 600.0], percentile: [0.0, 100.0]};
+    let extants = {score: [0.0, 800.0], percentile: [0.0, 100.0]};
     let yAxes = {score: 'Score (out of 1920)', percentile: 'Percentile'};
     let dataY = columns[column];
 

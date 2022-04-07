@@ -30,6 +30,7 @@ and revisit how the models performed.
 - [Results](#results)
   - [Brackets](#brackets)
 - [Real Life Performance](#real-life-performance)
+- [Conclusion and Points of Improvement](#conclusion-and-points-of-improvement)
 
 ## Data Collection
 
@@ -179,9 +180,8 @@ decision-tree.png  gaussian-process.png      kNN.png                neural-netwo
 <br />
 
 ## Real Life Performance
-Here are the scores of each bracket at the end of the round of 16.
-The second plot shows the percentile of the bracket within the nation pool.
-I will update this with the final results once the 2022 tournament is over...
+Here are the scores of each bracket at the end of the tournament.
+The second plot shows the percentile of the bracket within the national pool.
 
 <style>
     #ml-madness-col-selection {
@@ -205,3 +205,56 @@ I will update this with the final results once the 2022 tournament is over...
     <button class="ml-madness-col-selection-btn" value="percentile" type="button">Percentile</button>
 </div>
 <div id="ml-madness-results-plot"></div>
+
+Random Forest classifier wins!
+With a score of 780 it finished in the 87.2 percentile nationwide.
+Interestingly this model did not have the highest testing accuracy.
+The model with the highest accuracy on the training data, the SVM, came in 
+2nd overall landing in the 75.9 percentile.
+
+Ultimately none of the brackets picked Kansas as the winner.
+The Random Forest had Kansas in the championship game, which is why it
+ended up scoring the highest.
+Additionally, none of them predicted the magic Saint Peter's run, albeit, 
+neither did most of the country.
+
+## Conclusion and Points of Improvement
+
+The results were decent and go to show the amount of unpredictability in the 
+NCAA tournament.
+However, they are very informative and give me some ideas for how to improve by
+next March.
+
+First, all of the brackets scored very low due to performing poor in the later 
+rounds.
+There were lots of upsets early on, but traditionally good teams ended up 
+surviving into the final games.
+This hurt the final score of most of the models, since games are weighted by 
+round such that each round of the tournament contributes equally to the final
+tally.
+Obviously predicting later games is difficult, but I can try to bias the 
+models towards them.
+One trivial way to do this is to train to optimize _bracket score_ instead of
+game outcome prediction rate.
+
+Second, there are many important statistics left out of my model.
+For instance the [KenPom](https://kenpom.com/) scores could also be informative
+inputs into the model.
+Next year I will scrape more statistics to use as inputs into the model.
+Related to this is historical information about the teams.
+This year we saw all "blue-bloods" in the final four.
+Historically good teams, despite their statistics, are still favored to make
+it far in the tournament.
+
+Finally, time series data can be included to help account for momentum.
+Sometimes teams get "hot" at the end of their season and come into the 
+tournament with considerable momentum.
+Their early season statistics may skew the aggregate statistics enough to 
+confuse the model.
+Using time series models such as LSTM neural networks may ameliorate final
+results.
+
+Altogether, the experiment was fun to follow along throughout March and 
+now I have an extremely "scientific" means to validate my future ML model 
+selections.
+Next year I will be back with some hopefully improved models.
