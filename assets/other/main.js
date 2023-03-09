@@ -10,6 +10,9 @@ const KEYWORDS_COL = "Author Keywords";
 const COLOR_PALETTE = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#8c564b', '#e377c2', '#7f7f7f', '#bcbd22', '#17becf'];
 const VENUE_COLORS = {SC: COLOR_PALETTE[0], IPDPS: COLOR_PALETTE[1], TPDS: COLOR_PALETTE[2]};
 
+const KEYWORD_FILTER = ["edge server", "cloud-edge computing", "federated learning", "edge computing", "cloud", "cloud computing", 
+    "blockchain", "mobile edge computing", "pervasive edge computing", "multi-access edge computing"];
+
 let plots = {};
 
 d3.csv("all.csv").then((data) => {
@@ -23,6 +26,9 @@ d3.csv("all.csv").then((data) => {
         x[KEYWORDS_COL] = x[KEYWORDS_COL].toLowerCase();
         return x; 
     });
+
+    /* pass data thru filter */
+    data = data.filter(d => !d[KEYWORDS_COL].split(';').some(x => KEYWORD_FILTER.includes(x)));
 
     /* create settings ui */
     createSettings(data);
