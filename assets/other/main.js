@@ -17,7 +17,8 @@ const KEYWORD_FILTER = ["edge server", "cloud-edge computing", "federated learni
     "access control", "ciphertext policy", "key management", "revocation", "identity-based cryptography",
     "anonymous authentication", "certificateless signature", "wireless body area network",
     "wireless sensors networks", "distributed trust model", "wireless networks", "denial-of-service attack",
-    "crowdsourcing", "mobile sensing", "delay tolerant networks", "mobile social networks"];
+    "crowdsourcing", "mobile sensing", "delay tolerant networks", "mobile social networks",
+    "Wireless", "indoor localization", "site survey", "cyber security"];
 
 let plots = {};
 
