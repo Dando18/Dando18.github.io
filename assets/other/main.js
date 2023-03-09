@@ -15,10 +15,10 @@ const KEYWORD_FILTER = ["edge server", "cloud-edge computing", "federated learni
     "blockchain", "mobile edge computing", "pervasive edge computing", "multi-access edge computing", "clouds",
     "physical layer", "cloud security", "smart grids", "smart grid", "privacy preserving", "cloud storage",
     "access control", "ciphertext policy", "key management", "revocation", "identity-based cryptography",
-    "anonymous authentication", "certificateless signature", "wireless body area network",
+    "anonymous authentication", "certificateless signature", "wireless body area network", "wireless sensor networks",
     "wireless sensors networks", "distributed trust model", "wireless networks", "denial-of-service attack",
     "crowdsourcing", "mobile sensing", "delay tolerant networks", "mobile social networks",
-    "Wireless", "indoor localization", "site survey", "cyber security"];
+    "wireless", "indoor localization", "site survey", "cyber security", "ddos attacks", "flash crowds"];
 
 let plots = {};
 
