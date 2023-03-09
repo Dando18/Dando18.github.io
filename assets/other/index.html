@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="style.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="https://rawgit.com/jasondavies/d3-cloud/master/build/d3.layout.cloud.js"></script>
+</head>
+<body>
+
+    <h1 style="font-family: Sans Serif;">HPC Publications:</h1>
+    <div id="main">
+        <!-- settings -->
+        <div id="settings">
+            <form id="settings__venues">
+                <fieldset class="sub-setting">
+                    <legend>Venues</legend>
+                </fieldset>
+            </form>
+
+            <form id="settings__years">
+                <fieldset class="sub-setting">
+                    <legend>Years</legend>
+                </fieldset>
+            </form>
+
+            <form id="settings__papers-count">
+                <fieldset class="sub-setting">
+                    <legend># Papers</legend>
+                    <select id="settings__papers-count__selection">
+                        <option value="10">10</option>
+                        <option value="25" selected>25</option>
+                        <option value="50">50</option>
+                        <option value="100">100</option>
+                    </select>
+                    in list
+                </fieldset>
+            </form>
+
+            <form id="settings__authors">
+                <fieldset class="sub-setting">
+                    <legend>Authors</legend>
+                    <label>Group by</label>
+                    <select id="settings__authors__selection">
+                        <option value="citations" selected>Citations</option>
+                        <option value="average citations">Average Citations</option>
+                        <option value="papers">Papers</option>
+                    </select>
+                </fieldset>
+            </form>
+        </div>
+        
+        <div id="visualizations">
+            <!-- list of top papers -->
+            <div class="paper-list">
+                <div class="paper-header">
+                <div class="paper-item__citation-count">Citations</div>
+                <div class="paper-item__title">Paper</div>
+                </div>
+            </div>
+            <br>
+
+            <!-- citations by venue plots -->
+            <div id="total-citations-by-venue" class="plot"></div>
+            <div id="average-citations-by-venue" class="plot"></div>
+            <div id="citations-by-venue" class="plot"></div>
+
+            <!-- by author plots -->
+            <div id="by-author" class="plot"></div>
+
+            <!-- by institution plots -->
+            <div id="by-institution" class="plot"></div>
+
+            <!-- by keyword plots -->
+            <div id="by-keyword" class="plot"></div>
+
+            <!-- abstract word cloud -->
+            <!--<div id="abstract-word-cloud" class="plot"></div>-->
+        </div>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
