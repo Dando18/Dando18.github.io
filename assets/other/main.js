@@ -12,7 +12,12 @@ const COLOR_PALETTE = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#
 const VENUE_COLORS = {SC: COLOR_PALETTE[0], IPDPS: COLOR_PALETTE[1], TPDS: COLOR_PALETTE[2]};
 
 const KEYWORD_FILTER = ["edge server", "cloud-edge computing", "federated learning", "edge computing", "cloud", "cloud computing", 
-    "blockchain", "mobile edge computing", "pervasive edge computing", "multi-access edge computing", "clouds"];
+    "blockchain", "mobile edge computing", "pervasive edge computing", "multi-access edge computing", "clouds",
+    "physical layer", "cloud security", "smart grids", "smart grid", "privacy preserving", "cloud storage",
+    "access control", "ciphertext policy", "key management", "revocation", "identity-based cryptography",
+    "anonymous authentication", "certificateless signature", "wireless body area network",
+    "wireless sensors networks", "distributed trust model", "wireless networks", "denial-of-service attack",
+    "crowdsourcing", "mobile sensing", "delay tolerant networks", "mobile social networks"];
 
 let plots = {};
 
@@ -34,6 +39,7 @@ d3.csv("all.csv").then((data) => {
     data = data.filter(d => !d[TITLE_COL].toLowerCase().includes("server"));
     data = data.filter(d => !d[TITLE_COL].toLowerCase().includes("iot"));
     data = data.filter(d => !d[TITLE_COL].toLowerCase().includes("edge computing"));
+    
 
     /* create settings ui */
     createSettings(data);
@@ -53,14 +59,26 @@ d3.csv("all.csv").then((data) => {
     //drawAbstractWordCloud(data);
     //updateAbstractWordCloud(data);
 
+    $("#year__2019").prop("checked", false);
+    $("#settings__years fieldset").append($("<i>")
+                                            .css("margin-top", "10px")
+                                            .css("font-size", "10pt")
+                                            .text("* SC 2019 data missing")
+                                        );
+    update(data);
 });
 
 function normalizeVenueNames(name) {
-    if (name.endsWith("(IPDPS)")) {
+    let ipdps_names = ["IPDPS", "International Parallel & Distributed Processing Symposium", 
+        "International Parallel and Distributed Processing Symposium", "International Symposium on Parallel and Distributed Processing"];
+    let sc_names = ["International Conference on High Performance Computing, Networking, Storage and Analysis", "International Conference for High Performance Computing, Networking, Storage and Analysis"];
+    let tpds_names = ["Transactions on Parallel and Distributed Systems"];
+
+    if (ipdps_names.some(n => name.includes(n))) {
         return "IPDPS";
-    } else if (name.endsWith("International Conference for High Performance Computing, Networking, Storage and Analysis")) {
+    } else if (sc_names.some(n => name.includes(n))) {
         return "SC";
-    } else if (name.endsWith("Transactions on Parallel and Distributed Systems")) {
+    } else if (tpds_names.some(n => name.includes(n))) {
         return "TPDS";
     } else {
         console.log("Unknown venue: " + name);
@@ -257,24 +275,24 @@ function updateCitationsByVenue(data) {
 function getSplitColumnUnique(data, column) {
     let raw = getColumn(data, column);
     let all = raw.map(a => a.split(";")).flat();
-    return [...new Set(all)];
+    return [...new Set(all)].filter(x => x != "");
 }
 
 function countByColumn(data, column=AUTHORS_COL) {
     let vals = getSplitColumnUnique(data, column);
     let bin = {};
-    for (val of vals) bin[val] = {citations: 0, papers: 0, "citation rate": 0};
+    for (val of vals) bin[val] = {citations: 0, papers: 0, "total citation rate": 0};
     for (row of data) {
         for (col of row[column].split(';')) {
             if (col == "") continue;
             bin[col].papers += 1;
             bin[col].citations += row[CITATION_COL];
-            bin[col]["citation rate"] += row[CITATION_RATE_COL];
+            bin[col]["total citation rate"] += +row[CITATION_RATE_COL];
         }
     }
     for (col in bin) {
         bin[col]['average citations'] = bin[col].citations / bin[col].papers;
-        bin[col]['citation rate'] = bin[col]['citation rate'] / bin[col].papers;
+        bin[col]['average citation rate'] = bin[col]['total citation rate'] / bin[col].papers;
     }
     return bin;
 }
@@ -286,7 +304,7 @@ function drawByColumn(data, N=50, column=AUTHORS_COL, by="citations") {
     let X = [], y = [];
     counts.forEach(a => {X.push(a[0]); y.push(a[1])});
     const margins = {left: 30, right: 25, top: 40, bottom: 80};
-    if (column == INSTITUTION_COL) { margins.bottom = 180; margins.left = 120; }
+    if (column == INSTITUTION_COL) { margins.bottom = 200; margins.left = 140; }
     const title = by.split().map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(" ") + ` By ${column}`;
     const id = {"Authors": "#by-author", "Author Affiliations": '#by-institution', "Author Keywords": "#by-keyword"}[column];
     drawBarPlot(id, X, y, margins, 1200, 600, title, 45, null);
@@ -298,9 +316,8 @@ function updateByColumn(data, N=50, column=AUTHORS_COL, by="citations") {
     counts = counts.splice(0, N);
     let X = [], y = [];
     counts.forEach(a => {X.push(a[0]); y.push(a[1])});
-    const title = by.split().map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(" ") + ` By ${column}`;
+    const title = by.split(" ").map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(" ") + ` By ${column}`;
     const id = {"Authors": "#by-author", "Author Affiliations": '#by-institution', "Author Keywords": "#by-keyword"}[column];
-    console.log(X,y);
     updateBarPlot(id, X, y, title);
 }
 
