@@ -4,6 +4,7 @@ const INSTITUTION_COL = "Author Affiliations";
 const VENUE_COL = "Publication Title";
 const YEAR_COL = "Publication Year";
 const CITATION_COL = "Article Citation Count";
+const CITATION_RATE_COL = "Citation Rate";
 const ABSTRACT_COL = "Abstract";
 const KEYWORDS_COL = "Author Keywords";
 
@@ -262,16 +263,18 @@ function getSplitColumnUnique(data, column) {
 function countByColumn(data, column=AUTHORS_COL) {
     let vals = getSplitColumnUnique(data, column);
     let bin = {};
-    for (val of vals) bin[val] = {citations: 0, papers: 0};
+    for (val of vals) bin[val] = {citations: 0, papers: 0, "citation rate": 0};
     for (row of data) {
         for (col of row[column].split(';')) {
             if (col == "") continue;
             bin[col].papers += 1;
             bin[col].citations += row[CITATION_COL];
+            bin[col]["citation rate"] += row[CITATION_RATE_COL];
         }
     }
     for (col in bin) {
         bin[col]['average citations'] = bin[col].citations / bin[col].papers;
+        bin[col]['citation rate'] = bin[col]['citation rate'] / bin[col].papers;
     }
     return bin;
 }
@@ -297,6 +300,7 @@ function updateByColumn(data, N=50, column=AUTHORS_COL, by="citations") {
     counts.forEach(a => {X.push(a[0]); y.push(a[1])});
     const title = by.split().map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(" ") + ` By ${column}`;
     const id = {"Authors": "#by-author", "Author Affiliations": '#by-institution', "Author Keywords": "#by-keyword"}[column];
+    console.log(X,y);
     updateBarPlot(id, X, y, title);
 }
 
