@@ -11,7 +11,7 @@ const COLOR_PALETTE = ['#1f77b4', '#ff7f0e', '#2ca02c', '#d62728', '#9467bd', '#
 const VENUE_COLORS = {SC: COLOR_PALETTE[0], IPDPS: COLOR_PALETTE[1], TPDS: COLOR_PALETTE[2]};
 
 const KEYWORD_FILTER = ["edge server", "cloud-edge computing", "federated learning", "edge computing", "cloud", "cloud computing", 
-    "blockchain", "mobile edge computing", "pervasive edge computing", "multi-access edge computing"];
+    "blockchain", "mobile edge computing", "pervasive edge computing", "multi-access edge computing", "clouds"];
 
 let plots = {};
 
@@ -24,11 +24,15 @@ d3.csv("all.csv").then((data) => {
         x[CITATION_COL] = Number(x[CITATION_COL]);
         x[INSTITUTION_COL] = x[INSTITUTION_COL].split(';').map(x => x.split(',').slice(0,2)).join(';');
         x[KEYWORDS_COL] = x[KEYWORDS_COL].toLowerCase();
-        return x; 
+        return x;
     });
 
     /* pass data thru filter */
-    data = data.filter(d => !d[KEYWORDS_COL].split(';').some(x => KEYWORD_FILTER.includes(x)));
+    data = data.filter(d => !d[KEYWORDS_COL].split(';').some(x => KEYWORD_FILTER.includes(x.toLowerCase())));
+    data = data.filter(d => !d[TITLE_COL].toLowerCase().includes("cloud"));
+    data = data.filter(d => !d[TITLE_COL].toLowerCase().includes("server"));
+    data = data.filter(d => !d[TITLE_COL].toLowerCase().includes("iot"));
+    data = data.filter(d => !d[TITLE_COL].toLowerCase().includes("edge computing"));
 
     /* create settings ui */
     createSettings(data);
