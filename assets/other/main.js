@@ -1,10 +1,12 @@
 const TITLE_COL = "Document Title";
 const AUTHORS_COL = "Authors";
+const NUM_AUTHORS_COL = "Authors Count";
 const INSTITUTION_COL = "Author Affiliations";
 const VENUE_COL = "Publication Title";
 const YEAR_COL = "Publication Year";
 const CITATION_COL = "Article Citation Count";
 const CITATION_RATE_COL = "Citation Rate";
+const REFERENCES_COL = "Reference Count";
 const ABSTRACT_COL = "Abstract";
 const KEYWORDS_COL = "Author Keywords";
 
@@ -248,6 +250,8 @@ function countByColumn(data, column=AUTHORS_COL, by='citations', agg='total', is
             if (col == "") continue;
             if (by == 'citations') bin[col].push(+row[CITATION_COL]);
             else if (by == "citation rate") bin[col].push(+row[CITATION_RATE_COL]);
+            else if (by == "references") bin[col].push(+row[REFERENCES_COL]);
+            else if (by == "# authors") bin[col].push(+row[NUM_AUTHORS_COL]);
             else if (by == "papers") bin[col].push(1);
         }
     }
