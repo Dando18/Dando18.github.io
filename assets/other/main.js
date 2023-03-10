@@ -142,9 +142,8 @@ function createSettings(data) {
         update(data);
     });
 
-    $('#settings__authors__selection').change(function() {
-        update(data);   // have to update since we need data filtering
-    });
+    $('#settings__authors__column').change(function() { update(data); });
+    $('#settings__authors__agg').change(function() { update(data); });
 }
 
 function getSelectedCheckboxes(name) {
@@ -171,9 +170,12 @@ function update(data) {
     updateTotalCitationsByVenue(data);
     updateAverageCitationsByVenue(data);
     updateCitationsByVenue(data);
-    updateByColumn(data, 50, AUTHORS_COL, $('#settings__authors__selection option:selected').val());
-    updateByColumn(data, 50, INSTITUTION_COL, $('#settings__authors__selection option:selected').val());
-    updateByColumn(data, 50, KEYWORDS_COL, $('#settings__authors__selection option:selected').val());
+
+    let groupByColumn = $('#settings__authors__column option:selected').val();
+    let groupByAgg = $('#settings__authors__agg option:selected').val();
+    updateByColumn(data, 50, AUTHORS_COL, groupByColumn, groupByAgg);
+    updateByColumn(data, 50, INSTITUTION_COL, groupByColumn, groupByAgg);
+    updateByColumn(data, 50, KEYWORDS_COL, groupByColumn, groupByAgg);
 }
 
 function listTopPapers(data, N) {
@@ -275,49 +277,73 @@ function updateCitationsByVenue(data) {
 
 function getSplitColumnUnique(data, column) {
     let raw = getColumn(data, column);
-    let all = raw.map(a => a.split(";")).flat();
+    let all = raw.map(a => a.split(";")).flat().map(a => a.trim());
     return [...new Set(all)].filter(x => x != "");
 }
 
-function countByColumn(data, column=AUTHORS_COL) {
+function capitalize(s) {
+    return s.split(" ").map(c => c[0].toUpperCase() + c.slice(1)).join(" ");
+}
+
+function median(arr) {
+    const sorted = Array.from(arr).sort((a,b) => a-b);
+    const middle = Math.floor(sorted.length / 2);
+
+    if (sorted.length % 2 === 0) {
+        return (sorted[middle-1] + sorted[middle]) / 2;
+    }
+    return sorted[middle];
+}
+
+function countByColumn(data, column=AUTHORS_COL, by='citations', agg='total') {
     let vals = getSplitColumnUnique(data, column);
     let bin = {};
-    for (val of vals) bin[val] = {citations: 0, papers: 0, "total citation rate": 0};
+    for (val of vals) bin[val] = [];
     for (row of data) {
         for (col of row[column].split(';')) {
+            col = col.trim();
             if (col == "") continue;
-            bin[col].papers += 1;
-            bin[col].citations += row[CITATION_COL];
-            bin[col]["total citation rate"] += +row[CITATION_RATE_COL];
+            if (by == 'citations') bin[col].push(+row[CITATION_COL]);
+            else if (by == "citation rate") bin[col].push(+row[CITATION_RATE_COL]);
+            else if (by == "papers") bin[col].push(1);
         }
     }
     for (col in bin) {
-        bin[col]['average citations'] = bin[col].citations / bin[col].papers;
-        bin[col]['average citation rate'] = bin[col]['total citation rate'] / bin[col].papers;
+        if (agg == 'total') {
+            bin[col] = bin[col].reduce((acc, val) => acc + val);
+        } else if (agg == "mean") {
+            bin[col] = bin[col].reduce((acc, val) => acc + val) / bin[col].length;
+        } else if (agg == "median") {
+            bin[col] = median(bin[col]);
+        } else if (agg == "min") {
+            bin[col] = d3.min(bin[col]);
+        } else if (agg == "max") {
+            bin[col] = d3.max(bin[col]);
+        }
     }
     return bin;
 }
 
-function drawByColumn(data, N=50, column=AUTHORS_COL, by="citations") {
-    let counts = Object.entries(countByColumn(data, column)).map(d => [d[0], d[1][by]]);
+function drawByColumn(data, N=50, column=AUTHORS_COL, by="citations", agg="total") {
+    let counts = Object.entries(countByColumn(data, column, by, agg));
     counts.sort((a,b) => b[1] - a[1]);
     counts = counts.splice(0, N);
     let X = [], y = [];
     counts.forEach(a => {X.push(a[0]); y.push(a[1])});
     const margins = {left: 30, right: 25, top: 40, bottom: 80};
     if (column == INSTITUTION_COL) { margins.bottom = 200; margins.left = 140; }
-    const title = by.split().map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(" ") + ` By ${column}`;
+    const title = capitalize(`${agg} ${by} By ${column}`);
     const id = {"Authors": "#by-author", "Author Affiliations": '#by-institution', "Author Keywords": "#by-keyword"}[column];
     drawBarPlot(id, X, y, margins, 1200, 600, title, 45, null);
 }
 
-function updateByColumn(data, N=50, column=AUTHORS_COL, by="citations") {
-    let counts = Object.entries(countByColumn(data, column)).map(d => [d[0], d[1][by]]);
+function updateByColumn(data, N=50, column=AUTHORS_COL, by="citations", agg="total") {
+    let counts = Object.entries(countByColumn(data, column, by, agg));
     counts.sort((a,b) => b[1] - a[1]);
     counts = counts.splice(0, N);
     let X = [], y = [];
     counts.forEach(a => {X.push(a[0]); y.push(a[1])});
-    const title = by.split(" ").map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(" ") + ` By ${column}`;
+    const title = capitalize(`${agg} ${by} By ${column}`);
     const id = {"Authors": "#by-author", "Author Affiliations": '#by-institution', "Author Keywords": "#by-keyword"}[column];
     updateBarPlot(id, X, y, title);
 }
