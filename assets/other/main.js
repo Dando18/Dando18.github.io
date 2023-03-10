@@ -295,6 +295,17 @@ function median(arr) {
     return sorted[middle];
 }
 
+function hindex(arr) {
+    let sorted = Array.from(arr).sort((a,b) => a-b);
+    for (const [idx, val] of sorted.entries()) {
+        const result = sorted.length - idx;
+        if (result <= val) {
+            return result;
+        }
+    };
+    return 0;
+}
+
 function countByColumn(data, column=AUTHORS_COL, by='citations', agg='total') {
     let vals = getSplitColumnUnique(data, column);
     let bin = {};
@@ -319,6 +330,8 @@ function countByColumn(data, column=AUTHORS_COL, by='citations', agg='total') {
             bin[col] = d3.min(bin[col]);
         } else if (agg == "max") {
             bin[col] = d3.max(bin[col]);
+        } else if (agg == "h-index") {
+            bin[col] = hindex(bin[col]);
         }
     }
     return bin;
