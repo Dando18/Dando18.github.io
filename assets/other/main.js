@@ -21,6 +21,7 @@ const KEYWORD_FILTER = ["edge server", "cloud-edge computing", "federated learni
     "wireless", "indoor localization", "site survey", "cyber security", "ddos attacks", "flash crowds"];
 
 let plots = {};
+let previousAggFunction = "";
 
 d3.csv("all.csv").then((data) => {
 
@@ -49,12 +50,7 @@ d3.csv("all.csv").then((data) => {
     listTopPapers(data, 25);
 
     /* draw plots */
-    drawTotalCitationsByVenue(data);
-    drawAverageCitationsByVenue(data);
-    drawCitationsByVenue(data);
-    drawByColumn(data);
-    drawByColumn(data, 50, INSTITUTION_COL);
-    drawByColumn(data, 50, KEYWORDS_COL);
+    drawMainPlot(data);
 
     // not working
     //drawAbstractWordCloud(data);
@@ -143,6 +139,7 @@ function createSettings(data) {
     });
 
     $('#settings__authors__column').change(function() { update(data); });
+    $('#settings__xaxis').change(function() { update(data); });
     $('#settings__authors__agg').change(function() { update(data); });
 }
 
@@ -167,15 +164,10 @@ function update(data) {
     listTopPapers(data, N);
 
     /* update plots */
-    updateTotalCitationsByVenue(data);
-    updateAverageCitationsByVenue(data);
-    updateCitationsByVenue(data);
-
-    let groupByColumn = $('#settings__authors__column option:selected').val();
+    let yAxis = $('#settings__authors__column option:selected').val();
+    let xAxis = $('#settings__xaxis option:selected').val();
     let groupByAgg = $('#settings__authors__agg option:selected').val();
-    updateByColumn(data, 50, AUTHORS_COL, groupByColumn, groupByAgg);
-    updateByColumn(data, 50, INSTITUTION_COL, groupByColumn, groupByAgg);
-    updateByColumn(data, 50, KEYWORDS_COL, groupByColumn, groupByAgg);
+    updateMainPlot(data, xAxis, yAxis, groupByAgg);
 }
 
 function listTopPapers(data, N) {
@@ -205,80 +197,16 @@ function listTopPapers(data, N) {
     $(".paper-item:odd").css("background-color", "#eee");   // alternating colors
 }
 
-function drawTotalCitationsByVenue(data) {
-    let X = getSelectedCheckboxes("venue");
-    let y = X.map(x => data.reduce((acc, val) => acc + ((val[VENUE_COL] == x) ? val[CITATION_COL] : 0), 0));
-    const margins = {left: 50, right: 25, top: 40, bottom: 25};
-    drawBarPlot("#total-citations-by-venue", X, y, margins, 800, 600, "Total Citations by Venue", 0, VENUE_COLORS);
-}
-
-function updateTotalCitationsByVenue(data) {
-    let X = getSelectedCheckboxes("venue");
-    let y = X.map(x => data.reduce((acc, val) => acc + ((val[VENUE_COL] == x) ? val[CITATION_COL] : 0), 0));
-    updateBarPlot("#total-citations-by-venue", X, y);
-}
-
-function drawAverageCitationsByVenue(data) {
-    let bins = {};
-    for (venue of getSelectedCheckboxes("venue")) bins[venue] = [];
-    for (row of data) {
-        bins[row[VENUE_COL]].push(row[CITATION_COL]);
-    }
-    for (venue in bins) {
-        bins[venue] = bins[venue].reduce((acc, val) => acc + val) / bins[venue].length;
-    }
-    let X = Object.keys(bins), y = Object.values(bins);
-    const margins = {left: 50, right: 25, top: 40, bottom: 25};
-    drawBarPlot("#average-citations-by-venue", X, y, margins, 800, 600, "Average Citations by Venue", 0, VENUE_COLORS);
-}
-
-function updateAverageCitationsByVenue(data) {
-    let bins = {};
-    for (venue of getSelectedCheckboxes("venue")) bins[venue] = [];
-    for (row of data) {
-        bins[row[VENUE_COL]].push(row[CITATION_COL]);
-    }
-    for (venue in bins) {
-        bins[venue] = bins[venue].reduce((acc, val) => acc + val) / bins[venue].length;
-    }
-    let X = Object.keys(bins), y = Object.values(bins);
-    updateBarPlot("#average-citations-by-venue", X, y);
-}
-
-function drawCitationsByVenue(data) {
-    const venues = getSelectedCheckboxes('venue');
-
-    let bins = {};
-    for (venue of venues) bins[venue] = [];
-    for (idx in data) {
-        const row = data[idx];
-        bins[row[VENUE_COL]].push(row[CITATION_COL]);
-    }
-    let X = Object.keys(bins);
-    let y = Object.values(bins);
-
-    const margins = {left: 30, right: 25, top: 40, bottom: 25};
-    drawViolinPlot("#citations-by-venue", X, y, margins, 800, 600, "Citations by Venue", VENUE_COLORS);
-}
-
-function updateCitationsByVenue(data) {
-    const venues = getSelectedCheckboxes('venue');
-
-    let bins = {};
-    for (venue of venues) bins[venue] = [];
-    for (idx in data) {
-        const row = data[idx];
-        bins[row[VENUE_COL]].push(row[CITATION_COL]);
-    }
-    let X = Object.keys(bins);
-    let y = Object.values(bins);
-    updateViolinPlot("#citations-by-venue", X, y);
-}
-
 function getSplitColumnUnique(data, column) {
     let raw = getColumn(data, column);
     let all = raw.map(a => a.split(";")).flat().map(a => a.trim());
     return [...new Set(all)].filter(x => x != "");
+}
+
+function sortBySums(arr) {
+    let sums = arr.map(x => [x[1].reduce((acc,val) => acc + val), x]);
+    sums.sort((a,b) => b[0] - a[0]);
+    return sums.map(x => x[1]);
 }
 
 function capitalize(s) {
@@ -306,8 +234,12 @@ function hindex(arr) {
     return 0;
 }
 
-function countByColumn(data, column=AUTHORS_COL, by='citations', agg='total') {
-    let vals = getSplitColumnUnique(data, column);
+function countByColumn(data, column=AUTHORS_COL, by='citations', agg='total', isSplit=true) {
+    if (isSplit) {
+        vals = getSplitColumnUnique(data, column);
+    } else {
+        vals = [...new Set(getColumn(data, column))];
+    }
     let bin = {};
     for (val of vals) bin[val] = [];
     for (row of data) {
@@ -337,28 +269,70 @@ function countByColumn(data, column=AUTHORS_COL, by='citations', agg='total') {
     return bin;
 }
 
-function drawByColumn(data, N=50, column=AUTHORS_COL, by="citations", agg="total") {
-    let counts = Object.entries(countByColumn(data, column, by, agg));
-    counts.sort((a,b) => b[1] - a[1]);
-    counts = counts.splice(0, N);
+function drawMainPlot(data, column=VENUE_COL, by="citations", agg="total") {
+    const isSplitColumn = [AUTHORS_COL, INSTITUTION_COL, KEYWORDS_COL].includes(column);
+    let counts = Object.entries(countByColumn(data, column, by, agg, isSplitColumn));
+
+    if (agg === "none") {
+        counts = sortBySums(counts);
+    } else {
+        counts.sort((a,b) => b[1]-a[1]);
+    }
+    
+    const maxX = (agg === "none") ? 10 : 50;
+    if (counts.length > maxX) {
+        counts = counts.slice(0, maxX);
+    }
+
     let X = [], y = [];
     counts.forEach(a => {X.push(a[0]); y.push(a[1])});
-    const margins = {left: 30, right: 25, top: 40, bottom: 80};
-    if (column == INSTITUTION_COL) { margins.bottom = 200; margins.left = 140; }
-    const title = capitalize(`${agg} ${by} By ${column}`);
-    const id = {"Authors": "#by-author", "Author Affiliations": '#by-institution', "Author Keywords": "#by-keyword"}[column];
-    drawBarPlot(id, X, y, margins, 1200, 600, title, 45, null);
+
+    const margins = {left: 40, right: 25, top: 40, bottom: 100};
+    const aggStr = (agg === "none") ? "" : agg;
+    const title = capitalize(`${aggStr} ${by} By ${column}`);
+    const colorMap = (column === VENUE_COL) ? VENUE_COLORS : "#9467bd";
+    previousAggFunction = agg;
+    
+    if (agg === "none") {
+        drawViolinPlot("#main-plot", X, y, margins, 1200, 600, title, 45, colorMap);
+    } else {
+        drawBarPlot("#main-plot", X, y, margins, 1200, 600, title, 45, colorMap);
+    }
 }
 
-function updateByColumn(data, N=50, column=AUTHORS_COL, by="citations", agg="total") {
-    let counts = Object.entries(countByColumn(data, column, by, agg));
-    counts.sort((a,b) => b[1] - a[1]);
-    counts = counts.splice(0, N);
+function updateMainPlot(data, column=VENUE_COL, by="citations", agg="total") {
+    const isSplitColumn = [AUTHORS_COL, INSTITUTION_COL, KEYWORDS_COL].includes(column);
+    let counts = Object.entries(countByColumn(data, column, by, agg, isSplitColumn));
+    
+    if (agg === "none") {
+        counts = sortBySums(counts);
+    } else {
+        counts.sort((a,b) => b[1]-a[1]);
+    }
+    
+    const maxX = (agg === "none") ? 10 : 50;
+    if (counts.length > maxX) {
+        counts = counts.slice(0, maxX);
+    }
+
     let X = [], y = [];
     counts.forEach(a => {X.push(a[0]); y.push(a[1])});
+
     const title = capitalize(`${agg} ${by} By ${column}`);
-    const id = {"Authors": "#by-author", "Author Affiliations": '#by-institution', "Author Keywords": "#by-keyword"}[column];
-    updateBarPlot(id, X, y, title);
+    const colorMap = (column == VENUE_COL) ? VENUE_COLORS : "#9467bd";
+    
+    if (agg === "none") {
+        if (previousAggFunction !== "none") {
+            $("#main-plot svg").children("g").children("rect").remove();
+        }
+        updateViolinPlot("#main-plot", X, y, title, colorMap);
+    } else {
+        if (previousAggFunction === "none") {
+            $("#main-plot svg").children("g").children(".violin").remove();
+        }
+        updateBarPlot("#main-plot", X, y, title, colorMap);
+    }
+    previousAggFunction = agg;
 }
 
 function drawAbstractWordCloud(data) {
@@ -404,11 +378,12 @@ function drawBarPlot(id, X, y, margins, width, height, title, xAxisRotation, col
     updateBarPlot(id, X, y);
 }
 
-function updateBarPlot(id, X, y, newTitle=null) {
+function updateBarPlot(id, X, y, newTitle=null, newColorMap=null) {
     let xScale = plots[id].xScale, xAxis = plots[id].xAxis;
     let yScale = plots[id].yScale, yAxis = plots[id].yAxis;
     let xAxisRotation = plots[id].xAxisRotation;
-    let colorMap = plots[id].colorMap;
+    let colorMap = newColorMap ?? plots[id].colorMap;
+    plots[id].colorMap = colorMap;
 
     xScale.domain(X);
     xAxis.transition()
@@ -444,14 +419,14 @@ function updateBarPlot(id, X, y, newTitle=null) {
             .attr("y", d => yScale(d.value))
             .attr("width", xScale.bandwidth())
             .attr("height", d => plots[id].realHeight - yScale(d.value))
-            .attr("fill", d => (colorMap == null) ? "#9467bd" : colorMap[d.key]);
+            .attr("fill", d => ((typeof colorMap === 'string') ? colorMap : colorMap[d.key]));
             
     if (newTitle != null) {
         addTitle(plots[id].svg, newTitle, plots[id].margins, plots[id].realWidth, plots[id].realHeight);
     }
 }
 
-function drawViolinPlot(id, X, y, margins, width, height, title, colorMap) {
+function drawViolinPlot(id, X, y, margins, width, height, title, xAxisRotation, colorMap) {
     const realWidth = width - margins.left - margins.right;
     const realHeight = height - margins.top - margins.bottom;
 
@@ -478,17 +453,25 @@ function drawViolinPlot(id, X, y, margins, width, height, title, colorMap) {
     addTitle(svg, title, margins, realWidth, realHeight);
 
     plots[id] = {svg: svg, xScale: xScale, xAxis: xAxis, yScale: yScale, yAxis: yAxis, realHeight: realHeight,
-                colorMap: colorMap};
+                colorMap: colorMap, xAxisRotation: xAxisRotation};
 
     updateViolinPlot(id, X, y);
 }
 
-function updateViolinPlot(id, X, y) {
+function updateViolinPlot(id, X, y, newTitle=null, newColorMap=null) {
     let xScale = plots[id].xScale, xAxis = plots[id].xAxis;
     let yScale = plots[id].yScale, yAxis = plots[id].yAxis;
+    let xAxisRotation = plots[id].xAxisRotation;
+    let colorMap = newColorMap ?? plots[id].colorMap;
+    plots[id].colorMap = colorMap;
 
     xScale.domain(X);
-    xAxis.transition().duration(1000).call( d3.axisBottom(xScale) );
+    xAxis.transition()
+        .duration(1000)
+        .call( d3.axisBottom(xScale) )
+        .selectAll("text")
+        .style("text-anchor", (xAxisRotation == 0) ? "center" : "end")
+        .attr("transform", `rotate(-${xAxisRotation})`);
 
     yScale.domain(d3.extent(y.flat()));
     yAxis.transition().duration(1000).call( d3.axisLeft(yScale) );
@@ -524,7 +507,7 @@ function updateViolinPlot(id, X, y) {
             .attr("class", "violin")
         .append("path")
             .style("stroke", "none")
-            .style("fill", d => plots[id].colorMap[d.key])
+            .style("fill", d => (typeof colorMap === 'string') ? colorMap : colorMap[d.key])
             .attr("d", d => area(histogram(d.value)))
         .select(function() { return this.parentNode; })
         .merge(u)
@@ -537,6 +520,7 @@ function updateViolinPlot(id, X, y) {
         .merge(paths)
         .transition()
         .duration(1000)
+        .style("fill", d => (typeof colorMap === "string") ? colorMap : colorMap[d.key])
         .attr("d", d => area(histogram(d.value)));
 
     u.exit()
@@ -545,6 +529,9 @@ function updateViolinPlot(id, X, y) {
         .style("opacity", 0)
         .remove();
 
+    if (newTitle != null) {
+        addTitle(plots[id].svg, newTitle, plots[id].margins, plots[id].realWidth, plots[id].realHeight);
+    }
 }
 
 function drawWordCloud(id, words, width, height, title) {

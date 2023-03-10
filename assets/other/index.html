@@ -41,15 +41,24 @@
             <form id="settings__authors">
                 <fieldset class="sub-setting">
                     <legend>Group by</legend>
-                    <label>Column</label>
+                    <label>Y-Axis</label>
                     <select id="settings__authors__column">
                         <option value="citations" selected>Citations</option>
                         <option value="citation rate">Citation Rate</option>
                         <option value="papers">Papers</option>
                     </select>
                     <br /> <br />
+                    <label>X-Axis</label>
+                    <select id="settings__xaxis">
+                        <option value="Publication Title" selected>Venue</option>
+                        <option value="Authors">Author</option>
+                        <option value="Author Affiliations">Author Affiliations</option>
+                        <option value="Author Keywords">Author Keywords</option>
+                    </select>
+                    <br /> <br />
                     <label>Agg</label>
                     <select id="settings__authors__agg">
+                        <option value="none">None</option>
                         <option value="total" selected>Total</option>
                         <option value="mean">Mean</option>
                         <option value="median">Median</option>
@@ -70,6 +79,9 @@
                 </div>
             </div>
             <br>
+
+            <!-- general plot -->
+            <div id="main-plot" class="plot"></div>
 
             <!-- citations by venue plots -->
             <div id="total-citations-by-venue" class="plot"></div>
