@@ -47,6 +47,7 @@ d3.csv("all.csv").then((data) => {
 
     /* create settings ui */
     createSettings(data);
+    updateSettingsFromURL();
 
     /* list top papers */
     listTopPapers(data, 25);
@@ -136,13 +137,42 @@ function createSettings(data) {
     });
 
     $('#settings__papers-count__selection').change(function() {
-        //const N = $("#settings__papers-count__selection option:selected").val();
         update(data);
     });
 
-    $('#settings__authors__column').change(function() { update(data); });
+    $('#settings__yaxis').change(function() { update(data); });
     $('#settings__xaxis').change(function() { update(data); });
-    $('#settings__authors__agg').change(function() { update(data); });
+    $('#settings__agg').change(function() { update(data); });
+}
+
+function updateSettingsFromURL() {
+    const params = new URLSearchParams(window.location.search);
+
+    function setSelectFromParam(param_name, selectId) {
+        if (params.has(param_name)) {
+            const possibleVals = $(`#${selectId} option`).toArray().map(x => x.value);
+            if (possibleVals.includes(params.get(param_name))) {
+                $(`#${selectId}`).val(params.get(param_name));
+            }
+        }
+    }
+
+    setSelectFromParam("numpapers", "settings__papers-count__selection");
+    setSelectFromParam("xaxis", "settings__xaxis");
+    setSelectFromParam("yaxis", "settings__yaxis");
+    setSelectFromParam("agg", "settings__agg");
+
+    if (params.has("years")) {
+        $("#settings__years input").prop("checked", false);
+        const years = params.get("years").split(",");
+        years.forEach(year => $(`#year__${year}`).prop("checked", true));
+    }
+
+    if (params.has("venues")) {
+        $("#settings__venues input").prop("checked", false);
+        const venues = params.get("venues").split(",");
+        venues.forEach(venue => $(`#venues__${venue}`).prop("checked", true));
+    }
 }
 
 function getSelectedCheckboxes(name) {
@@ -166,9 +196,9 @@ function update(data) {
     listTopPapers(data, N);
 
     /* update plots */
-    let yAxis = $('#settings__authors__column option:selected').val();
+    let yAxis = $('#settings__yaxis option:selected').val();
     let xAxis = $('#settings__xaxis option:selected').val();
-    let groupByAgg = $('#settings__authors__agg option:selected').val();
+    let groupByAgg = $('#settings__agg option:selected').val();
     updateMainPlot(data, xAxis, yAxis, groupByAgg);
 }
 
