@@ -24,7 +24,7 @@ let datatable = null;
 $(document).ready(function () {
     $("#load").show();
 
-    d3.csv("/data/site-data.csv", function(d) {
+    d3.csv("../data/site-data.csv", function(d) {
         for (const col of NUMERIC_COLUMNS) d[col] = +d[col];
         for (const col of BOOL_COLUMNS) d[col] = +(d[col] === "True");
         for (const col of OBJECT_COLUMNS) {
