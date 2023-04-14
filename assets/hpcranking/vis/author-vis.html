@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.css" />
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.semanticui.min.css" />
+        <link rel="stylesheet" href="/css/author-vis.css" />
+
+        <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+        <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.js"></script>
+        <script src="https://cdn.datatables.net/1.13.4/js/dataTables.semanticui.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/fomantic-ui/2.8.8/semantic.min.js"></script>
+        <script type="module" src="/js/author-vis.js"></script>
+    </head>
+    <body>
+        <div id="main">
+            <!-- Filter frame -->
+            <div id="filter">
+                <form id="years-filter-form">
+                    <fieldset class="sub-filter" id="years-filter-fieldset">
+                        <legend>Years</legend>
+                        <label>Start</label>
+                        <select id="years-filter-start"></select>
+                        <label>End</label>
+                        <select id="years-filter-end"></select>
+                    </fieldset>
+                </form>
+                <form id="venues-filter-form">
+                    <fieldset class="sub-filter" id="venues-filter-fieldset">
+                        <legend>Venues</legend>
+                    </fieldset>
+                </form>
+                <!--<form id="columns-filter-form">
+                    <fieldset class="sub-filter">
+                        <legend>Columns</legend>
+                        <div>
+                            <input type="checkbox" id="columns-filter__median" />
+                            <label for="columns-filter__median">Median Per Paper</label>
+                        </div>
+                    </fieldset>
+                </form>-->
+            </div>
+
+            <!-- Main list view -->
+            <div id="list-view">
+                <div id="load"></div>
+                <table id="list-view__table" class="ui striped celled table">
+                </table>
+            </div>
+        </div>
+    </body>
+</html>
