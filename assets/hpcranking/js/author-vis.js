@@ -5,7 +5,7 @@ import { Dataset, Filter } from './dataset.js';
 const NUMERIC_COLUMNS = ["year", "referenceCount", "citationCount", "influentialCitationCount"];
 const BOOL_COLUMNS = ["isOpenAccess", "is_retracted"];
 const OBJECT_COLUMNS = ["authors", "authorships", "counts_by_year", "venue_acronym"];
-const DISPLAY_COLUMNS = ["citationCount", "influentialCitationCount", "selfCitations", "isOpenAccess", "count", "hIndex"];
+const DISPLAY_COLUMNS = ["hIndex", "count", "citationCount", "selfCitations", "influentialCitationCount"];
 const READABLE_COLUMN_NAME_MAP = {
     Position: "Position",
     Name: "Name", 
