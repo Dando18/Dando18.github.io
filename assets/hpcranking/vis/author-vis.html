@@ -41,11 +41,32 @@
             </div>
 
             <!-- Main list view -->
+            <div id="load"></div>
             <div id="list-view">
-                <div id="load"></div>
+                
                 <table id="list-view__table" class="ui striped celled table">
                 </table>
             </div>
+            
+            <!-- About information -->
+            <br />
+            <div id="data-desc">
+                <h2>Data Description</h2>
+                <p>
+                    The data used in this table was collected from 
+                    <a href="https://dblp.org/">DBLP</a>,
+                    <a href="https://docs.openalex.org/">SemanticScholar</a>,
+                    and <a href="https://docs.openalex.org/">OpenAlex</a>.
+                    The data set was last updated on 2023-04-19.
+                </p>
+                <h2>Data Coverage</h2>
+                <p>
+                    The dataset includes 12,508 DOIs.
+                    SemanticScholar is missing data for 228 DOIs and OpenAlex for 4 DOIs.
+                    Additionally, SC 2018, HPDC 2013, and ISC 2010-2012 are missing entirely.
+                </p>
+            </div>
+            <br /><br />
         </div>
     </body>
 </html>

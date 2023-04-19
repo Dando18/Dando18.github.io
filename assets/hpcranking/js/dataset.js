@@ -59,15 +59,45 @@ class Dataset {
 
         let byAuthorTable = {};
         for (let row of data) {
+            const venueName = row["venue_acronym"];
+
             for (let author of row["authors"]) {
                 const authorName = author["name"];
+
+                /* create new entry for author if it doesn't exist */
                 if (!(authorName in byAuthorTable)) {
                     byAuthorTable[authorName] = Object.fromEntries(columns.map(k => [k, []]));
+                    if (columns.includes("coAuthors")) {
+                        byAuthorTable[authorName]["coAuthors"] = new Set();
+                    }
                 }
-                row["selfCitations"] = +author["selfCitations"] || 0;
 
+                /* create new counter for venue in this author if it doesn't exist */
+                if (!(venueName in byAuthorTable[authorName])) {
+                    byAuthorTable[authorName][venueName] = 0;
+                }
+                byAuthorTable[authorName][venueName] += 1;
+
+                /* add self-citations */
+                row["selfCitations"] = +author["selfCitations"] || 0;
+                if (("referenceCount" in row) && row["referenceCount"] > 0) {
+                    row["selfCitationPercent"] = row["selfCitations"] / row["referenceCount"] * 100.0;
+                } else {
+                    row["selfCitationPercent"] = 0.0;
+                }
+
+                if (columns.includes("coAuthors")) {
+                    for (let coAuthor of row["authors"]) {
+                        if (coAuthor["name"] != authorName) {
+                            byAuthorTable[authorName]["coAuthors"].add(coAuthor["name"]);
+                        }
+                    }
+                }
+
+                /* add data to table */
                 for (let col of columns) {
-                    byAuthorTable[authorName][col].push(row[col]);
+                    if (col !== "coAuthors")
+                        byAuthorTable[authorName][col].push(row[col]);
                 }
             }
         }

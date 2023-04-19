@@ -1,7 +1,7 @@
 
 #main {
     font-family: "Arial";
-    font-size: 16pt;
+    font-size: 14pt;
     display: grid;
     grid-template: 2 1;
 }
@@ -11,7 +11,7 @@
 }
 
 #load {
-    width: 100%;
+    width: 105%;
     height: 100%;
     position: fixed;
     z-index: 9999;
@@ -48,4 +48,8 @@
 
 input[type='checkbox'] {
     margin: 5px 5px;
+}
+
+#data-desc {
+    padding: 15px;
 }

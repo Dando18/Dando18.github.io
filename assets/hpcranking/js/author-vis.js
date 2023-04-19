@@ -2,21 +2,49 @@
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7/+esm';
 import { Dataset, Filter } from './dataset.js';
 
-const NUMERIC_COLUMNS = ["year", "referenceCount", "citationCount", "influentialCitationCount"];
+const NUMERIC_COLUMNS = ["year", "referenceCount", "citationCount", "cited_by_count", "influentialCitationCount"];
 const BOOL_COLUMNS = ["isOpenAccess", "is_retracted"];
-const OBJECT_COLUMNS = ["authors", "authorships", "counts_by_year", "venue_acronym"];
-const DISPLAY_COLUMNS = ["hIndex", "count", "citationCount", "selfCitations", "influentialCitationCount"];
+const OBJECT_COLUMNS = ["authors", "venue_acronym"];
+const CITATION_COLUMN = "citationCount";
+const DISPLAY_COLUMNS = ["hIndex", "count", CITATION_COLUMN, "selfCitations", 
+                        "selfCitationPercent", "influentialCitationCount", "coAuthors"];
 const READABLE_COLUMN_NAME_MAP = {
     Position: "Position",
     Name: "Name", 
     citationCount: "Citations",
+    cited_by_count: "Citations",
     influentialCitationCount: "Influential Citations",
     selfCitations: "Self Citations",
+    selfCitationPercent: "Median Self Citation %",
+    coAuthors: "No. Co-Authors",
     isOpenAccess: "No. Open Access",
     is_retracted: "No. Retractions",
     count: "No. Papers",
     hIndex: "H-Index",
 };
+const COLUMN_DESCRIPTIONS = {
+    hIndex: "At least h papers have at least h citations",
+    count: "Total number of papers",
+    citationCount: "Total number of citations (as reported by SemanticScholar)",
+    selfCitations: "Total number of self-citations (derived from SemanticScholar)",
+    selfCitationPercent: "Median percentage of self-citations per-paper (derived from SemanticScholar)",
+    influentialCitationCount: "Total number of influential citations (as reported by SemanticScholar https://www.semanticscholar.org/faq#influential-citations)",
+    coAuthors: "Total number of unique Co-Authors",
+};
+const COLUMN_AGG_FUNC = {
+    default: d3.sum,
+    coAuthors: d3.count,
+    selfCitationPercent: d3.median,
+};
+const COLUMN_RENDERER_MAP = {
+    selfCitationPercent: $.fn.dataTable.render.number(',', '.', 1, ''),
+};
+const IS_COLUMN_ORDERABLE = {
+    default: true,
+    Position: false,
+    Name: false,
+};
+const INITIAL_VENUES = ["SC", "IPDPS", "HPDC", "ICS", "PPoPP"];
 
 let dataset = null;
 let datatable = null;
@@ -44,7 +72,7 @@ $(document).ready(function () {
         initializeFilterUI(uniqueYears, uniqueVenues);
 
         /* create table */
-        updateAuthorList();
+        updateAuthorList(getFilter());
     });
 });
 
@@ -64,10 +92,6 @@ function updateAuthorList(filter = null, newColumns = false) {
     /* remove "count" and "hIndex" columns if showing median per paper */
     let columns = Array.from(DISPLAY_COLUMNS);
     const showMedians = shouldShowMedianPerPaper();
-    if (showMedians) {
-        columns.splice(columns.indexOf("count"), 1);
-        columns.splice(columns.indexOf("hIndex"), 1);
-    }
 
     /* preprocess author data */
     let byAuthor = dataset.getColumnsByAuthor(columns, filter);
@@ -78,20 +102,19 @@ function updateAuthorList(filter = null, newColumns = false) {
     for (const [authorName, metricObj] of Object.entries(byAuthor)) {
         let numValues = 0;
         let hIndex = 0;
-        if ("citationCount" in metricObj) {
-            hIndex = getHIndex(metricObj["citationCount"]);
+        if (CITATION_COLUMN in metricObj) {
+            hIndex = getHIndex(metricObj[CITATION_COLUMN]);
         }
         for (const [metricName, metricValues] of Object.entries(metricObj)) {
+            if (!Array.isArray(metricValues)) continue;
             numValues = metricValues.length;
-            if (showMedians) {
-                metricObj[metricName] = computeMedian(metricValues);
-            } else {
-                metricObj[metricName] = metricValues.reduce((partial, cur) => partial + cur, 0);
-            }
+            let aggFunc = (metricName in COLUMN_AGG_FUNC) ? COLUMN_AGG_FUNC[metricName] : COLUMN_AGG_FUNC["default"];
+            metricObj[metricName] = aggFunc(metricValues);
         }
         /* add paper count */
         metricObj["count"] = numValues;
         metricObj["hIndex"] = hIndex;
+        metricObj["coAuthors"] = metricObj["coAuthors"].size;
 
         let row = [0, authorName];
         for (const c of columns) {
@@ -101,10 +124,8 @@ function updateAuthorList(filter = null, newColumns = false) {
     }
 
     /* style table */
-    const INITIAL_SORTED_COL = "citationCount";
+    const INITIAL_SORTED_COL = "hIndex";
     const FULL_COLUMNS = ["Position", KEY_COL_NAME].concat(columns);
-    console.log(FULL_COLUMNS);
-    console.log(authorTable);
     if (datatable) {
         datatable.clear();
         datatable.rows.add(authorTable);
@@ -112,7 +133,7 @@ function updateAuthorList(filter = null, newColumns = false) {
     } else {
         datatable = $("#list-view__table").DataTable({
             data: authorTable,
-            columns: FULL_COLUMNS.map(c => ({ title: READABLE_COLUMN_NAME_MAP[c] })),
+            columns: FULL_COLUMNS.map(c => getDataTableColumnSpec(c)),
             order: [[FULL_COLUMNS.indexOf(INITIAL_SORTED_COL), 'desc']],
             fnRowCallback: function (nRow, aData, iDisplayIndex) {
                 let info = $(this).DataTable().page.info();
@@ -121,7 +142,24 @@ function updateAuthorList(filter = null, newColumns = false) {
             },
             drawCallback: function () { $("#load").hide(); }
         });
+        addTooltipsToTableHeader();
     }   
+}
+
+function addTooltipsToTableHeader() {
+    $("#list-view__table thead th").each(function(idx) {
+        let colName = DISPLAY_COLUMNS[idx-2];
+        $(this).attr("title", COLUMN_DESCRIPTIONS[colName]);
+    });
+}
+
+function getDataTableColumnSpec(columnName) {
+    let spec = { title: READABLE_COLUMN_NAME_MAP[columnName] };
+    if (columnName in COLUMN_RENDERER_MAP) {
+        spec["render"] = COLUMN_RENDERER_MAP[columnName];
+    }
+    spec["orderable"] = (columnName in IS_COLUMN_ORDERABLE) ? IS_COLUMN_ORDERABLE[columnName] : IS_COLUMN_ORDERABLE["default"];
+    return spec;
 }
 
 function getHIndex(citations) {
@@ -137,18 +175,6 @@ function getHIndex(citations) {
     }
     return hIndex;
 }
-
-
-function computeMedian(values) {
-    values.sort(function(a,b) { return a - b; });
-    const mid = Math.floor(values.length / 2);
-    if (values.length % 2 === 0) {
-        return (values[mid] + values[mid - 1]) / 2;
-    } else {
-        return values[mid];
-    }
-}
-
 
 function initializeFilterUI(availableYears, availableVenues) {
     /* years */
@@ -174,7 +200,7 @@ function initializeFilterUI(availableYears, availableVenues) {
                 .attr("id", `venues__${venue}`)
                 .attr("name", "venue")
                 .attr("value", venue)
-                .prop('checked', true)
+                .prop('checked', (INITIAL_VENUES.includes(venue)))
         ).append(
             $("<label>")
                 .attr("for", `venues__${venue}`)
