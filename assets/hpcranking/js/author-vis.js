@@ -141,6 +141,7 @@ function updateAuthorList(filter = null, newColumns = false) {
             data: authorTable,
             columns: FULL_COLUMNS.map(c => getDataTableColumnSpec(c)),
             order: [[FULL_COLUMNS.indexOf(INITIAL_SORTED_COL), 'desc']],
+            pageLength: 25,
             fnRowCallback: function (nRow, aData, iDisplayIndex) {
                 let table = $(this).DataTable();
                 let info = table.page.info();
