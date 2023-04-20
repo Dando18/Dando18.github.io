@@ -4,7 +4,6 @@
  * @date April 2023
  */
 
-
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7/+esm';
 import { Dataset, Filter } from './dataset.js';
 
@@ -82,10 +81,6 @@ $(document).ready(function () {
     });
 });
 
-function shouldShowMedianPerPaper() {
-    return $("#columns-filter__median").is(":checked");
-}
-
 function updateAuthorList(filter = null, newColumns = false) {
     $("#load").show();
 
@@ -97,7 +92,6 @@ function updateAuthorList(filter = null, newColumns = false) {
 
     /* remove "count" and "hIndex" columns if showing median per paper */
     let columns = Array.from(DISPLAY_COLUMNS);
-    const showMedians = shouldShowMedianPerPaper();
 
     /* preprocess author data */
     let byAuthor = dataset.getColumnsByAuthor(columns, filter);
@@ -225,6 +219,11 @@ function initializeFilterUI(availableYears, availableVenues) {
         venueForm.append(checkbox);
     }
     $("#venues-form input").on("change", function() { updateAuthorList(getFilter(), false); });
+    $(".area-dropdown").on("click", function() { rotateCaret(this); });
+}
+
+function rotateCaret(element) {
+    $(element).find("i").toggleClass("fa-circle-chevron-right fa-circle-chevron-down");
 }
 
 function getAllSelectValues(selector) {

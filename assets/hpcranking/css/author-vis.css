@@ -6,3 +6,16 @@
     z-index: 9999;
     background: url("../assets/loading_icon.gif") no-repeat center center rgba(255,255,255,1)
 }
+
+#years-form select {
+    margin-right: 15px;
+}
+
+.area-dropdown {
+    color: #000;
+}
+
+.area-dropdown:hover {
+    text-decoration: none;
+    color: #000;
+}

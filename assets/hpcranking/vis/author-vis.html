@@ -11,8 +11,9 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.4.1/dist/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
         <!-- Our CSS -->
-        <link rel="stylesheet" href="../css/author-vis-2.css" />
+        <link rel="stylesheet" href="../css/author-vis.css" />
     </head>
     <body>
         <!-- Responsive navbar-->
@@ -40,7 +41,7 @@
                             <!-- Post title-->
                             <h1 class="fw-bolder mb-1">CSscholar Rankings</h1>
                             <!-- Post meta content-->
-                            <div class="text-muted fst-italic mb-2">Updated on April 16, 2023</div>
+                            <div class="text-muted fst-italic mb-2">Updated on April 19, 2023</div>
                         </header>
                         <!-- Preview image figure-->
                         
@@ -57,16 +58,6 @@
                 </div>
                 <!-- Side widgets-->
                 <div class="col-lg-3">
-                    <!-- Search widget-->
-                    <!--<div class="card mb-4">
-                        <div class="card-header">Search</div>
-                        <div class="card-body">
-                            <div class="input-group">
-                                <input class="form-control" type="text" placeholder="Enter search term..." aria-label="Enter search term..." aria-describedby="button-search" />
-                                <button class="btn btn-primary" id="button-search" type="button">Go!</button>
-                            </div>
-                        </div>
-                    </div>-->
                     <!-- Years widget -->
                     <div class="card mb-4">
                         <div class="card-header">Years</div>
@@ -84,8 +75,8 @@
                         <div class="card-header">Fields & Venues</div>
                         <div class="card-body" id="venues-form">
                             <p>
-                                <a data-bs-toggle="collapse" href="#venues-form-hpc" role="button" aria-expanded="false" aria-controls="venues-form-hpc">
-                                    ► HPC
+                                <a class="area-dropdown" data-bs-toggle="collapse" href="#venues-form-hpc" role="button" aria-expanded="false" aria-controls="venues-form-hpc">
+                                    <i class="fa fa-circle-chevron-right" style="padding: 5px;"></i>HPC
                                 </a>
                             </p>
                             <div class="form-grid collapse" id="venues-form-hpc">
