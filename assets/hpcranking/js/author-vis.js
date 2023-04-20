@@ -1,3 +1,9 @@
+/**
+ * @fileoverview This file contains the code for the author list view.
+ * @author Daniel Nichols
+ * @date April 2023
+ */
+
 
 import * as d3 from 'https://cdn.jsdelivr.net/npm/d3@7/+esm';
 import { Dataset, Filter } from './dataset.js';
@@ -136,8 +142,13 @@ function updateAuthorList(filter = null, newColumns = false) {
             columns: FULL_COLUMNS.map(c => getDataTableColumnSpec(c)),
             order: [[FULL_COLUMNS.indexOf(INITIAL_SORTED_COL), 'desc']],
             fnRowCallback: function (nRow, aData, iDisplayIndex) {
-                let info = $(this).DataTable().page.info();
-                $("td:nth-child(1)", nRow).html(info.start + iDisplayIndex + 1);
+                let table = $(this).DataTable();
+                let info = table.page.info();
+                if (table.order()[0][1] === "desc") {
+                    $("td:nth-child(1)", nRow).html(info.start + iDisplayIndex + 1);
+                } else {
+                    $("td:nth-child(1)", nRow).html(info.recordsTotal - info.start - iDisplayIndex);
+                }
                 return nRow;
             },
             drawCallback: function () { $("#load").hide(); }
@@ -191,25 +202,28 @@ function initializeFilterUI(availableYears, availableVenues) {
     yearEndSelect.on("change", updateYears);
 
     /* venues */
-    let venueForm = $("#venues-filter-fieldset");
+    let venueForm = $("#venues-form-hpc");
     for (const venue of availableVenues) {
-        let checkbox = $("<div>").append(
+        let checkbox = $("<div>")
+            .addClass("form-check")
+            .append(
             $("<input>")
                 .addClass("settings-checkbox")
                 .attr("type", "checkbox")
                 .attr("id", `venues__${venue}`)
                 .attr("name", "venue")
                 .attr("value", venue)
+                .addClass("form-check-input")
                 .prop('checked', (INITIAL_VENUES.includes(venue)))
         ).append(
             $("<label>")
                 .attr("for", `venues__${venue}`)
+                .addClass("form-check-label")
                 .text(venue)
         );
         venueForm.append(checkbox);
     }
-    $("#venues-filter-form input").on("change", function() { updateAuthorList(getFilter(), false); });
-    $("#columns-filter-form input").on("change", function() { updateAuthorList(getFilter(), true); });
+    $("#venues-form input").on("change", function() { updateAuthorList(getFilter(), false); });
 }
 
 function getAllSelectValues(selector) {
@@ -229,7 +243,7 @@ function getFilter() {
 
     /* get selected venues */
     let validVenues = [];
-    $("#filter input[type='checkbox']:checked").each(function () {
+    $("#venues-form input[type='checkbox']:checked").each(function () {
         validVenues.push($(this).val());
     });
     return new Filter(validYears, validVenues);

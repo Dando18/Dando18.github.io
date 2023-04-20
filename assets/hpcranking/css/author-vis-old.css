@@ -1,0 +1,62 @@
+#title-banner {
+    background-color: #43A6C6;
+    margin: 0 0 15px 0;
+    padding: 20px;
+    text-align: center;
+}
+
+
+#main {
+    font-family: "Arial";
+    font-size: 14pt;
+    display: grid;
+    grid-template: 2 1;
+}
+
+#list-view {
+    padding: 15px;
+}
+
+#load {
+    width: 105%;
+    height: 100%;
+    position: fixed;
+    z-index: 9999;
+    background: url("../assets/loading_icon.gif") no-repeat center center rgba(255,255,255,1)
+}
+
+#filter {
+    font-family: "Arial";
+    font-size: 16pt;
+    width: auto;
+    height: 100px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-flow: row nowrap;
+}
+
+.sub-filter {
+    border: 1px solid #000;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 10px;
+}
+
+#venues-filter-fieldset {
+    display: flex;
+    flex-flow: column wrap;
+    height: 100%;
+    padding: 5px 15px;
+}
+
+#venues-filter-form {
+    flex-basis: 50%;
+}
+
+input[type='checkbox'] {
+    margin: 5px 5px;
+}
+
+#data-desc {
+    padding: 15px;
+}
