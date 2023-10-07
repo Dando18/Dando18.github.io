@@ -6,8 +6,7 @@ excerpt: "Resource contention on high performance computing (HPC) platforms can 
 date: 2022-05-30
 venue: "IPDPS '22"
 paperurl: 'https://ieeexplore.ieee.org/abstract/document/9820723'
+short_citation: 'D. Nichols, A. Marathe, K. Shoga, T. Gamblin, A. Bhatele. IPDPS. 2022.'
 citation: 'D. Nichols, A. Marathe, K. Shoga, T. Gamblin, A. Bhatele, “Resource Utilization Aware Job Scheduling to Mitigate Performance Variability”, International Parallel & Distributed Processing Symposium (IPDPS). 2022.'
 ---
-
-In IPDPS '22.
 

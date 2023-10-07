@@ -6,8 +6,8 @@ excerpt: 'This paper presents some of the current challenges in designing deep l
 date: 2020-07-27
 venue: 'SMC 2020'
 paperurl: 'https://www.icl.utk.edu/files/publications/2020/icl-utk-1403-2020.pdf'
+short_citation: 'R. Archibald, E. Chow, E. D’Azevedo, J. Dongarra, M. Eisenbach, R. Febbo, F. Lopez, D. Nichols,
+S. Tomov, K. Wong, and J. Yin. SMC. 2020.'
 citation: 'R. Archibald, E. Chow, E. D’Azevedo, J. Dongarra, M. Eisenbach, R. Febbo, F. Lopez, D. Nichols,
 S. Tomov, K. Wong, and J. Yin, SMC 2020, (2020)'
 ---
-
-[Find paper here.](https://www.icl.utk.edu/files/publications/2020/icl-utk-1403-2020.pdf)
