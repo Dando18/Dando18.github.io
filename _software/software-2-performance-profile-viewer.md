@@ -1,7 +1,7 @@
 ---
 title: "Performance Profile Viewer"
 excerpt: "A VSCode extension for viewing performance profiles"
-collection: portfolio
+collection: software
 ---
 
 Download [here](https://marketplace.visualstudio.com/items?itemName=danielnichols.performance-profile-viewer).

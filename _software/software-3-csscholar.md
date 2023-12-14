@@ -1,7 +1,7 @@
 ---
 title: "CSscholar"
 excerpt: "A website for viewing and analyzing CS publication data"
-collection: portfolio
+collection: software
 ---
 
 [csscholar.github.io](https://csscholar.github.io/index.html)
