@@ -8,7 +8,7 @@ redirect_from:
   - /about.html
 ---
 
-I am a Computer Science PhD student at the [University of Maryland, College Park](https://www.cs.umd.edu/) working with the [Parallel Software and Systems Group](https://pssg.cs.umd.edu). Before UMD, I completed my B.S. in Computer Science at the [University of Tennessee, Knoxville](http://www.eecs.utk.edu/) in Spring 2020 working with the [Innovative Computing Laboratory](https://www.icl.utk.edu/) and the [Joint Institute for Computer Science](https://www.jics.utk.edu/).
+I am a Computer Science PhD candidate at the [University of Maryland, College Park](https://www.cs.umd.edu/) working with the [Parallel Software and Systems Group](https://pssg.cs.umd.edu). Before UMD, I completed my B.S. in Computer Science at the [University of Tennessee, Knoxville](http://www.eecs.utk.edu/) in Spring 2020 working with the [Innovative Computing Laboratory](https://www.icl.utk.edu/) and the [Joint Institute for Computer Science](https://www.jics.utk.edu/).
 
 My research interests are in high performance computing where I am currently working on large scale data analytics and machine learning to predict performance variations on supercomputers. Previously I worked on high performance and parallel deep learning and authored the DL framework [MagmaDNN](https://github.com/MagmaDNN/magmadnn).
 
