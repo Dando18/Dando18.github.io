@@ -8,7 +8,8 @@ redirect_from:
   - /about.html
 ---
 
-I am a Computer Science PhD candidate at the [University of Maryland, College Park](https://www.cs.umd.edu/) working with the [Parallel Software and Systems Group](https://pssg.cs.umd.edu). Before UMD, I completed my B.S. in Computer Science at the [University of Tennessee, Knoxville](http://www.eecs.utk.edu/) in Spring 2020 working with the [Innovative Computing Laboratory](https://www.icl.utk.edu/) and the [Joint Institute for Computer Science](https://www.jics.utk.edu/).
+I am a Computer Science PhD candidate at the [University of Maryland, College Park](https://www.cs.umd.edu/) working with the [Parallel Software and Systems Group](https://pssg.cs.umd.edu). Before UMD, I completed my B.S. in Computer Science at the [University of Tennessee, Knoxville](http://www.eecs.utk.edu/) in Spring 2020 working with the [Innovative Computing Laboratory](https://www.icl.utk.edu/) and the [Joint Institute for Computer Science](https://www.jics.utk.edu/). I am also the recipient of the 
+[2024 ACM-IEEE CS George Michael Memorial HPC Fellowship](https://awards.acm.org/hpc-fellows).
 
 My research broadly centers around the intersection of systems and machine learning where I utilize historical
 data to improve performance on HPC systems. More recently I have branched into exploring how LLMs can be utilized
