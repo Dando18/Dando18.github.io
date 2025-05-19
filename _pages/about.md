@@ -32,7 +32,9 @@ Outside of work I also enjoy film,
 [reading](https://www.goodreads.com/user/show/101631777-daniel-nichols), and
 twizzlers (my _raison d'être_) of which I [sometimes write
 about](/year-archive/). I am also fairly active on the [Math StackExchange math
-forum](https://math.stackexchange.com/users/274085/dando18).
+forum](https://math.stackexchange.com/users/274085/dando18). I currently reside
+in Berkeley, California with [my lovely
+wife](https://sites.google.com/view/mollyharnish/about).
 
 <p align="center">
 <i>
