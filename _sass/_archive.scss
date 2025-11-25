@@ -245,6 +245,97 @@
 }
 
 /*
+   Publications (featured)
+   ========================================================================== */
+.pub-highlight {
+  margin: 1rem 0 0.75rem;
+  padding: 0.9rem;
+  background: mix(#fff, $primary-color, 97%);
+  border: 1px solid mix(#fff, $primary-color, 82%);
+  border-radius: $border-radius;
+}
+
+.pub-highlight-head {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  margin-bottom: 0.35rem;
+
+  h2 {
+    margin: 0;
+    font-size: 1.05rem;
+  }
+}
+
+.pub-highlight-sub {
+  margin: 0;
+  color: mix(#fff, $gray, 35%);
+  font-size: $type-size-6;
+}
+
+.pub-highlight-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 0.6rem;
+  margin-top: 0.5rem;
+}
+
+.pub-highlight-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.7rem 0.75rem 0.85rem;
+  background: #fff;
+  border: 1px solid mix(#fff, $primary-color, 70%);
+  border-radius: $border-radius;
+  box-shadow: 0 8px 14px -14px rgba(0, 0, 0, 0.35);
+}
+
+.pub-highlight-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.2rem 0.55rem;
+  background: mix(#fff, $primary-color, 90%);
+  border: 1px solid mix(#fff, $primary-color, 68%);
+  border-radius: $border-radius;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  font-size: $type-size-7;
+  width: fit-content;
+}
+
+.pub-highlight-title {
+  margin: 0;
+  font-size: 0.98rem;
+  line-height: 1.3;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
+
+.pub-highlight-card .pub-meta {
+  margin-top: 0;
+}
+
+.pub-highlight-card .pub-links {
+  margin-top: auto;
+  margin-left: 0;
+}
+
+.pub-section-title {
+  margin: 1.1rem 0 0.35rem;
+  font-size: 1.05rem;
+}
+
+/*
    Publications (compact list)
    ========================================================================== */
 .pub-intro {
@@ -263,7 +354,7 @@
 .pub-card {
   display: flex;
   gap: 1rem;
-  padding: 0.75rem 0;
+  padding: 0.6rem 0;
   border-bottom: 1px solid $border-color;
 }
 
@@ -366,6 +457,10 @@
     max-width: 100%;
     flex-direction: row;
     justify-content: space-between;
+  }
+
+  .pub-highlight-grid {
+    grid-template-columns: 1fr;
   }
 
   .pub-title-row {
