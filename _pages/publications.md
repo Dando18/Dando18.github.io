@@ -19,6 +19,11 @@ author_profile: true
     {% assign conf = post.venue_short | default: post.abbreviation | default: post.venue %}
     {% assign pub_year = post.pub_year | default: post.date | date: "%Y" %}
     {% assign detail_line = post.short_citation | default: post.citation %}
+    {% assign detail_line_highlight = detail_line
+      | replace: 'D. Nichols*', '<span class="author-me">D. Nichols*</span>'
+      | replace: 'D. Nichols', '<span class="author-me">D. Nichols</span>'
+      | replace: 'Daniel Nichols*', '<span class="author-me">Daniel Nichols*</span>'
+      | replace: 'Daniel Nichols', '<span class="author-me">Daniel Nichols</span>' %}
 
     <article class="pub-card">
       <div class="pub-chip">
@@ -42,7 +47,7 @@ author_profile: true
         </div>
 
         {% if detail_line %}
-          <p class="pub-meta">{{ detail_line }}</p>
+          <p class="pub-meta">{{ detail_line_highlight }}</p>
         {% else %}
           <p class="pub-meta">Published in <i>{{ post.venue }}</i> {{ pub_year }}</p>
         {% endif %}
