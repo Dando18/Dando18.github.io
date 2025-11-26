@@ -16,6 +16,41 @@
   }
 }
 
+#main.home-layout {
+
+  @include breakpoint($large) {
+    max-width: 1350px;
+    display: grid;
+    grid-template-columns: 230px minmax(0, 1fr) 360px;
+    column-gap: 2rem;
+    align-items: start;
+  }
+
+  @include breakpoint($x-large) {
+    max-width: 1500px;
+    grid-template-columns: 240px minmax(0, 1fr) 420px;
+  }
+
+  .sidebar {
+    @include breakpoint($large) {
+      float: none;
+      width: auto;
+      margin: 0;
+    }
+  }
+
+  .page {
+    @include breakpoint($large) {
+      float: none;
+      width: 100%;
+      max-width: none;
+      margin: 0;
+      padding-left: 0;
+      padding-right: 0;
+    }
+  }
+}
+
 .page {
   @include breakpoint($large) {
     @include span(10 of 12 last);
@@ -398,6 +433,19 @@
   margin-bottom: 10px;
   font-size: $type-size-6;
   text-transform: uppercase;
+}
+
+.home-news-sidebar {
+  @include clearfix();
+  margin-top: 1.5rem;
+
+  @include breakpoint($large) {
+    margin-top: 0;
+  }
+
+  .home-news {
+    margin-top: 0;
+  }
 }
 
 .home-news {
