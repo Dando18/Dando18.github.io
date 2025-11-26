@@ -34,7 +34,7 @@ twizzlers (my _raison d'être_) of which I [sometimes write
 about](/year-archive/). I am also fairly active on the [Math StackExchange math
 forum](https://math.stackexchange.com/users/274085/dando18). I currently reside
 in Berkeley, California with [my lovely
-wife](https://sites.google.com/view/mollyharnish/about).
+wife](https://mhnichols16.github.io/).
 
 <p align="center">
 <i>
