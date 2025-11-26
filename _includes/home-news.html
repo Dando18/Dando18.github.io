@@ -4,12 +4,16 @@
     <a class="home-news__all" href="/news/">View all</a>
   </div>
   <ul class="home-news__list">
-    {% assign recent_news = site.news | sort: "date" | reverse | slice: 0, 5 %}
+    {% assign recent_news = site.news | sort: "date" | reverse | slice: 0, 6 %}
     {% for item in recent_news %}
     <li class="home-news__item">
       <div class="home-news__date">{{ item.date | date: "%b '%y" }}</div>
       <div class="home-news__content">
         <div class="home-news__title">
+          {% if item.icon %}
+          {% assign icon_name = item.icon | remove: "fa-" | strip %}
+          <i class="fa fa-{{ icon_name }} home-news__icon" aria-hidden="true"></i>
+          {% endif %}
           {% if item.link %}
           <a href="{{ item.link }}" target="_blank" rel="noopener">{{ item.title }}</a>
           {% else %}
