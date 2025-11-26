@@ -182,6 +182,9 @@ collections:
   publications:
     output: true
     permalink: /:collection/:path/
+  news:
+    output: true
+    permalink: /:collection/:path/
   software:
     output: true
     permalink: /:collection/:path/
@@ -214,6 +217,14 @@ defaults:
       layout: single
       author_profile: false
       share: true
+  # _news
+  - scope:
+      path: ""
+      type: news
+    values:
+      layout: single
+      author_profile: false
+      share: false
   # _pages
   - scope:
       path: ""
